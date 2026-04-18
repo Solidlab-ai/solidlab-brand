@@ -214,7 +214,57 @@
   .footer__inner {
     display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px;
   }
+
+  /* =============================================================
+     Light mode — Antikkgrå-based Nordic theme
+     ============================================================= */
+  html[data-theme="light"] {
+    --sort:          #D5CFC2;
+    --antikkhvit:    #0A0A0A;
+    --border-dark:   rgba(10, 10, 10, 0.12);
+    --fog:           #5A5A5A;
+    --mist:          #8A8A8A;
+    --alvesolv:      #5A5A5A;
+  }
+  html, body { transition: background 300ms ease, color 300ms ease; }
+  .header { transition: background 300ms ease, border-color 300ms ease; }
+  html[data-theme="light"] .header { background: rgba(213, 207, 194, 0.92); }
+  html[data-theme="light"] .card:hover { background: #E8E4DB; }
+  html[data-theme="light"] .big-card:hover { background: #E8E4DB; }
+
+  /* Theme toggle button */
+  .theme-toggle {
+    background: transparent;
+    border: 1px solid var(--border-dark);
+    color: var(--mist);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 8px 14px;
+    cursor: pointer;
+    transition: all 150ms ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    line-height: 1;
+  }
+  .theme-toggle:hover {
+    border-color: var(--antikkhvit);
+    color: var(--antikkhvit);
+  }
 </style>
+<script>
+  (function() {
+    try {
+      var saved = localStorage.getItem("solidlab-theme");
+      document.documentElement.setAttribute("data-theme",
+        (saved === "light" || saved === "dark") ? saved : "dark");
+    } catch(e) {
+      document.documentElement.setAttribute("data-theme", "dark");
+    }
+  })();
+</script>
 </head>
 <body>
 
@@ -228,6 +278,10 @@
       <a href="#components">/ components</a>
       <a href="#deck">/ deck</a>
       <a href="https://solidlab.ai" class="ext">/ main site</a>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <svg id="themeIcon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <span id="themeLabel">light</span>
+      </button>
     </nav>
   </div>
 </header>
@@ -503,5 +557,30 @@
   </div>
 </footer>
 
+<script>
+  (function() {
+    var btn = document.getElementById("themeToggle");
+    var icon = document.getElementById("themeIcon");
+    var label = document.getElementById("themeLabel");
+
+    var sunSvg = '<circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="2" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="22" y2="12"/><line x1="4.9" y1="4.9" x2="7" y2="7"/><line x1="17" y1="17" x2="19.1" y2="19.1"/><line x1="4.9" y1="19.1" x2="7" y2="17"/><line x1="17" y1="7" x2="19.1" y2="4.9"/>';
+    var moonSvg = '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>';
+
+    function render() {
+      var t = document.documentElement.getAttribute("data-theme") || "dark";
+      icon.innerHTML = t === "dark" ? sunSvg : moonSvg;
+      label.textContent = t === "dark" ? "light" : "dark";
+    }
+    render();
+
+    btn.addEventListener("click", function() {
+      var cur = document.documentElement.getAttribute("data-theme") || "dark";
+      var next = cur === "dark" ? "light" : "dark";
+      document.documentElement.setAttribute("data-theme", next);
+      try { localStorage.setItem("solidlab-theme", next); } catch(e) {}
+      render();
+    });
+  })();
+</script>
 </body>
 </html>
