@@ -1,6 +1,10 @@
 {
   "cleanUrls": true,
   "trailingSlash": false,
+  "rewrites": [
+    { "source": "/slides", "destination": "/slides/index.html" },
+    { "source": "/slides/", "destination": "/slides/index.html" }
+  ],
   "headers": [
     {
       "source": "/fonts/(.*)",
