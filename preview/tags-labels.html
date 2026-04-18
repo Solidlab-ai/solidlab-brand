@@ -1,0 +1,33 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Tags & labels</title>
+<link rel="stylesheet" href="_base.css">
+<style>
+  .card { padding: 24px; gap: 14px; }
+  .group { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+  .tag { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; padding: 4px 8px; border-radius: 4px; border: 1px solid #E8E4DB; color: #5A5A5A; display: inline-flex; gap: 6px; align-items: center; }
+  .tag.oslo { color: #4A5A62; border-color: #4A5A62; }
+  .tag.solid { background: #4A5A62; color: #F4F1EA; border-color: transparent; }
+  .tag.warm { background: #D5CFC2; border-color: transparent; color: #0A0A0A; }
+  .dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+  .status { color: #4A5A62; }
+  .status.live { color: #4A5A62; }
+</style></head><body>
+<div class="card">
+  <div class="slash">/ tags · status · labels</div>
+  <div class="group">
+    <span class="tag">/ label</span>
+    <span class="tag">engineering</span>
+    <span class="tag">v1.1</span>
+    <span class="tag oslo">/ active</span>
+    <span class="tag solid">primary</span>
+    <span class="tag warm">warm</span>
+  </div>
+  <div class="group">
+    <span class="tag status"><span class="dot"></span>live</span>
+    <span class="tag" style="color:#8A8A8A"><span class="dot" style="background:#8A8A8A"></span>archived</span>
+    <span class="tag" style="color:#4A5A62"><span class="dot"></span>shipping</span>
+    <span class="tag">— 2026</span>
+    <span class="tag">stavanger / no</span>
+  </div>
+</div>
+</body></html>

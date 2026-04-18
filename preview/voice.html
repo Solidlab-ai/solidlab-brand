@@ -1,0 +1,29 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Voice</title>
+<link rel="stylesheet" href="_base.css">
+<style>
+  .card { padding: 24px; gap: 14px; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .q { padding: 16px; border: 1px solid #E8E4DB; background: #F4F1EA; display: flex; flex-direction: column; gap: 8px; min-height: 150px; }
+  .q.bad { border-left: 3px solid #8A8A8A; }
+  .q.good { border-left: 3px solid #4A5A62; }
+  .mark { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: #5A5A5A; }
+  .q.good .mark { color: #4A5A62; }
+  .q.bad  .mark { color: #8A8A8A; }
+  .t { font-family: var(--font-sans); font-size: 14px; line-height: 1.55; color: #0A0A0A; }
+  .q.bad .t { color: #5A5A5A; text-decoration: line-through; text-decoration-color: rgba(138,138,138,0.5); text-decoration-thickness: 1px; }
+</style></head><body>
+<div class="card">
+  <div class="slash">/ voice — precise, direct, grounded</div>
+  <div class="grid">
+    <div class="q good">
+      <span class="mark">/ good ✓</span>
+      <span class="t">We shipped Bølgevarsel in 2026 — a real-time marine forecasting platform used by Norwegian boaters. It's live and paying for itself.</span>
+    </div>
+    <div class="q bad">
+      <span class="mark">/ bad ✗</span>
+      <span class="t">Solidlab is leveraging cutting-edge AI to revolutionize the future of digital transformation for forward-thinking enterprises.</span>
+    </div>
+  </div>
+</div>
+</body></html>

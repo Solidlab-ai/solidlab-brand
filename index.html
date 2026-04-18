@@ -1,0 +1,507 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>solidlab — brand system</title>
+<meta name="description" content="Solidlab brand system — Nordic typography, Jotun-anchored palette, slash-led visual language."/>
+<link rel="stylesheet" href="./colors_and_type.css">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    background: var(--sort);
+    color: var(--antikkhvit);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    min-height: 100vh;
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  .shell { max-width: 1280px; margin: 0 auto; padding: 0 48px; }
+
+  /* ---------- Header ---------- */
+  .header {
+    position: sticky; top: 0; z-index: 10;
+    background: rgba(10,10,10,0.92);
+    border-bottom: 1px solid var(--border-dark);
+    backdrop-filter: blur(12px);
+  }
+  .header__inner {
+    display: flex; align-items: center; justify-content: space-between;
+    height: 72px;
+  }
+  .wm {
+    font-family: var(--font-sans); font-weight: 700;
+    font-size: 22px; letter-spacing: -0.02em;
+    color: var(--antikkhvit);
+  }
+  .wm .slash { color: var(--oslo); }
+  .nav { display: flex; gap: 32px; }
+  .nav a {
+    font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--mist);
+    transition: color 150ms ease;
+  }
+  .nav a:hover { color: var(--antikkhvit); }
+  .nav a.ext::after {
+    content: " ↗";
+    color: var(--oslo);
+  }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    padding: 120px 0 80px;
+    border-bottom: 1px solid var(--border-dark);
+  }
+  .hero__eyebrow {
+    font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--mist);
+    margin-bottom: 48px;
+  }
+  .hero__title {
+    font-size: 72px; font-weight: 700; letter-spacing: -0.02em; line-height: 1.0;
+    color: var(--antikkhvit); margin-bottom: 24px;
+  }
+  .hero__title em { color: var(--oslo); font-style: italic; font-weight: 500; }
+  .hero__sub {
+    font-size: 20px; line-height: 1.6; color: var(--alvesolv);
+    max-width: 720px; margin-bottom: 40px;
+  }
+  .hero__meta {
+    display: flex; gap: 24px; flex-wrap: wrap;
+    font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--fog);
+  }
+  .hero__meta span { display: inline-flex; align-items: center; gap: 8px; }
+  .hero__meta b { color: var(--antikkhvit); font-weight: 500; }
+
+  /* ---------- Section ---------- */
+  .section {
+    padding: 80px 0;
+    border-bottom: 1px solid var(--border-dark);
+  }
+  .section__head {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    margin-bottom: 48px;
+  }
+  .section__eyebrow {
+    font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--mist);
+    margin-bottom: 12px;
+  }
+  .section__title {
+    font-size: 40px; font-weight: 700; letter-spacing: -0.02em; line-height: 1.1;
+    color: var(--antikkhvit);
+  }
+  .section__count {
+    font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--fog);
+  }
+
+  /* ---------- Preview grid ---------- */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border-dark);
+    border: 1px solid var(--border-dark);
+  }
+  @media (max-width: 960px) {
+    .grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 640px) {
+    .grid { grid-template-columns: 1fr; }
+  }
+
+  .card {
+    background: var(--sort);
+    padding: 24px;
+    display: flex; flex-direction: column; gap: 12px;
+    min-height: 220px;
+    transition: background 200ms ease;
+  }
+  .card:hover { background: #141414; }
+  .card__label {
+    font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--oslo);
+  }
+  .card__title {
+    font-size: 22px; font-weight: 600; letter-spacing: -0.01em;
+    color: var(--antikkhvit);
+  }
+  .card__desc {
+    font-size: 14px; line-height: 1.5; color: var(--alvesolv);
+    flex: 1;
+  }
+  .card__cta {
+    font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--mist);
+    margin-top: 8px;
+  }
+  .card:hover .card__cta { color: var(--antikkhvit); }
+
+  /* ---------- Big cards (for special sections) ---------- */
+  .big-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--border-dark);
+    border: 1px solid var(--border-dark);
+  }
+  @media (max-width: 800px) {
+    .big-grid { grid-template-columns: 1fr; }
+  }
+  .big-card {
+    background: var(--sort);
+    padding: 48px 40px;
+    display: flex; flex-direction: column; gap: 20px;
+    min-height: 320px;
+    transition: background 200ms ease;
+  }
+  .big-card:hover { background: #141414; }
+  .big-card__label {
+    font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--oslo);
+  }
+  .big-card__title {
+    font-size: 40px; font-weight: 700; letter-spacing: -0.02em; line-height: 1.0;
+    color: var(--antikkhvit);
+  }
+  .big-card__desc {
+    font-size: 16px; line-height: 1.6; color: var(--alvesolv);
+    flex: 1;
+  }
+  .big-card__cta {
+    font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--mist);
+  }
+
+  /* ---------- Color strip ---------- */
+  .palette-strip {
+    display: grid; grid-template-columns: repeat(7, 1fr);
+    margin-top: 32px;
+    border: 1px solid var(--border-dark);
+  }
+  @media (max-width: 800px) {
+    .palette-strip { grid-template-columns: repeat(4, 1fr); }
+  }
+  .swatch {
+    height: 120px; position: relative;
+    display: flex; flex-direction: column; justify-content: flex-end;
+    padding: 16px;
+  }
+  .swatch__name {
+    font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.1em;
+    text-transform: uppercase; font-weight: 500;
+  }
+  .swatch__hex {
+    font-family: var(--font-mono); font-size: 11px;
+    opacity: 0.7; margin-top: 4px;
+  }
+
+  /* ---------- Footer ---------- */
+  .footer {
+    padding: 48px 0;
+    border-top: 1px solid var(--border-dark);
+    color: var(--fog);
+    font-family: var(--font-mono);
+    font-size: 12px; letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .footer__inner {
+    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px;
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="shell header__inner">
+    <a href="/" class="wm"><span class="slash">/ </span>solidlab</a>
+    <nav class="nav">
+      <a href="#palette">/ palette</a>
+      <a href="#typography">/ typography</a>
+      <a href="#components">/ components</a>
+      <a href="#deck">/ deck</a>
+      <a href="https://solidlab.ai" class="ext">/ main site</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="shell">
+    <div class="hero__eyebrow">/ solidlab — brand system / v1.1 nordic</div>
+    <h1 class="hero__title">The brand system.<br><em>Living reference.</em></h1>
+    <p class="hero__sub">
+      A living reference for how Solidlab looks, sounds, and behaves. Jotun-anchored
+      palette. Geist typography. The forward slash as signature. Built in Stavanger,
+      deployed to the world.
+    </p>
+    <div class="hero__meta">
+      <span>/ <b>20</b> preview cards</span>
+      <span>/ <b>9</b> slide templates</span>
+      <span>/ <b>v1.1</b> nordic</span>
+      <span>/ april 2026</span>
+    </div>
+  </div>
+</section>
+
+<!-- PALETTE -->
+<section class="section" id="palette">
+  <div class="shell">
+    <div class="section__head">
+      <div>
+        <div class="section__eyebrow">/ 01 — palette</div>
+        <h2 class="section__title">Jotun-anchored Nordic.</h2>
+      </div>
+      <div class="section__count">7 swatches</div>
+    </div>
+
+    <div class="palette-strip">
+      <div class="swatch" style="background:#4A5A62;color:#F4F1EA">
+        <div class="swatch__name">Oslo</div>
+        <div class="swatch__hex">#4A5A62</div>
+      </div>
+      <div class="swatch" style="background:#0A0A0A;color:#F4F1EA">
+        <div class="swatch__name">Sort</div>
+        <div class="swatch__hex">#0A0A0A</div>
+      </div>
+      <div class="swatch" style="background:#F4F1EA;color:#0A0A0A">
+        <div class="swatch__name">Antikkhvit</div>
+        <div class="swatch__hex">#F4F1EA</div>
+      </div>
+      <div class="swatch" style="background:#6B8290;color:#F4F1EA">
+        <div class="swatch__name">Nordic Breeze</div>
+        <div class="swatch__hex">#6B8290</div>
+      </div>
+      <div class="swatch" style="background:#8B9BA0;color:#0A0A0A">
+        <div class="swatch__name">Alvesølv</div>
+        <div class="swatch__hex">#8B9BA0</div>
+      </div>
+      <div class="swatch" style="background:#C9D4D8;color:#0A0A0A">
+        <div class="swatch__name">Linblå</div>
+        <div class="swatch__hex">#C9D4D8</div>
+      </div>
+      <div class="swatch" style="background:#D5CFC2;color:#0A0A0A">
+        <div class="swatch__name">Antikkgrå</div>
+        <div class="swatch__hex">#D5CFC2</div>
+      </div>
+    </div>
+
+    <div class="big-grid" style="margin-top:48px">
+      <a href="/preview/color-palette-core.html" target="_blank" class="big-card">
+        <div class="big-card__label">/ 01 — core</div>
+        <div class="big-card__title">Core palette</div>
+        <div class="big-card__desc">Oslo, Sort, Antikkhvit. The three anchors that define everything. Oslo sparingly, like good paint.</div>
+        <div class="big-card__cta">/ view card →</div>
+      </a>
+      <a href="/preview/color-palette-blues.html" target="_blank" class="big-card">
+        <div class="big-card__label">/ 02 — blues</div>
+        <div class="big-card__title">The Oslo family</div>
+        <div class="big-card__desc">Nordic Breeze, Alvesølv, Linblå. The tonal family extending from Oslo for secondary elements.</div>
+        <div class="big-card__cta">/ view card →</div>
+      </a>
+      <a href="/preview/color-semantic.html" target="_blank" class="big-card">
+        <div class="big-card__label">/ 03 — semantic</div>
+        <div class="big-card__title">Semantic tokens</div>
+        <div class="big-card__desc">Background, foreground, accent, hover — token mappings for light and dark modes.</div>
+        <div class="big-card__cta">/ view card →</div>
+      </a>
+      <a href="/preview/color-utility.html" target="_blank" class="big-card">
+        <div class="big-card__label">/ 04 — utility</div>
+        <div class="big-card__title">Utility greys</div>
+        <div class="big-card__desc">Fog, Mist, Border Light, Border Dark — the supporting neutrals for UI detail work.</div>
+        <div class="big-card__cta">/ view card →</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- TYPOGRAPHY -->
+<section class="section" id="typography">
+  <div class="shell">
+    <div class="section__head">
+      <div>
+        <div class="section__eyebrow">/ 02 — typography</div>
+        <h2 class="section__title">Geist + Geist Mono.</h2>
+      </div>
+      <div class="section__count">4 cards</div>
+    </div>
+
+    <div class="grid">
+      <a href="/preview/type-specimen.html" target="_blank" class="card">
+        <div class="card__label">/ specimen</div>
+        <div class="card__title">Geist — primary typeface</div>
+        <div class="card__desc">Modern sans-serif designed for interfaces. 4 weights in use: 400, 500, 600, 700.</div>
+        <div class="card__cta">/ view →</div>
+      </a>
+      <a href="/preview/type-scale.html" target="_blank" class="card">
+        <div class="card__label">/ scale</div>
+        <div class="card__title">Type scale</div>
+        <div class="card__desc">Display 72 / H1 48 / H2 32 / H3 24 / H4 18 / Body 16 / Small 14 / Label 12.</div>
+        <div class="card__cta">/ view →</div>
+      </a>
+      <a href="/preview/type-mono.html" target="_blank" class="card">
+        <div class="card__label">/ mono</div>
+        <div class="card__title">Geist Mono</div>
+        <div class="card__desc">Labels, tags, metadata, code. Fixed-width for moments that need rigor.</div>
+        <div class="card__cta">/ view →</div>
+      </a>
+      <a href="/preview/voice.html" target="_blank" class="card">
+        <div class="card__label">/ voice</div>
+        <div class="card__title">Voice & tone</div>
+        <div class="card__desc">Precise, confident, direct, warm, grounded. Nordic-steady. Never buzzword-heavy.</div>
+        <div class="card__cta">/ view →</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- COMPONENTS -->
+<section class="section" id="components">
+  <div class="shell">
+    <div class="section__head">
+      <div>
+        <div class="section__eyebrow">/ 03 — components</div>
+        <h2 class="section__title">The building blocks.</h2>
+      </div>
+      <div class="section__count">12 cards</div>
+    </div>
+
+    <div class="grid">
+      <a href="/preview/logo-variants.html" target="_blank" class="card">
+        <div class="card__label">/ logo</div>
+        <div class="card__title">Logo variants</div>
+        <div class="card__desc">Sort-on-Antikkhvit (primary), reversed, and Antikkhvit-on-Oslo.</div>
+        <div class="card__cta">/ view →</div>
+      </a>
+      <a href="/preview/slash-system.html" target="_blank" class="card">
+        <div class="card__label">/ signature</div>
+        <div class="card__title">The slash system</div>
+        <div class="card__desc">Forward slash as visual marker — prefixes, numbering, metadata separators.</div>
+        <div class="card__cta">/ view →</div>
+      </a>
+      <a href="/preview/buttons.html" target="_blank" class="card">
+        <div class="card__label">/ buttons</div>
+        <div class="card__title">Buttons</div>
+        <div class="card__desc">Primary (Oslo), secondary (outline), ghost. Sharp corners, no shadows.</div>
+        <div class="card__cta">/ view →</div>
+      </a>
+      <a href="/preview/form-inputs.html" target="_blank" class="card">
+        <div class="card__label">/ inputs</div>
+        <div class="card__title">Form inputs</div>
+        <div class="card__desc">Text fields, textarea, focus states. Oslo border on focus, 2px.</div>
+        <div class="card__cta">/ view →</div>
+      </a>
+      <a href="/preview/cards.html" target="_blank" class="card">
+        <div class="card__label">/ cards</div>
+        <div class="card__title">Cards</div>
+        <div class="card__desc">Content containers. 0px radius, subtle borders, hover-state.</div>
+        <div class="card__cta">/ view →</div>
+      </a>
+      <a href="/preview/tags-labels.html" target="_blank" class="card">
+        <div class="card__label">/ tags</div>
+        <div class="card__title">Tags & labels</div>
+        <div class="card__desc">The only rounded element (4px). Mono, uppercase, wide letter-spacing.</div>
+        <div class="card__cta">/ view →</div>
+      </a>
+      <a href="/preview/iconography.html" target="_blank" class="card">
+        <div class="card__label">/ icons</div>
+        <div class="card__title">Iconography</div>
+        <div class="card__desc">Lucide outline icons, 1.5-2px stroke, monochrome, Oslo for active only.</div>
+        <div class="card__cta">/ view →</div>
+      </a>
+      <a href="/preview/spacing.html" target="_blank" class="card">
+        <div class="card__label">/ spacing</div>
+        <div class="card__title">Spacing scale</div>
+        <div class="card__desc">8-point grid: 4, 8, 16, 24, 32, 48, 80, 120px. No arbitrary values.</div>
+        <div class="card__cta">/ view →</div>
+      </a>
+      <a href="/preview/radii-dividers.html" target="_blank" class="card">
+        <div class="card__label">/ structure</div>
+        <div class="card__title">Radii & dividers</div>
+        <div class="card__desc">Sharp corners by default. Hairline, medium, and accent rules for hierarchy.</div>
+        <div class="card__cta">/ view →</div>
+      </a>
+      <a href="/preview/motion.html" target="_blank" class="card">
+        <div class="card__label">/ motion</div>
+        <div class="card__title">Motion</div>
+        <div class="card__desc">Functional only — fade-ins, hovers, transitions. 150-400ms. Respects prefers-reduced-motion.</div>
+        <div class="card__cta">/ view →</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- DECK -->
+<section class="section" id="deck">
+  <div class="shell">
+    <div class="section__head">
+      <div>
+        <div class="section__eyebrow">/ 04 — deck</div>
+        <h2 class="section__title">Slide templates.</h2>
+      </div>
+      <div class="section__count">9 slides</div>
+    </div>
+
+    <div class="big-grid">
+      <a href="/slides/" target="_blank" class="big-card" style="grid-column: 1 / -1">
+        <div class="big-card__label">/ full deck</div>
+        <div class="big-card__title">Open presentation deck</div>
+        <div class="big-card__desc">
+          Nine slide templates: title, section divider, content, three-column, quote,
+          comparison, big-metric, timeline, image-led. Use arrow keys to navigate.
+        </div>
+        <div class="big-card__cta">/ open deck →</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- RESOURCES -->
+<section class="section" id="resources">
+  <div class="shell">
+    <div class="section__head">
+      <div>
+        <div class="section__eyebrow">/ 05 — resources</div>
+        <h2 class="section__title">Downloads & links.</h2>
+      </div>
+    </div>
+
+    <div class="big-grid">
+      <a href="/assets/solidlab-brand-guidelines-v1.1-nordic.pdf" target="_blank" class="big-card">
+        <div class="big-card__label">/ pdf</div>
+        <div class="big-card__title">Brand guidelines v1.1</div>
+        <div class="big-card__desc">
+          The complete printable manual — 10 sections, all rules, the AI-prompt for consistent generation.
+        </div>
+        <div class="big-card__cta">/ download pdf →</div>
+      </a>
+      <a href="https://solidlab.ai" class="big-card">
+        <div class="big-card__label">/ live</div>
+        <div class="big-card__title">solidlab.ai</div>
+        <div class="big-card__desc">
+          The main marketing site — where the system lives in production.
+        </div>
+        <div class="big-card__cta">/ visit site →</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="shell footer__inner">
+    <div>/ solidlab brand system</div>
+    <div>stavanger / norway</div>
+    <div>v1.1 nordic / april 2026</div>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Semantic tokens</title>
+<link rel="stylesheet" href="_base.css">
+<style>
+  .card { padding: 20px 24px; gap: 12px; }
+  .side { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .panel { padding: 16px; border: 1px solid var(--border-light); min-height: 200px; display: flex; flex-direction: column; gap: 8px; }
+  .panel.dark { background: var(--sort); border-color: var(--border-dark); }
+  .title { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--fog); }
+  .panel.dark .title { color: var(--mist); }
+  .line { display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 11px; }
+  .swatch { width: 16px; height: 16px; display: inline-block; margin-right: 8px; vertical-align: middle; border: 1px solid rgba(0,0,0,0.1); }
+  .name-col { color: inherit; }
+  .panel .name-col { color: var(--sort); }
+  .panel.dark .name-col { color: var(--antikkhvit); }
+  .hex-col { color: var(--fog); }
+  .panel.dark .hex-col { color: var(--mist); }
+</style></head><body>
+<div class="card">
+  <div class="slash">/ semantic tokens — light / dark</div>
+  <div class="side">
+    <div class="panel">
+      <div class="title">/ light</div>
+      <div class="line"><span class="name-col"><i class="swatch" style="background:#F4F1EA"></i>--bg</span><span class="hex-col">#F4F1EA</span></div>
+      <div class="line"><span class="name-col"><i class="swatch" style="background:#0A0A0A"></i>--fg</span><span class="hex-col">#0A0A0A</span></div>
+      <div class="line"><span class="name-col"><i class="swatch" style="background:#5A5A5A"></i>--fg-secondary</span><span class="hex-col">#5A5A5A</span></div>
+      <div class="line"><span class="name-col"><i class="swatch" style="background:#8A8A8A"></i>--fg-tertiary</span><span class="hex-col">#8A8A8A</span></div>
+      <div class="line"><span class="name-col"><i class="swatch" style="background:#4A5A62"></i>--accent</span><span class="hex-col">#4A5A62</span></div>
+      <div class="line"><span class="name-col"><i class="swatch" style="background:#E8E4DB"></i>--divider</span><span class="hex-col">#E8E4DB</span></div>
+    </div>
+    <div class="panel dark">
+      <div class="title">/ dark (default)</div>
+      <div class="line"><span class="name-col"><i class="swatch" style="background:#0A0A0A;border-color:#333"></i>--bg</span><span class="hex-col">#0A0A0A</span></div>
+      <div class="line"><span class="name-col"><i class="swatch" style="background:#F4F1EA"></i>--fg</span><span class="hex-col">#F4F1EA</span></div>
+      <div class="line"><span class="name-col"><i class="swatch" style="background:#8B9BA0"></i>--fg-secondary</span><span class="hex-col">#8B9BA0</span></div>
+      <div class="line"><span class="name-col"><i class="swatch" style="background:#8A8A8A"></i>--fg-tertiary</span><span class="hex-col">#8A8A8A</span></div>
+      <div class="line"><span class="name-col"><i class="swatch" style="background:#4A5A62"></i>--accent</span><span class="hex-col">#4A5A62</span></div>
+      <div class="line"><span class="name-col"><i class="swatch" style="background:#1F1F1F;border-color:#333"></i>--divider</span><span class="hex-col">#1F1F1F</span></div>
+    </div>
+  </div>
+</div>
+</body></html>
