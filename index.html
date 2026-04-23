@@ -215,6 +215,111 @@
     display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px;
   }
 
+  /* ---------- Download cards ---------- */
+  .dl-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+    background: var(--border-dark);
+    border: 1px solid var(--border-dark);
+  }
+  @media (max-width: 800px) {
+    .dl-grid { grid-template-columns: 1fr; }
+  }
+  .dl-card {
+    background: var(--sort);
+    display: flex;
+    flex-direction: column;
+    transition: background 200ms ease;
+  }
+  .dl-card:hover { background: #141414; }
+  html[data-theme="light"] .dl-card:hover { background: #E8E4DB; }
+  .dl-card__preview {
+    aspect-ratio: 3 / 1;
+    display: flex; align-items: center; justify-content: center;
+    padding: 32px;
+    position: relative;
+  }
+  .dl-card__preview--square { aspect-ratio: 1 / 1; max-width: 50%; margin: 0 auto; }
+  .dl-preview--light { background: #F4F1EA; }
+  .dl-preview--dark { background: #0A0A0A; }
+  .dl-preview--oslo { background: #4A5A62; }
+  .dl-preview--square { aspect-ratio: 1 / 1; max-width: 240px; margin: 0 auto; }
+  .dl-card__meta {
+    padding: 24px;
+    display: flex; flex-direction: column; gap: 8px;
+    flex: 1;
+  }
+  .dl-card__label {
+    font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--oslo);
+  }
+  .dl-card__title {
+    font-size: 20px; font-weight: 600; letter-spacing: -0.01em;
+    color: var(--antikkhvit);
+  }
+  .dl-card__desc {
+    font-size: 14px; line-height: 1.5; color: var(--alvesolv);
+    margin-bottom: 8px;
+  }
+  .dl-card__links {
+    display: flex; gap: 8px; flex-wrap: wrap;
+    margin-top: auto;
+  }
+  .dl-link {
+    font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--mist);
+    padding: 8px 14px;
+    border: 1px solid var(--border-dark);
+    transition: all 150ms ease;
+    display: inline-flex; align-items: center; gap: 4px;
+  }
+  .dl-link:hover {
+    color: var(--antikkhvit); border-color: var(--oslo);
+  }
+  html[data-theme="light"] .dl-link:hover {
+    color: #0A0A0A;
+  }
+  .dl-link .slash { color: var(--oslo); }
+
+  /* Download all button */
+  .dl-all-btn {
+    font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 12px 20px;
+    background: var(--oslo); color: var(--antikkhvit);
+    border: 1px solid var(--oslo);
+    display: inline-flex; align-items: center; gap: 6px;
+    transition: all 150ms ease;
+    cursor: pointer;
+  }
+  .dl-all-btn:hover {
+    background: #5A6B73; border-color: #5A6B73;
+  }
+  .dl-all-btn .slash { color: var(--antikkhvit); }
+  html[data-theme="light"] .dl-all-btn { color: #F4F1EA; }
+  html[data-theme="light"] .dl-all-btn:hover { background: #2F3B41; border-color: #2F3B41; }
+
+  /* Usage note */
+  .dl-note {
+    margin-top: 48px;
+    padding: 24px 32px;
+    border: 1px solid var(--border-dark);
+    background: rgba(74, 90, 98, 0.06);
+  }
+  .dl-note__label {
+    font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--oslo);
+    margin-bottom: 12px;
+  }
+  .dl-note__label .slash { color: var(--oslo); }
+  .dl-note p {
+    font-size: 14px; line-height: 1.6; color: var(--alvesolv);
+    margin: 0;
+  }
+  .dl-note a { color: var(--oslo); text-decoration: underline; text-underline-offset: 3px; }
+  .dl-note a:hover { color: var(--antikkhvit); }
+
   /* =============================================================
      Light mode — Antikkgrå-based Nordic theme
      ============================================================= */
@@ -277,6 +382,7 @@
       <a href="#typography">/ typography</a>
       <a href="#components">/ components</a>
       <a href="#deck">/ deck</a>
+      <a href="#downloads">/ downloads</a>
       <a href="https://solidlab.ai" class="ext">/ main site</a>
     <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
         <svg id="themeIcon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
@@ -517,17 +623,134 @@
   </div>
 </section>
 
-<!-- RESOURCES -->
-<section class="section" id="resources">
+<!-- DOWNLOADS -->
+<section class="section" id="downloads">
   <div class="shell">
     <div class="section__head">
       <div>
-        <div class="section__eyebrow">/ 05 — resources</div>
-        <h2 class="section__title">Downloads & links.</h2>
+        <div class="section__eyebrow">/ 05 — downloads</div>
+        <h2 class="section__title">Logos, guidelines, resources.</h2>
       </div>
+      <a href="/assets/solidlab-brand-assets.zip" class="dl-all-btn" download>
+        <span class="slash">/</span> download all (zip)
+      </a>
     </div>
 
-    <div class="big-grid">
+    <!-- LOGO GRID -->
+    <div class="dl-grid">
+
+      <div class="dl-card">
+        <div class="dl-card__preview dl-preview--light">
+          <svg viewBox="0 0 480 160" width="100%" height="100%" preserveAspectRatio="xMidYMid meet">
+            <text x="240" y="98" font-family="Geist, 'Inter Tight', sans-serif" font-weight="700" font-size="72" letter-spacing="-1.44" fill="#0A0A0A" text-anchor="middle">solidlab</text>
+          </svg>
+        </div>
+        <div class="dl-card__meta">
+          <div class="dl-card__label">/ 01 — primary</div>
+          <div class="dl-card__title">sort / antikkhvit</div>
+          <div class="dl-card__desc">The default lockup — dark on light.</div>
+          <div class="dl-card__links">
+            <a href="/assets/solidlab-logo-sort-on-antikkhvit.svg" download class="dl-link">
+              <span class="slash">/</span> svg
+            </a>
+            <a href="/assets/solidlab-logo-sort-on-antikkhvit.png" download class="dl-link">
+              <span class="slash">/</span> png
+            </a>
+            <a href="/assets/solidlab-logo-sort-on-antikkhvit@2x.png" download class="dl-link">
+              <span class="slash">/</span> @2x
+            </a>
+            <a href="/assets/solidlab-logo-sort-on-antikkhvit@4x.png" download class="dl-link">
+              <span class="slash">/</span> @4x
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="dl-card">
+        <div class="dl-card__preview dl-preview--dark">
+          <svg viewBox="0 0 480 160" width="100%" height="100%" preserveAspectRatio="xMidYMid meet">
+            <text x="240" y="98" font-family="Geist, 'Inter Tight', sans-serif" font-weight="700" font-size="72" letter-spacing="-1.44" fill="#F4F1EA" text-anchor="middle">solidlab</text>
+          </svg>
+        </div>
+        <div class="dl-card__meta">
+          <div class="dl-card__label">/ 02 — reversed</div>
+          <div class="dl-card__title">antikkhvit / sort</div>
+          <div class="dl-card__desc">For dark backgrounds — screens, apps, night mode.</div>
+          <div class="dl-card__links">
+            <a href="/assets/solidlab-logo-antikkhvit-on-sort.svg" download class="dl-link">
+              <span class="slash">/</span> svg
+            </a>
+            <a href="/assets/solidlab-logo-antikkhvit-on-sort.png" download class="dl-link">
+              <span class="slash">/</span> png
+            </a>
+            <a href="/assets/solidlab-logo-antikkhvit-on-sort@2x.png" download class="dl-link">
+              <span class="slash">/</span> @2x
+            </a>
+            <a href="/assets/solidlab-logo-antikkhvit-on-sort@4x.png" download class="dl-link">
+              <span class="slash">/</span> @4x
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="dl-card">
+        <div class="dl-card__preview dl-preview--oslo">
+          <svg viewBox="0 0 480 160" width="100%" height="100%" preserveAspectRatio="xMidYMid meet">
+            <text x="240" y="98" font-family="Geist, 'Inter Tight', sans-serif" font-weight="700" font-size="72" letter-spacing="-1.44" fill="#F4F1EA" text-anchor="middle">solidlab</text>
+          </svg>
+        </div>
+        <div class="dl-card__meta">
+          <div class="dl-card__label">/ 03 — brand</div>
+          <div class="dl-card__title">antikkhvit / oslo</div>
+          <div class="dl-card__desc">Brand moments — campaigns, covers, hero sections.</div>
+          <div class="dl-card__links">
+            <a href="/assets/solidlab-logo-antikkhvit-on-oslo.svg" download class="dl-link">
+              <span class="slash">/</span> svg
+            </a>
+            <a href="/assets/solidlab-logo-antikkhvit-on-oslo.png" download class="dl-link">
+              <span class="slash">/</span> png
+            </a>
+            <a href="/assets/solidlab-logo-antikkhvit-on-oslo@2x.png" download class="dl-link">
+              <span class="slash">/</span> @2x
+            </a>
+            <a href="/assets/solidlab-logo-antikkhvit-on-oslo@4x.png" download class="dl-link">
+              <span class="slash">/</span> @4x
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="dl-card">
+        <div class="dl-card__preview dl-preview--dark dl-preview--square">
+          <svg viewBox="0 0 160 160" width="100%" height="100%" preserveAspectRatio="xMidYMid meet">
+            <text x="80" y="105" font-family="Geist, 'Inter Tight', sans-serif" font-weight="700" font-size="64" letter-spacing="-1.28" fill="#F4F1EA" text-anchor="middle">SL</text>
+          </svg>
+        </div>
+        <div class="dl-card__meta">
+          <div class="dl-card__label">/ 04 — monogram</div>
+          <div class="dl-card__title">SL monogram</div>
+          <div class="dl-card__desc">Compact mark — favicons, app icons, stamps.</div>
+          <div class="dl-card__links">
+            <a href="/assets/solidlab-monogram-sl-sort.svg" download class="dl-link">
+              <span class="slash">/</span> svg
+            </a>
+            <a href="/assets/solidlab-monogram-sl-sort.png" download class="dl-link">
+              <span class="slash">/</span> png
+            </a>
+            <a href="/assets/solidlab-monogram-sl-sort@2x.png" download class="dl-link">
+              <span class="slash">/</span> @2x
+            </a>
+            <a href="/assets/solidlab-monogram-sl-sort@4x.png" download class="dl-link">
+              <span class="slash">/</span> @4x
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- GUIDELINES & LINKS -->
+    <div class="big-grid" style="margin-top:48px">
       <a href="/assets/solidlab-brand-guidelines-v1.1-nordic.pdf" target="_blank" class="big-card">
         <div class="big-card__label">/ pdf</div>
         <div class="big-card__title">Brand guidelines v1.1</div>
@@ -544,6 +767,14 @@
         </div>
         <div class="big-card__cta">/ visit site →</div>
       </a>
+    </div>
+
+    <!-- USAGE NOTE -->
+    <div class="dl-note">
+      <div class="dl-note__label"><span class="slash">/</span> usage</div>
+      <p>
+        All logos are outlined SVG — no font dependency, print-safe, infinitely scalable. PNG versions at 1x (web), 2x (retina), 4x (print). For third-party use, request permission at <a href="mailto:hello@solidlab.ai">hello@solidlab.ai</a>. Do not modify colors, proportions, or add effects.
+      </p>
     </div>
   </div>
 </section>
