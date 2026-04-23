@@ -298,6 +298,50 @@
   .dl-wm__lab { font-weight: 400; }
   .dl-wm__ai { font-weight: 400; color: #4A5A62; }
 
+  /* Transparent bg indicator (checkerboard) */
+  .dl-preview--transparent {
+    background-image:
+      linear-gradient(45deg, rgba(255,255,255,0.08) 25%, transparent 25%),
+      linear-gradient(-45deg, rgba(255,255,255,0.08) 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, rgba(255,255,255,0.08) 75%),
+      linear-gradient(-45deg, transparent 75%, rgba(255,255,255,0.08) 75%);
+    background-size: 20px 20px;
+    background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+    background-color: #2A2A2A;
+  }
+  html[data-theme="light"] .dl-preview--transparent {
+    background-image:
+      linear-gradient(45deg, rgba(0,0,0,0.06) 25%, transparent 25%),
+      linear-gradient(-45deg, rgba(0,0,0,0.06) 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, rgba(0,0,0,0.06) 75%),
+      linear-gradient(-45deg, transparent 75%, rgba(0,0,0,0.06) 75%);
+    background-size: 20px 20px;
+    background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+    background-color: #D5CFC2;
+  }
+
+  /* Subsection divider within downloads */
+  .dl-subsection {
+    margin-top: 48px;
+    margin-bottom: 24px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border-dark);
+    display: flex; align-items: baseline; gap: 16px;
+    flex-wrap: wrap;
+  }
+  .dl-subsection__label {
+    font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--oslo);
+  }
+  .dl-subsection__title {
+    font-size: 20px; font-weight: 600; letter-spacing: -0.01em;
+    color: var(--antikkhvit);
+  }
+  .dl-subsection__note {
+    font-size: 13px; color: var(--alvesolv);
+    margin-left: auto; font-family: var(--font-sans);
+  }
+
   /* Download all button */
   .dl-all-btn {
     font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em;
@@ -652,6 +696,12 @@
       </a>
     </div>
 
+    <div class="dl-subsection" style="margin-top:0;padding-top:0;border-top:none;">
+      <span class="dl-subsection__label">/ with background</span>
+      <span class="dl-subsection__title">Solid color lockups</span>
+      <span class="dl-subsection__note">Guaranteed legibility on any surface</span>
+    </div>
+
     <!-- LOGO GRID -->
     <div class="dl-grid">
 
@@ -817,6 +867,175 @@
 
     </div>
 
+    <!-- TRANSPARENT VARIANTS -->
+    <div class="dl-subsection">
+      <span class="dl-subsection__label">/ transparent</span>
+      <span class="dl-subsection__title">For photos, surfaces & overlays</span>
+      <span class="dl-subsection__note">True alpha channel — place on any background</span>
+    </div>
+
+    <div class="dl-grid">
+
+      <div class="dl-card">
+        <div class="dl-card__preview dl-preview--transparent">
+          <span class="dl-wm" style="color:#0A0A0A">
+            <span class="dl-wm__solid">solid</span><span class="dl-wm__lab">lab</span><span class="dl-wm__ai">.ai</span>
+          </span>
+        </div>
+        <div class="dl-card__meta">
+          <div class="dl-card__label">/ 07 — transparent · dark ink</div>
+          <div class="dl-card__title">solidlab.ai — on light</div>
+          <div class="dl-card__desc">Transparent BG with dark text + Oslo .ai. For light photos and surfaces.</div>
+          <div class="dl-card__links">
+            <a href="/assets/solidlab-wordmark-oslo-ai-dark-transparent.svg" download class="dl-link">
+              <span class="slash">/</span> svg
+            </a>
+            <a href="/assets/solidlab-wordmark-oslo-ai-dark-transparent.png" download class="dl-link">
+              <span class="slash">/</span> png
+            </a>
+            <a href="/assets/solidlab-wordmark-oslo-ai-dark-transparent@2x.png" download class="dl-link">
+              <span class="slash">/</span> @2x
+            </a>
+            <a href="/assets/solidlab-wordmark-oslo-ai-dark-transparent@4x.png" download class="dl-link">
+              <span class="slash">/</span> @4x
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="dl-card">
+        <div class="dl-card__preview dl-preview--transparent">
+          <span class="dl-wm" style="color:#F4F1EA">
+            <span class="dl-wm__solid">solid</span><span class="dl-wm__lab">lab</span><span class="dl-wm__ai" style="color:#6B8290">.ai</span>
+          </span>
+        </div>
+        <div class="dl-card__meta">
+          <div class="dl-card__label">/ 08 — transparent · light ink</div>
+          <div class="dl-card__title">solidlab.ai — on dark</div>
+          <div class="dl-card__desc">Light text + Nordic Breeze .ai. For dark photos and surfaces.</div>
+          <div class="dl-card__links">
+            <a href="/assets/solidlab-wordmark-oslo-ai-light-transparent.svg" download class="dl-link">
+              <span class="slash">/</span> svg
+            </a>
+            <a href="/assets/solidlab-wordmark-oslo-ai-light-transparent.png" download class="dl-link">
+              <span class="slash">/</span> png
+            </a>
+            <a href="/assets/solidlab-wordmark-oslo-ai-light-transparent@2x.png" download class="dl-link">
+              <span class="slash">/</span> @2x
+            </a>
+            <a href="/assets/solidlab-wordmark-oslo-ai-light-transparent@4x.png" download class="dl-link">
+              <span class="slash">/</span> @4x
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="dl-card">
+        <div class="dl-card__preview dl-preview--transparent">
+          <span class="dl-wm" style="color:#000000">
+            <span class="dl-wm__solid">solid</span><span class="dl-wm__lab">lab</span>
+          </span>
+        </div>
+        <div class="dl-card__meta">
+          <div class="dl-card__label">/ 09 — transparent · mono</div>
+          <div class="dl-card__title">solidlab — pure black</div>
+          <div class="dl-card__desc">Monochrome black. For print, stamps, single-color embossing.</div>
+          <div class="dl-card__links">
+            <a href="/assets/solidlab-wordmark-mono-black-transparent.svg" download class="dl-link">
+              <span class="slash">/</span> svg
+            </a>
+            <a href="/assets/solidlab-wordmark-mono-black-transparent.png" download class="dl-link">
+              <span class="slash">/</span> png
+            </a>
+            <a href="/assets/solidlab-wordmark-mono-black-transparent@2x.png" download class="dl-link">
+              <span class="slash">/</span> @2x
+            </a>
+            <a href="/assets/solidlab-wordmark-mono-black-transparent@4x.png" download class="dl-link">
+              <span class="slash">/</span> @4x
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="dl-card">
+        <div class="dl-card__preview dl-preview--transparent">
+          <span class="dl-wm" style="color:#FFFFFF">
+            <span class="dl-wm__solid">solid</span><span class="dl-wm__lab">lab</span>
+          </span>
+        </div>
+        <div class="dl-card__meta">
+          <div class="dl-card__label">/ 10 — transparent · mono</div>
+          <div class="dl-card__title">solidlab — pure white</div>
+          <div class="dl-card__desc">Monochrome white. For dark photos, video overlays, single-color reversed.</div>
+          <div class="dl-card__links">
+            <a href="/assets/solidlab-wordmark-mono-white-transparent.svg" download class="dl-link">
+              <span class="slash">/</span> svg
+            </a>
+            <a href="/assets/solidlab-wordmark-mono-white-transparent.png" download class="dl-link">
+              <span class="slash">/</span> png
+            </a>
+            <a href="/assets/solidlab-wordmark-mono-white-transparent@2x.png" download class="dl-link">
+              <span class="slash">/</span> @2x
+            </a>
+            <a href="/assets/solidlab-wordmark-mono-white-transparent@4x.png" download class="dl-link">
+              <span class="slash">/</span> @4x
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="dl-card">
+        <div class="dl-card__preview dl-preview--transparent dl-preview--square">
+          <span class="dl-wm" style="color:#0A0A0A;font-size:80px;font-weight:700;letter-spacing:-0.04em;">s</span>
+        </div>
+        <div class="dl-card__meta">
+          <div class="dl-card__label">/ 11 — favicon · dark</div>
+          <div class="dl-card__title">"s" mark — dark ink</div>
+          <div class="dl-card__desc">Heavy 's' for favicons on light backgrounds.</div>
+          <div class="dl-card__links">
+            <a href="/assets/solidlab-favicon-s-dark-transparent.svg" download class="dl-link">
+              <span class="slash">/</span> svg
+            </a>
+            <a href="/assets/solidlab-favicon-s-dark-transparent.png" download class="dl-link">
+              <span class="slash">/</span> png
+            </a>
+            <a href="/assets/solidlab-favicon-s-dark-transparent@2x.png" download class="dl-link">
+              <span class="slash">/</span> @2x
+            </a>
+            <a href="/assets/solidlab-favicon-s-dark-transparent@4x.png" download class="dl-link">
+              <span class="slash">/</span> @4x
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="dl-card">
+        <div class="dl-card__preview dl-preview--transparent dl-preview--square">
+          <span class="dl-wm" style="color:#F4F1EA;font-size:80px;font-weight:700;letter-spacing:-0.04em;">s</span>
+        </div>
+        <div class="dl-card__meta">
+          <div class="dl-card__label">/ 12 — favicon · light</div>
+          <div class="dl-card__title">"s" mark — light ink</div>
+          <div class="dl-card__desc">Heavy 's' for favicons on dark backgrounds.</div>
+          <div class="dl-card__links">
+            <a href="/assets/solidlab-favicon-s-light-transparent.svg" download class="dl-link">
+              <span class="slash">/</span> svg
+            </a>
+            <a href="/assets/solidlab-favicon-s-light-transparent.png" download class="dl-link">
+              <span class="slash">/</span> png
+            </a>
+            <a href="/assets/solidlab-favicon-s-light-transparent@2x.png" download class="dl-link">
+              <span class="slash">/</span> @2x
+            </a>
+            <a href="/assets/solidlab-favicon-s-light-transparent@4x.png" download class="dl-link">
+              <span class="slash">/</span> @4x
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
     <!-- GUIDELINES & LINKS -->
     <div class="big-grid" style="margin-top:48px">
       <a href="/assets/solidlab-brand-guidelines-v1.1-nordic.pdf" target="_blank" class="big-card">
@@ -841,7 +1060,7 @@
     <div class="dl-note">
       <div class="dl-note__label"><span class="slash">/</span> usage</div>
       <p>
-        The weight contrast between <b>solid</b> (Geist 700) and <b>lab</b> (Geist 400) IS the logo. No symbol beside the wordmark. All SVGs are outlined — no font dependency. For third-party use, contact <a href="mailto:hello@solidlab.ai">hello@solidlab.ai</a>. Do not modify weight ratio, tracking, or the .ai color.
+        The weight contrast between <b>solid</b> (Geist 700) and <b>lab</b> (Geist 400) IS the logo. No symbol beside the wordmark. All SVGs are outlined — no font dependency. <b>Solid-background variants</b> are for stamps and guaranteed legibility; <b>transparent variants</b> are for photos, overlays, and colored surfaces. For third-party use, contact <a href="mailto:hello@solidlab.ai">hello@solidlab.ai</a>. Do not modify weight ratio, tracking, or the .ai color.
       </p>
     </div>
   </div>
