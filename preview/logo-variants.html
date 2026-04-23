@@ -3,13 +3,26 @@
 <link rel="stylesheet" href="_base.css">
 <style>
   .card { padding: 24px; gap: 12px; }
-  .grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+  .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+  @media (max-width: 900px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 500px) { .grid { grid-template-columns: 1fr; } }
   .l { height: 130px; display: flex; align-items: center; justify-content: center; position: relative; }
   .l .wm { font-family: 'Geist', 'Inter Tight', sans-serif; font-weight: 700; font-size: 44px; letter-spacing: -0.02em; }
+  .l .mono { font-family: 'Geist', 'Inter Tight', sans-serif; font-weight: 700; font-size: 56px; letter-spacing: -0.02em; }
   .l.light { background: #F4F1EA; border: 1px solid #E8E4DB; }
   .l.dark  { background: #0A0A0A; }
   .l.oslo  { background: #4A5A62; }
   .cap { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: #5A5A5A; margin-top: 6px; text-align: center; }
+  .dl { display: flex; gap: 4px; justify-content: center; margin-top: 8px; flex-wrap: wrap; }
+  .dl a {
+    font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.08em;
+    text-transform: uppercase; color: #5A5A5A;
+    padding: 4px 8px; border: 1px solid rgba(10,10,10,0.12);
+    text-decoration: none; transition: all 150ms ease;
+    display: inline-flex; align-items: center; gap: 3px;
+  }
+  .dl a:hover { color: #0A0A0A; border-color: #4A5A62; }
+  .dl a .s { color: #4A5A62; }
 </style></head><body>
 <div class="card">
   <div class="slash">/ logo variants — lowercase, bold 700, −0.02em tracking</div>
@@ -17,14 +30,42 @@
     <div>
       <div class="l light"><span class="wm" style="color:#0A0A0A">solidlab</span></div>
       <div class="cap">sort / antikkhvit — primary</div>
+      <div class="dl">
+        <a href="/assets/solidlab-logo-sort-on-antikkhvit.svg" download><span class="s">/</span>svg</a>
+        <a href="/assets/solidlab-logo-sort-on-antikkhvit.png" download><span class="s">/</span>png</a>
+        <a href="/assets/solidlab-logo-sort-on-antikkhvit@2x.png" download><span class="s">/</span>@2x</a>
+        <a href="/assets/solidlab-logo-sort-on-antikkhvit@4x.png" download><span class="s">/</span>@4x</a>
+      </div>
     </div>
     <div>
       <div class="l dark"><span class="wm" style="color:#F4F1EA">solidlab</span></div>
       <div class="cap">antikkhvit / sort — reverse</div>
+      <div class="dl">
+        <a href="/assets/solidlab-logo-antikkhvit-on-sort.svg" download><span class="s">/</span>svg</a>
+        <a href="/assets/solidlab-logo-antikkhvit-on-sort.png" download><span class="s">/</span>png</a>
+        <a href="/assets/solidlab-logo-antikkhvit-on-sort@2x.png" download><span class="s">/</span>@2x</a>
+        <a href="/assets/solidlab-logo-antikkhvit-on-sort@4x.png" download><span class="s">/</span>@4x</a>
+      </div>
     </div>
     <div>
       <div class="l oslo"><span class="wm" style="color:#F4F1EA">solidlab</span></div>
       <div class="cap">antikkhvit / oslo — brand</div>
+      <div class="dl">
+        <a href="/assets/solidlab-logo-antikkhvit-on-oslo.svg" download><span class="s">/</span>svg</a>
+        <a href="/assets/solidlab-logo-antikkhvit-on-oslo.png" download><span class="s">/</span>png</a>
+        <a href="/assets/solidlab-logo-antikkhvit-on-oslo@2x.png" download><span class="s">/</span>@2x</a>
+        <a href="/assets/solidlab-logo-antikkhvit-on-oslo@4x.png" download><span class="s">/</span>@4x</a>
+      </div>
+    </div>
+    <div>
+      <div class="l dark"><span class="mono" style="color:#F4F1EA">SL</span></div>
+      <div class="cap">sl — monogram</div>
+      <div class="dl">
+        <a href="/assets/solidlab-monogram-sl-sort.svg" download><span class="s">/</span>svg</a>
+        <a href="/assets/solidlab-monogram-sl-sort.png" download><span class="s">/</span>png</a>
+        <a href="/assets/solidlab-monogram-sl-sort@2x.png" download><span class="s">/</span>@2x</a>
+        <a href="/assets/solidlab-monogram-sl-sort@4x.png" download><span class="s">/</span>@4x</a>
+      </div>
     </div>
   </div>
 </div>
