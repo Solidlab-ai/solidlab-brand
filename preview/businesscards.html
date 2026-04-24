@@ -1,0 +1,113 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Business cards — Solidlab</title>
+<link rel="stylesheet" href="_base.css">
+<style>
+  .card { padding: 24px; gap: 12px; }
+  .section-title {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #4A5A62;
+    margin: 24px 0 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(10,10,10,0.08);
+  }
+  .section-title:first-of-type { margin-top: 0; }
+  .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+  @media (max-width: 600px) { .grid { grid-template-columns: 1fr; } }
+  .bc-preview {
+    aspect-ratio: 85 / 55;
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .bc-preview.dark  { background: #0A0A0A; }
+  .bc-preview.light { background: #F4F1EA; border: 1px solid #E8E4DB; }
+  .bc-preview img { width: 100%; height: 100%; object-fit: contain; display: block; }
+  .cap { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: #5A5A5A; margin-top: 10px; text-align: center; }
+  .dl { display: flex; gap: 4px; justify-content: center; margin-top: 6px; flex-wrap: wrap; }
+  .dl a {
+    font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.08em;
+    text-transform: uppercase; color: #5A5A5A;
+    padding: 4px 8px; border: 1px solid rgba(10,10,10,0.12);
+    text-decoration: none; transition: all 150ms ease;
+    display: inline-flex; align-items: center; gap: 3px;
+  }
+  .dl a:hover { color: #0A0A0A; border-color: #4A5A62; }
+  .dl a .s { color: #4A5A62; }
+  .meta-note {
+    margin-top: 24px;
+    padding: 16px 20px;
+    background: rgba(74, 90, 98, 0.06);
+    border: 1px solid rgba(10, 10, 10, 0.12);
+    font-family: var(--font-sans);
+    font-size: 13px;
+    line-height: 1.6;
+    color: #5A5A5A;
+  }
+  .meta-note b { color: #0A0A0A; }
+  .meta-note code {
+    background: rgba(107,130,144,0.15);
+    padding: 1px 6px;
+    border-radius: 2px;
+    font-family: var(--font-mono);
+    font-size: 0.88em;
+  }
+</style></head><body>
+<div class="card">
+  <div class="slash">/ business cards — 85×55mm · 8 variants · QR proxy · Vistaprint-ready</div>
+
+  <div class="section-title">/ ulrik personal — builder &amp; partner</div>
+  <div class="grid">
+    <div>
+      <div class="bc-preview dark"><img src="../merch/businesscards/ulrik-front.svg" alt="Ulrik front sort"></div>
+      <div class="cap">Sort — front</div>
+      <div class="dl"><a href="../merch/businesscards/ulrik-front.svg" download><span class="s">/</span>svg</a></div>
+    </div>
+    <div>
+      <div class="bc-preview dark"><img src="../merch/businesscards/ulrik-back.svg" alt="Ulrik back sort"></div>
+      <div class="cap">Sort — back (with QR)</div>
+      <div class="dl"><a href="../merch/businesscards/ulrik-back.svg" download><span class="s">/</span>svg</a></div>
+    </div>
+    <div>
+      <div class="bc-preview light"><img src="../merch/businesscards/ulrik-front-light.svg" alt="Ulrik front antikkhvit"></div>
+      <div class="cap">Antikkhvit — front</div>
+      <div class="dl"><a href="../merch/businesscards/ulrik-front-light.svg" download><span class="s">/</span>svg</a></div>
+    </div>
+    <div>
+      <div class="bc-preview light"><img src="../merch/businesscards/ulrik-back-light.svg" alt="Ulrik back antikkhvit"></div>
+      <div class="cap">Antikkhvit — back (with QR)</div>
+      <div class="dl"><a href="../merch/businesscards/ulrik-back-light.svg" download><span class="s">/</span>svg</a></div>
+    </div>
+  </div>
+
+  <div class="section-title">/ solidlab generic — hello@solidlab.ai</div>
+  <div class="grid">
+    <div>
+      <div class="bc-preview dark"><img src="../merch/businesscards/solidlab-front.svg" alt="Solidlab front sort"></div>
+      <div class="cap">Sort — front</div>
+      <div class="dl"><a href="../merch/businesscards/solidlab-front.svg" download><span class="s">/</span>svg</a></div>
+    </div>
+    <div>
+      <div class="bc-preview dark"><img src="../merch/businesscards/solidlab-back.svg" alt="Solidlab back sort"></div>
+      <div class="cap">Sort — back (with QR)</div>
+      <div class="dl"><a href="../merch/businesscards/solidlab-back.svg" download><span class="s">/</span>svg</a></div>
+    </div>
+    <div>
+      <div class="bc-preview light"><img src="../merch/businesscards/solidlab-front-light.svg" alt="Solidlab front antikkhvit"></div>
+      <div class="cap">Antikkhvit — front</div>
+      <div class="dl"><a href="../merch/businesscards/solidlab-front-light.svg" download><span class="s">/</span>svg</a></div>
+    </div>
+    <div>
+      <div class="bc-preview light"><img src="../merch/businesscards/solidlab-back-light.svg" alt="Solidlab back antikkhvit"></div>
+      <div class="cap">Antikkhvit — back (with QR)</div>
+      <div class="dl"><a href="../merch/businesscards/solidlab-back-light.svg" download><span class="s">/</span>svg</a></div>
+    </div>
+  </div>
+
+  <div class="meta-note">
+    <b>Format:</b> 85×55mm standard med 3mm bleed. <b>Material:</b> Soft Touch + 400g matt premium. <b>QR-koder</b> ruter gjennom <code>solidlab.ai/qr/*</code> proxy — destinasjoner kan endres når som helst uten reprint. Rutene er <code>/qr/card-ulrik</code> og <code>/qr/card-solidlab</code>. <b>Title:</b> "business developer &amp; partner".
+  </div>
+</div>
+</body></html>
