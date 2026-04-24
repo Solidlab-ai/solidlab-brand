@@ -43,21 +43,210 @@
     height: 72px;
   }
   .wm {
-    font-family: var(--font-sans); font-weight: 700;
-    font-size: 22px; letter-spacing: -0.02em;
+    font-family: var(--font-sans);
+    font-size: 22px;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    color: var(--antikkhvit);
+    display: inline-flex;
+    align-items: baseline;
+    white-space: nowrap;
+    transition: opacity 150ms ease;
+  }
+  .wm:hover { opacity: 0.8; }
+  .wm__solid { font-weight: 700; letter-spacing: -0.02em; }
+  .wm__lab { font-weight: 400; }
+  .wm__ai { font-weight: 400; color: var(--oslo); }
+  html[data-theme="light"] .wm { color: #0A0A0A; }
+  html[data-theme="light"] .wm__ai { color: var(--oslo); }
+
+  /* Menu trigger (hamburger) */
+  .menu-trigger {
+    background: transparent;
+    border: 1px solid var(--border-dark);
+    color: var(--mist);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 10px 16px 10px 14px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 150ms ease;
+    line-height: 1;
+  }
+  .menu-trigger:hover {
+    border-color: var(--antikkhvit);
     color: var(--antikkhvit);
   }
-  .wm .slash { color: var(--oslo); }
-  .nav { display: flex; gap: 32px; }
-  .nav a {
-    font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.08em;
-    text-transform: uppercase; color: var(--mist);
+  .menu-trigger__line {
+    display: block;
+    width: 16px;
+    height: 1.5px;
+    background: currentColor;
+  }
+  .menu-trigger__line:first-child { margin-bottom: 4px; }
+  .menu-trigger__label { margin-left: 2px; }
+
+  /* Hide the two stacked lines and just use the label-style trigger */
+  .menu-trigger__line { display: none; }
+
+  /* ---------- Side Menu ---------- */
+  .sidemenu {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 280ms ease;
+  }
+  .sidemenu--open {
+    pointer-events: auto;
+    opacity: 1;
+  }
+  .sidemenu__backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(8px);
+  }
+  .sidemenu__panel {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 380px;
+    max-width: 92vw;
+    background: var(--sort);
+    border-left: 1px solid var(--border-dark);
+    display: flex;
+    flex-direction: column;
+    padding: 32px;
+    transform: translateX(100%);
+    transition: transform 320ms cubic-bezier(0.2, 0.8, 0.2, 1);
+    overflow-y: auto;
+  }
+  html[data-theme="light"] .sidemenu__panel {
+    background: #D5CFC2;
+    border-left-color: rgba(10, 10, 10, 0.12);
+  }
+  .sidemenu--open .sidemenu__panel {
+    transform: translateX(0);
+  }
+  .sidemenu__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 48px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--border-dark);
+  }
+  .sidemenu__eyebrow {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--oslo);
+  }
+  .sidemenu__close {
+    background: transparent;
+    border: 1px solid var(--border-dark);
+    color: var(--mist);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 8px 14px;
+    cursor: pointer;
+    transition: all 150ms ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    line-height: 1;
+  }
+  .sidemenu__close:hover {
+    border-color: var(--antikkhvit);
+    color: var(--antikkhvit);
+  }
+  html[data-theme="light"] .sidemenu__close:hover {
+    border-color: #0A0A0A;
+    color: #0A0A0A;
+  }
+  .sidemenu__close-x {
+    font-size: 18px;
+    line-height: 1;
+    font-weight: 400;
+  }
+  .sidemenu__nav {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .sidemenu__link {
+    font-family: var(--font-sans);
+    font-size: 22px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    color: var(--antikkhvit);
+    padding: 12px 0;
+    text-decoration: none;
+    transition: color 150ms ease, padding-left 150ms ease;
+  }
+  html[data-theme="light"] .sidemenu__link { color: #0A0A0A; }
+  .sidemenu__link:hover,
+  .sidemenu__link:active {
+    color: var(--oslo);
+    padding-left: 8px;
+  }
+  .sidemenu__divider {
+    height: 1px;
+    background: var(--border-dark);
+    margin: 32px 0 24px;
+  }
+  .sidemenu__secondary {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .sidemenu__label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--mist);
+    opacity: 0.7;
+    margin-bottom: 4px;
+  }
+  .sidemenu__link-small {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    letter-spacing: 0.05em;
+    color: var(--mist);
+    text-decoration: none;
     transition: color 150ms ease;
   }
-  .nav a:hover { color: var(--antikkhvit); }
-  .nav a.ext::after {
-    content: " ↗";
-    color: var(--oslo);
+  .sidemenu__link-small:hover {
+    color: var(--antikkhvit);
+  }
+  html[data-theme="light"] .sidemenu__link-small:hover {
+    color: #0A0A0A;
+  }
+  .sidemenu__footer {
+    margin-top: auto;
+    padding-top: 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+  }
+  .sidemenu__footer-meta {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--fog);
   }
 
   /* ---------- Hero ---------- */
@@ -477,23 +666,58 @@
 <!-- HEADER -->
 <header class="header">
   <div class="shell header__inner">
-    <a href="/" class="wm"><span class="slash">/ </span>solidlab</a>
-    <nav class="nav">
-      <a href="#palette">/ palette</a>
-      <a href="#typography">/ typography</a>
-      <a href="#components">/ components</a>
-      <a href="#deck">/ deck</a>
-      <a href="#downloads">/ downloads</a>
-      <a href="#email-signatures">/ email</a>
-      <a href="#favicon">/ favicon</a>
-      <a href="https://solidlab.ai" class="ext">/ main site</a>
-    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+    <a href="/" class="wm">
+      <span class="wm__solid">solid</span><span class="wm__lab">lab</span><span class="wm__ai">.ai</span>
+    </a>
+
+    <button class="menu-trigger" id="menuTrigger" aria-label="Open menu" aria-expanded="false">
+      <span class="menu-trigger__line"></span>
+      <span class="menu-trigger__line"></span>
+      <span class="menu-trigger__label">/ menu</span>
+    </button>
+  </div>
+</header>
+
+<!-- SIDE MENU -->
+<div class="sidemenu" id="sideMenu" aria-hidden="true">
+  <div class="sidemenu__backdrop" id="sidemenuBackdrop"></div>
+  <aside class="sidemenu__panel" role="dialog" aria-label="Main menu">
+    <div class="sidemenu__head">
+      <span class="sidemenu__eyebrow">/ menu</span>
+      <button class="sidemenu__close" id="sidemenuClose" aria-label="Close menu">
+        <span class="sidemenu__close-x">×</span>
+        <span class="sidemenu__close-label">close</span>
+      </button>
+    </div>
+
+    <nav class="sidemenu__nav">
+      <a href="#palette" class="sidemenu__link">/ palette</a>
+      <a href="#typography" class="sidemenu__link">/ typography</a>
+      <a href="#components" class="sidemenu__link">/ components</a>
+      <a href="#deck" class="sidemenu__link">/ deck</a>
+      <a href="#downloads" class="sidemenu__link">/ downloads</a>
+      <a href="#email-signatures" class="sidemenu__link">/ email signatures</a>
+      <a href="#favicon" class="sidemenu__link">/ favicon</a>
+    </nav>
+
+    <div class="sidemenu__divider"></div>
+
+    <nav class="sidemenu__secondary">
+      <span class="sidemenu__label">/ elsewhere</span>
+      <a href="https://solidlab.ai" class="sidemenu__link-small">solidlab.ai ↗</a>
+      <a href="https://www.linkedin.com/company/115796478" target="_blank" rel="noopener noreferrer" class="sidemenu__link-small">/ linkedin ↗</a>
+      <a href="https://www.facebook.com/people/Solidlabai/61566190246544/" target="_blank" rel="noopener noreferrer" class="sidemenu__link-small">/ facebook ↗</a>
+    </nav>
+
+    <div class="sidemenu__footer">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
         <svg id="themeIcon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
         <span id="themeLabel">light</span>
       </button>
-    </nav>
-  </div>
-</header>
+      <span class="sidemenu__footer-meta">v1.1 nordic / april 2026</span>
+    </div>
+  </aside>
+</div>
 
 <!-- HERO -->
 <section class="hero">
@@ -1381,6 +1605,50 @@
       document.documentElement.setAttribute("data-theme", next);
       try { localStorage.setItem("solidlab-theme", next); } catch(e) {}
       render();
+    });
+  })();
+
+  // ========== SIDE MENU ==========
+  (function() {
+    var trigger = document.getElementById("menuTrigger");
+    var menu = document.getElementById("sideMenu");
+    var backdrop = document.getElementById("sidemenuBackdrop");
+    var closeBtn = document.getElementById("sidemenuClose");
+    if (!trigger || !menu) return;
+
+    function openMenu() {
+      menu.classList.add("sidemenu--open");
+      menu.setAttribute("aria-hidden", "false");
+      trigger.setAttribute("aria-expanded", "true");
+      document.body.style.overflow = "hidden";
+    }
+    function closeMenu() {
+      menu.classList.remove("sidemenu--open");
+      menu.setAttribute("aria-hidden", "true");
+      trigger.setAttribute("aria-expanded", "false");
+      document.body.style.overflow = "";
+    }
+
+    trigger.addEventListener("click", openMenu);
+    backdrop.addEventListener("click", closeMenu);
+    closeBtn.addEventListener("click", closeMenu);
+
+    // Close on link click (in-page anchors)
+    var links = menu.querySelectorAll(".sidemenu__link, .sidemenu__link-small");
+    links.forEach(function(link) {
+      link.addEventListener("click", function(e) {
+        // Only close for internal anchor links; external links open in new tab anyway
+        if (link.getAttribute("href").indexOf("#") === 0) {
+          closeMenu();
+        }
+      });
+    });
+
+    // Close on ESC
+    document.addEventListener("keydown", function(e) {
+      if (e.key === "Escape" && menu.classList.contains("sidemenu--open")) {
+        closeMenu();
+      }
     });
   })();
 </script>
