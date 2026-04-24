@@ -342,6 +342,38 @@
     margin-left: auto; font-family: var(--font-sans);
   }
 
+  /* Email signature card styles */
+  .dl-card__head {
+    font-family: var(--font-mono); font-size: 13px; letter-spacing: 0.05em;
+    text-transform: lowercase; color: var(--antikkhvit);
+    padding: 20px 24px 12px 24px;
+    font-weight: 500;
+  }
+  .dl-card__head .slash { color: var(--oslo); }
+  html[data-theme="light"] .dl-card__head { color: #0A0A0A; }
+
+  /* Email signature card desc (override base dl-card__desc padding) */
+  .dl-card .dl-card__head + .dl-card__desc {
+    padding: 0 24px 16px 24px;
+    margin-bottom: 0;
+    flex: 1;
+  }
+
+  .dl-card__btn {
+    margin: 0 24px 20px 24px;
+    font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--mist);
+    padding: 10px 14px;
+    border: 1px solid var(--border-dark);
+    transition: all 150ms ease;
+    display: inline-block; align-self: flex-start;
+    text-decoration: none;
+  }
+  .dl-card__btn:hover {
+    color: var(--antikkhvit); border-color: var(--oslo);
+  }
+  html[data-theme="light"] .dl-card__btn:hover { color: #0A0A0A; }
+
   /* Download all button */
   .dl-all-btn {
     font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em;
@@ -443,6 +475,7 @@
       <a href="#components">/ components</a>
       <a href="#deck">/ deck</a>
       <a href="#downloads">/ downloads</a>
+      <a href="#email-signatures">/ email</a>
       <a href="https://solidlab.ai" class="ext">/ main site</a>
     <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
         <svg id="themeIcon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
@@ -464,6 +497,7 @@
     </p>
     <div class="hero__meta">
       <span>/ <b>20</b> preview cards</span>
+      <span>/ <b>12</b> email signatures</span>
       <span>/ <b>9</b> slide templates</span>
       <span>/ <b>v1.1</b> nordic</span>
       <span>/ april 2026</span>
