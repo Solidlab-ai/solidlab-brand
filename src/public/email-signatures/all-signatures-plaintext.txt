@@ -1,0 +1,136 @@
+# Solidlab — Plain text email signatures
+
+For mobile email apps that don't support HTML, use these plain text versions.
+
+═══════════════════════════════════════════
+
+## ulrik@solidlab.ai
+
+Ulrik Gjellesvik Andresen
+/ builder & backer
+
+solidlab.ai — a nordic venture lab
+solidlab.ai · +47 400 93 494
+
+═══════════════════════════════════════════
+
+## jens@solidlab.ai
+
+Jens
+/ ai assistant · on behalf of Solidlab
+
+solidlab.ai — a nordic venture lab
+solidlab.ai · jens@solidlab.ai
+
+═══════════════════════════════════════════
+
+## hello@solidlab.ai
+
+solidlab.ai
+/ a nordic venture lab
+
+Products, ventures, sometimes chaos.
+solidlab.ai · hello@solidlab.ai
+
+═══════════════════════════════════════════
+
+## marketing@solidlab.ai
+
+Marketing
+/ press · partnerships · brand
+
+solidlab.ai — a nordic venture lab
+solidlab.ai · marketing@solidlab.ai
+
+═══════════════════════════════════════════
+
+## invest@solidlab.ai
+
+Investor Relations
+/ per project · not per fund
+
+solidlab.ai — a nordic venture lab
+solidlab.ai/investors · invest@solidlab.ai
+
+═══════════════════════════════════════════
+
+## billing@solidlab.ai
+
+Billing
+/ invoices · accounts · finance
+
+solidlab.ai — Stå på Pinne AS · Org.nr 935 233 488
+billing@solidlab.ai · Tunveien 13, 4016 Stavanger
+
+═══════════════════════════════════════════
+
+## noreply@solidlab.ai
+
+/ THIS IS AN AUTOMATED MESSAGE
+
+This mailbox isn't monitored. If you need to reach us,
+write to hello@solidlab.ai and we'll respond within
+one business day.
+
+solidlab.ai — a nordic venture lab · solidlab.ai
+
+═══════════════════════════════════════════
+
+## support@solidlab.ai
+
+Support
+/ help · questions · issues
+
+solidlab.ai — a nordic venture lab
+solidlab.ai · support@solidlab.ai
+
+Response within one business day · Mon–Fri · CET
+
+═══════════════════════════════════════════
+
+## legal@solidlab.ai
+
+Legal & Compliance
+/ GDPR · contracts · IP · policy
+
+solidlab.ai — Stå på Pinne AS · Org.nr 935 233 488
+solidlab.ai/trust · legal@solidlab.ai
+
+This email and any attachments may contain confidential or
+legally privileged information intended solely for the
+recipient. If received in error, please notify the sender
+and delete the message.
+
+═══════════════════════════════════════════
+
+## charlotte@solidlab.ai
+
+Charlotte Goa
+/ partner
+
+solidlab.ai — a nordic venture lab
+solidlab.ai · charlotte@solidlab.ai
+
+═══════════════════════════════════════════
+
+## team@solidlab.ai
+
+The Solidlab Team
+/ small team · long time horizons
+
+solidlab.ai — a nordic venture lab
+solidlab.ai · team@solidlab.ai
+
+═══════════════════════════════════════════
+
+## simba@solidlab.ai
+
+Simba
+/ chief mouser · est. 01.10.2023
+
+solidlab.ai — a nordic venture lab
+solidlab.ai · simba@solidlab.ai
+
+Responses may contain paw prints. Keyboard usage limited to Tuesdays.
+
+═══════════════════════════════════════════

@@ -1,0 +1,300 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Content Studio — Solidlab</title>
+<link rel="stylesheet" href="_base.css">
+<style>
+  .card { padding: 32px; gap: 16px; }
+  h1.big-title {
+    font-family: 'Geist', sans-serif;
+    font-size: 40px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    color: #0A0A0A;
+    margin: 8px 0 4px;
+  }
+  h1.big-title em {
+    color: #4A5A62;
+    font-weight: 500;
+    font-style: italic;
+  }
+  .subtitle {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #5A5A5A;
+    margin-bottom: 32px;
+  }
+  .intro {
+    font-family: 'Geist', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #5A5A5A;
+    max-width: 640px;
+    margin-bottom: 40px;
+  }
+  .section-title {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #4A5A62;
+    margin: 40px 0 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(10,10,10,0.08);
+  }
+  .step-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 24px;
+  }
+  @media (max-width: 700px) { .step-grid { grid-template-columns: 1fr; } }
+  .step {
+    padding: 20px 24px;
+    background: #F9F7F2;
+    border: 1px solid rgba(10,10,10,0.06);
+  }
+  .step-num {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #4A5A62;
+    margin-bottom: 8px;
+  }
+  .step-title {
+    font-family: 'Geist', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: #0A0A0A;
+    margin-bottom: 8px;
+  }
+  .step-desc {
+    font-family: 'Geist', sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #5A5A5A;
+  }
+  .step-desc code {
+    background: rgba(74,90,98,0.1);
+    padding: 2px 6px;
+    border-radius: 2px;
+    font-family: var(--font-mono);
+    font-size: 0.88em;
+  }
+  .file-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+  .file-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    background: #F9F7F2;
+    border: 1px solid rgba(10,10,10,0.08);
+    transition: all 150ms ease;
+  }
+  .file-card:hover {
+    border-color: #4A5A62;
+    background: #F4F1EA;
+  }
+  .file-info {
+    flex: 1;
+  }
+  .file-name {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: #0A0A0A;
+    margin-bottom: 4px;
+  }
+  .file-name .s { color: #4A5A62; }
+  .file-desc {
+    font-family: 'Geist', sans-serif;
+    font-size: 12px;
+    color: #8A8A8A;
+  }
+  .dl-btn {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #4A5A62;
+    padding: 8px 14px;
+    border: 1px solid rgba(74,90,98,0.3);
+    text-decoration: none;
+    transition: all 150ms ease;
+    white-space: nowrap;
+  }
+  .dl-btn:hover {
+    color: #F4F1EA;
+    background: #4A5A62;
+    border-color: #4A5A62;
+  }
+  .test-block {
+    padding: 20px 24px;
+    background: #0A0A0A;
+    color: #F4F1EA;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    line-height: 1.6;
+    margin-bottom: 12px;
+    white-space: pre-wrap;
+    border-left: 3px solid #4A5A62;
+  }
+  .test-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #4A5A62;
+    margin-bottom: 8px;
+  }
+  .meta-note {
+    margin-top: 32px;
+    padding: 20px 24px;
+    background: rgba(74, 90, 98, 0.06);
+    border: 1px solid rgba(10, 10, 10, 0.12);
+    font-family: 'Geist', sans-serif;
+    font-size: 13px;
+    line-height: 1.6;
+    color: #5A5A5A;
+  }
+  .meta-note b { color: #0A0A0A; }
+  .cta-box {
+    padding: 28px 32px;
+    background: #0A0A0A;
+    color: #F4F1EA;
+    margin: 32px 0;
+    text-align: center;
+  }
+  .cta-box h3 {
+    font-family: 'Geist', sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    margin-bottom: 8px;
+  }
+  .cta-box p {
+    font-family: 'Geist', sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #8B9BA0;
+    margin-bottom: 20px;
+  }
+  .cta-btn {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #0A0A0A;
+    background: #F4F1EA;
+    padding: 14px 24px;
+    text-decoration: none;
+    transition: all 150ms ease;
+  }
+  .cta-btn:hover {
+    background: #D5CFC2;
+  }
+</style></head><body>
+<div class="card">
+  <div class="slash">/ 12 — content studio · Claude Project setup for Solidlab</div>
+  <h1 class="big-title">Your own AI content creator. <em>Trained on Solidlab.</em></h1>
+  <div class="subtitle">/ setup in 10 minutes · free with Claude Pro · no code required</div>
+
+  <p class="intro">
+    Et Claude Project som vet alt om Solidlab — brand voice, produkter, farger, kunder. Lag LinkedIn-poster, Instagram-captions, blog-artikler, e-poster, SMS og bildeprompter uten å forklare kontekst hver gang.
+  </p>
+
+  <div class="section-title">/ setup steps</div>
+
+  <div class="step-grid">
+    <div class="step">
+      <div class="step-num">/ step 01</div>
+      <div class="step-title">Opprett Claude Project</div>
+      <div class="step-desc">Gå til <code>claude.ai</code> → Projects → New. Navn: <b>Solidlab Content Studio</b>. Krever Claude Pro.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">/ step 02</div>
+      <div class="step-title">Sett custom instructions</div>
+      <div class="step-desc">Last ned <code>01-project-instructions.md</code> nedenfor og lim inn i prosjektets "Custom instructions"-felt.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">/ step 03</div>
+      <div class="step-title">Last opp kontekst</div>
+      <div class="step-desc">Last opp <code>02-content-templates.md</code> og <code>03-product-context.md</code> til prosjektet som knowledge files.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">/ step 04</div>
+      <div class="step-title">Test det</div>
+      <div class="step-desc">Start ny chat INNE I PROSJEKTET. Skriv "LinkedIn-post om Bølgevarsel" og se magien.</div>
+    </div>
+  </div>
+
+  <div class="section-title">/ download all files</div>
+
+  <div class="file-grid">
+    <div class="file-card">
+      <div class="file-info">
+        <div class="file-name"><span class="s">/</span> 01-project-instructions.md</div>
+        <div class="file-desc">Claude's personality, brand voice rules, content-regler. Går i "Custom instructions".</div>
+      </div>
+      <a href="../project-setup/01-project-instructions.md" download class="dl-btn">Download</a>
+    </div>
+    <div class="file-card">
+      <div class="file-info">
+        <div class="file-name"><span class="s">/</span> 02-content-templates.md</div>
+        <div class="file-desc">20 ferdige templates — LinkedIn, Instagram, blog, e-post, SMS, bilder.</div>
+      </div>
+      <a href="../project-setup/02-content-templates.md" download class="dl-btn">Download</a>
+    </div>
+    <div class="file-card">
+      <div class="file-info">
+        <div class="file-name"><span class="s">/</span> 03-product-context.md</div>
+        <div class="file-desc">Detaljert info om Bølgevarsel, Lara, KYST, Jens, Solidlab.</div>
+      </div>
+      <a href="../project-setup/03-product-context.md" download class="dl-btn">Download</a>
+    </div>
+    <div class="file-card">
+      <div class="file-info">
+        <div class="file-name"><span class="s">/</span> 04-setup-guide.md</div>
+        <div class="file-desc">Full steg-for-steg guide med troubleshooting.</div>
+      </div>
+      <a href="../project-setup/04-setup-guide.md" download class="dl-btn">Download</a>
+    </div>
+  </div>
+
+  <div class="section-title">/ try these prompts first</div>
+
+  <div class="test-label">/ test 01 — simple linkedin post</div>
+  <div class="test-block">Lag en LinkedIn-post om at Solidlab bestilte første runde merch
+fra Vistaprint. Tone: håndverksorientert, ikke salgsete.</div>
+
+  <div class="test-label">/ test 02 — instagram caption</div>
+  <div class="test-block">Instagram-caption til et bilde av Simba som sover på laptopen.
+Lekent men ikke for mye.</div>
+
+  <div class="test-label">/ test 03 — blog intro</div>
+  <div class="test-block">Blog-intro til artikkel om hvorfor vi valgte Stavanger over Oslo
+for Solidlab. Målgruppe: andre nordiske founders.</div>
+
+  <div class="test-label">/ test 04 — image prompt</div>
+  <div class="test-block">Generer bildeprompt for Nano Banana for hero-bilde til Bølgevarsel-
+lansering. Skal vise nordisk fisker på sjøen med appen i hånda.</div>
+
+  <div class="cta-box">
+    <h3>Ready to ship.</h3>
+    <p>Setup tar 10 minutter. Etter det sparer du timer hver uke på content-produksjon.</p>
+    <a href="https://claude.ai" target="_blank" class="cta-btn">Open Claude →</a>
+  </div>
+
+  <div class="meta-note">
+    <b>Hvorfor Claude Project, ikke webapp?</b> Fordi det virker umiddelbart uten kode, hosting eller vedlikehold. Når vi har 2 ukers bruksdata kan vi bygge <code>studio.solidlab.ai</code> med eksakte features du faktisk trenger. Start enkelt, iterer basert på bruk.
+  </div>
+</div>
+</body></html>

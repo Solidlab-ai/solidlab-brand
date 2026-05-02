@@ -1,0 +1,2537 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>solidlab — brand system</title>
+<meta name="description" content="Solidlab brand system — Nordic typography, Jotun-anchored palette, slash-led visual language."/>
+
+<!-- Favicons -->
+<link rel="icon" href="/favicon/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+<link rel="manifest" href="/favicon/site.webmanifest">
+<meta name="theme-color" content="#0A0A0A">
+
+<link rel="stylesheet" href="./colors_and_type.css">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    background: var(--sort);
+    color: var(--antikkhvit);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    min-height: 100vh;
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  .shell { max-width: 1280px; margin: 0 auto; padding: 0 48px; }
+
+  /* ---------- Header ---------- */
+  .header {
+    position: sticky; top: 0; z-index: 10;
+    background: rgba(10,10,10,0.92);
+    border-bottom: 1px solid var(--border-dark);
+    backdrop-filter: blur(12px);
+  }
+  .header__inner {
+    display: flex; align-items: center; justify-content: space-between;
+    height: 72px;
+  }
+  .wm {
+    font-family: var(--font-sans);
+    font-size: 22px;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    color: var(--antikkhvit);
+    display: inline-flex;
+    align-items: baseline;
+    white-space: nowrap;
+    transition: opacity 150ms ease;
+  }
+  .wm:hover { opacity: 0.8; }
+  .wm__solid { font-weight: 700; letter-spacing: -0.02em; }
+  .wm__lab { font-weight: 400; }
+  .wm__ai { font-weight: 400; color: var(--oslo); }
+  html[data-theme="light"] .wm { color: #0A0A0A; }
+  html[data-theme="light"] .wm__ai { color: var(--oslo); }
+
+  /* Menu trigger (hamburger) */
+  .menu-trigger {
+    background: transparent;
+    border: 1px solid var(--border-dark);
+    color: var(--mist);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 10px 16px 10px 14px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 150ms ease;
+    line-height: 1;
+  }
+  .menu-trigger:hover {
+    border-color: var(--antikkhvit);
+    color: var(--antikkhvit);
+  }
+  .menu-trigger__line {
+    display: block;
+    width: 16px;
+    height: 1.5px;
+    background: currentColor;
+  }
+  .menu-trigger__line:first-child { margin-bottom: 4px; }
+  .menu-trigger__label { margin-left: 2px; }
+
+  /* Hide the two stacked lines and just use the label-style trigger */
+  .menu-trigger__line { display: none; }
+
+  /* ---------- Side Menu ---------- */
+  .sidemenu {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 280ms ease;
+  }
+  .sidemenu--open {
+    pointer-events: auto;
+    opacity: 1;
+  }
+  .sidemenu__backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(8px);
+  }
+  .sidemenu__panel {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 380px;
+    max-width: 92vw;
+    background: var(--sort);
+    border-left: 1px solid var(--border-dark);
+    display: flex;
+    flex-direction: column;
+    padding: 32px;
+    transform: translateX(100%);
+    transition: transform 320ms cubic-bezier(0.2, 0.8, 0.2, 1);
+    overflow-y: auto;
+  }
+  html[data-theme="light"] .sidemenu__panel {
+    background: #D5CFC2;
+    border-left-color: rgba(10, 10, 10, 0.12);
+  }
+  .sidemenu--open .sidemenu__panel {
+    transform: translateX(0);
+  }
+  .sidemenu__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 48px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--border-dark);
+  }
+  .sidemenu__eyebrow {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--oslo);
+  }
+  .sidemenu__close {
+    background: transparent;
+    border: 1px solid var(--border-dark);
+    color: var(--mist);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 8px 14px;
+    cursor: pointer;
+    transition: all 150ms ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    line-height: 1;
+  }
+  .sidemenu__close:hover {
+    border-color: var(--antikkhvit);
+    color: var(--antikkhvit);
+  }
+  html[data-theme="light"] .sidemenu__close:hover {
+    border-color: #0A0A0A;
+    color: #0A0A0A;
+  }
+  .sidemenu__close-x {
+    font-size: 18px;
+    line-height: 1;
+    font-weight: 400;
+  }
+  .sidemenu__nav {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .sidemenu__link {
+    font-family: var(--font-sans);
+    font-size: 22px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    color: var(--antikkhvit);
+    padding: 12px 0;
+    text-decoration: none;
+    transition: color 150ms ease, padding-left 150ms ease;
+  }
+  html[data-theme="light"] .sidemenu__link { color: #0A0A0A; }
+  .sidemenu__link:hover,
+  .sidemenu__link:active {
+    color: var(--oslo);
+    padding-left: 8px;
+  }
+  .sidemenu__divider {
+    height: 1px;
+    background: var(--border-dark);
+    margin: 32px 0 24px;
+  }
+  .sidemenu__secondary {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .sidemenu__label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--mist);
+    opacity: 0.7;
+    margin-bottom: 4px;
+  }
+  .sidemenu__link-small {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    letter-spacing: 0.05em;
+    color: var(--mist);
+    text-decoration: none;
+    transition: color 150ms ease;
+  }
+  .sidemenu__link-small:hover {
+    color: var(--antikkhvit);
+  }
+  html[data-theme="light"] .sidemenu__link-small:hover {
+    color: #0A0A0A;
+  }
+  .sidemenu__footer {
+    margin-top: auto;
+    padding-top: 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+  }
+  .sidemenu__footer-meta {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--fog);
+  }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    padding: 120px 0 80px;
+    border-bottom: 1px solid var(--border-dark);
+  }
+  .hero__eyebrow {
+    font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--mist);
+    margin-bottom: 48px;
+  }
+  .hero__title {
+    font-size: 72px; font-weight: 700; letter-spacing: -0.02em; line-height: 1.0;
+    color: var(--antikkhvit); margin-bottom: 24px;
+  }
+  .hero__title em { color: var(--oslo); font-style: italic; font-weight: 500; }
+  .hero__sub {
+    font-size: 20px; line-height: 1.6; color: var(--alvesolv);
+    max-width: 720px; margin-bottom: 40px;
+  }
+  .hero__meta {
+    display: flex; gap: 24px; flex-wrap: wrap;
+    font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--fog);
+  }
+  .hero__meta span { display: inline-flex; align-items: center; gap: 8px; }
+  .hero__meta b { color: var(--antikkhvit); font-weight: 500; }
+
+  /* ---------- Section ---------- */
+  .section {
+    padding: 80px 0;
+    border-bottom: 1px solid var(--border-dark);
+  }
+  .section__head {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    margin-bottom: 48px;
+  }
+  .section__eyebrow {
+    font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--mist);
+    margin-bottom: 12px;
+  }
+  .section__title {
+    font-size: 40px; font-weight: 700; letter-spacing: -0.02em; line-height: 1.1;
+    color: var(--antikkhvit);
+  }
+  .section__count {
+    font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--fog);
+  }
+
+  /* ---------- Preview grid ---------- */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border-dark);
+    border: 1px solid var(--border-dark);
+  }
+  @media (max-width: 960px) {
+    .grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 640px) {
+    .grid { grid-template-columns: 1fr; }
+  }
+
+  .card {
+    background: var(--sort);
+    padding: 24px;
+    display: flex; flex-direction: column; gap: 12px;
+    min-height: 220px;
+    transition: background 200ms ease;
+  }
+  .card:hover { background: #141414; }
+  .card__label {
+    font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--oslo);
+  }
+  .card__title {
+    font-size: 22px; font-weight: 600; letter-spacing: -0.01em;
+    color: var(--antikkhvit);
+  }
+  .card__desc {
+    font-size: 14px; line-height: 1.5; color: var(--alvesolv);
+    flex: 1;
+  }
+  .card__cta {
+    font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--mist);
+    margin-top: 8px;
+  }
+  .card:hover .card__cta { color: var(--antikkhvit); }
+
+  /* ---------- Big cards (for special sections) ---------- */
+  .big-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--border-dark);
+    border: 1px solid var(--border-dark);
+  }
+  @media (max-width: 800px) {
+    .big-grid { grid-template-columns: 1fr; }
+  }
+  .big-card {
+    background: var(--sort);
+    padding: 48px 40px;
+    display: flex; flex-direction: column; gap: 20px;
+    min-height: 320px;
+    transition: background 200ms ease;
+  }
+  .big-card:hover { background: #141414; }
+  .big-card__label {
+    font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--oslo);
+  }
+  .big-card__title {
+    font-size: 40px; font-weight: 700; letter-spacing: -0.02em; line-height: 1.0;
+    color: var(--antikkhvit);
+  }
+  .big-card__desc {
+    font-size: 16px; line-height: 1.6; color: var(--alvesolv);
+    flex: 1;
+  }
+  .big-card__cta {
+    font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--mist);
+  }
+
+  /* ---------- Color strip ---------- */
+  .palette-strip {
+    display: grid; grid-template-columns: repeat(7, 1fr);
+    margin-top: 32px;
+    border: 1px solid var(--border-dark);
+  }
+  @media (max-width: 800px) {
+    .palette-strip { grid-template-columns: repeat(4, 1fr); }
+  }
+  .swatch {
+    height: 120px; position: relative;
+    display: flex; flex-direction: column; justify-content: flex-end;
+    padding: 16px;
+  }
+  .swatch__name {
+    font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.1em;
+    text-transform: uppercase; font-weight: 500;
+  }
+  .swatch__hex {
+    font-family: var(--font-mono); font-size: 11px;
+    opacity: 0.7; margin-top: 4px;
+  }
+
+  /* ---------- Footer ---------- */
+  .footer {
+    padding: 48px 0;
+    border-top: 1px solid var(--border-dark);
+    color: var(--fog);
+    font-family: var(--font-mono);
+    font-size: 12px; letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .footer__inner {
+    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px;
+  }
+
+  /* ---------- Download cards ---------- */
+  .dl-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border-dark);
+    border: 1px solid var(--border-dark);
+  }
+  @media (max-width: 960px) {
+    .dl-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 600px) {
+    .dl-grid { grid-template-columns: 1fr; }
+  }
+  .dl-card {
+    background: var(--sort);
+    display: flex;
+    flex-direction: column;
+    transition: background 200ms ease;
+  }
+  .dl-card:hover { background: #141414; }
+  html[data-theme="light"] .dl-card:hover { background: #E8E4DB; }
+  .dl-card__preview {
+    aspect-ratio: 3 / 1;
+    display: flex; align-items: center; justify-content: center;
+    padding: 32px;
+    position: relative;
+  }
+  .dl-card__preview--square { aspect-ratio: 1 / 1; max-width: 50%; margin: 0 auto; }
+  .dl-preview--light { background: #F4F1EA; }
+  .dl-preview--dark { background: #0A0A0A; }
+  .dl-preview--oslo { background: #4A5A62; }
+  .dl-preview--square { aspect-ratio: 1 / 1; max-width: 240px; margin: 0 auto; }
+  .dl-card__meta {
+    padding: 24px;
+    display: flex; flex-direction: column; gap: 8px;
+    flex: 1;
+  }
+  .dl-card__label {
+    font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--oslo);
+  }
+  .dl-card__title {
+    font-size: 20px; font-weight: 600; letter-spacing: -0.01em;
+    color: var(--antikkhvit);
+  }
+  .dl-card__desc {
+    font-size: 14px; line-height: 1.5; color: var(--alvesolv);
+    margin-bottom: 8px;
+  }
+  .dl-card__links {
+    display: flex; gap: 8px; flex-wrap: wrap;
+    margin-top: auto;
+  }
+  .dl-link {
+    font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--mist);
+    padding: 8px 14px;
+    border: 1px solid var(--border-dark);
+    transition: all 150ms ease;
+    display: inline-flex; align-items: center; gap: 4px;
+  }
+  .dl-link:hover {
+    color: var(--antikkhvit); border-color: var(--oslo);
+  }
+  html[data-theme="light"] .dl-link:hover {
+    color: #0A0A0A;
+  }
+  .dl-link .slash { color: var(--oslo); }
+
+  /* Wordmark preview (web rendering with weight contrast) */
+  .dl-wm {
+    font-family: 'Geist', 'Inter Tight', sans-serif;
+    font-size: 56px;
+    line-height: 1;
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: baseline;
+  }
+  .dl-wm__solid { font-weight: 700; letter-spacing: -0.02em; }
+  .dl-wm__lab { font-weight: 400; }
+  .dl-wm__ai { font-weight: 400; color: #4A5A62; }
+
+  /* Transparent bg indicator (checkerboard) */
+  .dl-preview--transparent {
+    background-image:
+      linear-gradient(45deg, rgba(255,255,255,0.08) 25%, transparent 25%),
+      linear-gradient(-45deg, rgba(255,255,255,0.08) 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, rgba(255,255,255,0.08) 75%),
+      linear-gradient(-45deg, transparent 75%, rgba(255,255,255,0.08) 75%);
+    background-size: 20px 20px;
+    background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+    background-color: #2A2A2A;
+  }
+  html[data-theme="light"] .dl-preview--transparent {
+    background-image:
+      linear-gradient(45deg, rgba(0,0,0,0.06) 25%, transparent 25%),
+      linear-gradient(-45deg, rgba(0,0,0,0.06) 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, rgba(0,0,0,0.06) 75%),
+      linear-gradient(-45deg, transparent 75%, rgba(0,0,0,0.06) 75%);
+    background-size: 20px 20px;
+    background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+    background-color: #D5CFC2;
+  }
+
+  /* Subsection divider within downloads */
+  .dl-subsection {
+    margin-top: 48px;
+    margin-bottom: 24px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border-dark);
+    display: flex; align-items: baseline; gap: 16px;
+    flex-wrap: wrap;
+  }
+  .dl-subsection__label {
+    font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--oslo);
+  }
+  .dl-subsection__title {
+    font-size: 20px; font-weight: 600; letter-spacing: -0.01em;
+    color: var(--antikkhvit);
+  }
+  .dl-subsection__note {
+    font-size: 13px; color: var(--alvesolv);
+    margin-left: auto; font-family: var(--font-sans);
+  }
+
+  /* Email signature card styles */
+  .dl-card__head {
+    font-family: var(--font-mono); font-size: 13px; letter-spacing: 0.05em;
+    text-transform: lowercase; color: var(--antikkhvit);
+    padding: 20px 24px 12px 24px;
+    font-weight: 500;
+  }
+  .dl-card__head .slash { color: var(--oslo); }
+  html[data-theme="light"] .dl-card__head { color: #0A0A0A; }
+
+  /* Email signature card desc (override base dl-card__desc padding) */
+  .dl-card .dl-card__head + .dl-card__desc {
+    padding: 0 24px 16px 24px;
+    margin-bottom: 0;
+    flex: 1;
+  }
+
+  .dl-card__btn {
+    margin: 0 24px 20px 24px;
+    font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--mist);
+    padding: 10px 14px;
+    border: 1px solid var(--border-dark);
+    transition: all 150ms ease;
+    display: inline-block; align-self: flex-start;
+    text-decoration: none;
+  }
+  .dl-card__btn:hover {
+    color: var(--antikkhvit); border-color: var(--oslo);
+  }
+  html[data-theme="light"] .dl-card__btn:hover { color: #0A0A0A; }
+
+  /* Download all button */
+  .dl-all-btn {
+    font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 12px 20px;
+    background: var(--oslo); color: var(--antikkhvit);
+    border: 1px solid var(--oslo);
+    display: inline-flex; align-items: center; gap: 6px;
+    transition: all 150ms ease;
+    cursor: pointer;
+  }
+  .dl-all-btn:hover {
+    background: #5A6B73; border-color: #5A6B73;
+  }
+  .dl-all-btn .slash { color: var(--antikkhvit); }
+  html[data-theme="light"] .dl-all-btn { color: #F4F1EA; }
+  html[data-theme="light"] .dl-all-btn:hover { background: #2F3B41; border-color: #2F3B41; }
+
+  /* Usage note */
+  .dl-note {
+    margin-top: 48px;
+    padding: 24px 32px;
+    border: 1px solid var(--border-dark);
+    background: rgba(74, 90, 98, 0.06);
+  }
+  .dl-note__label {
+    font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--oslo);
+    margin-bottom: 12px;
+  }
+  .dl-note__label .slash { color: var(--oslo); }
+  .dl-note p {
+    font-size: 14px; line-height: 1.6; color: var(--alvesolv);
+    margin: 0;
+  }
+  .dl-note a { color: var(--oslo); text-decoration: underline; text-underline-offset: 3px; }
+  .dl-note a:hover { color: var(--antikkhvit); }
+
+  /* =============================================================
+     Light mode — Antikkgrå-based Nordic theme
+     ============================================================= */
+  html[data-theme="light"] {
+    --sort:          #D5CFC2;
+    --antikkhvit:    #0A0A0A;
+    --border-dark:   rgba(10, 10, 10, 0.12);
+    --fog:           #5A5A5A;
+    --mist:          #8A8A8A;
+    --alvesolv:      #5A5A5A;
+  }
+  html, body { transition: background 300ms ease, color 300ms ease; }
+  .header { transition: background 300ms ease, border-color 300ms ease; }
+  html[data-theme="light"] .header { background: rgba(213, 207, 194, 0.92); }
+  html[data-theme="light"] .card:hover { background: #E8E4DB; }
+  html[data-theme="light"] .big-card:hover { background: #E8E4DB; }
+
+  /* Theme toggle button */
+  .theme-toggle {
+    background: transparent;
+    border: 1px solid var(--border-dark);
+    color: var(--mist);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 8px 14px;
+    cursor: pointer;
+    transition: all 150ms ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    line-height: 1;
+  }
+  .theme-toggle:hover {
+    border-color: var(--antikkhvit);
+    color: var(--antikkhvit);
+  }
+
+  /* ==========================================
+     LIGHTBOX — click any merch card to zoom
+     ========================================== */
+  .lb-trigger {
+    cursor: zoom-in;
+    position: relative;
+  }
+  .lb-trigger::after {
+    content: "/ zoom";
+    position: absolute;
+    top: 12px; right: 12px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(244, 241, 234, 0.4);
+    padding: 4px 8px;
+    border: 1px solid rgba(244, 241, 234, 0.15);
+    transition: all 200ms ease;
+    pointer-events: none;
+  }
+  .lb-trigger:hover::after {
+    color: rgba(244, 241, 234, 0.9);
+    border-color: rgba(244, 241, 234, 0.4);
+  }
+  .dl-preview--light .lb-trigger::after,
+  .lb-trigger.lb-trigger--light::after {
+    color: rgba(10, 10, 10, 0.4);
+    border-color: rgba(10, 10, 10, 0.15);
+  }
+  .dl-preview--light .lb-trigger:hover::after,
+  .lb-trigger.lb-trigger--light:hover::after {
+    color: rgba(10, 10, 10, 0.9);
+    border-color: rgba(10, 10, 10, 0.4);
+  }
+
+  .lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 240ms ease;
+  }
+  .lightbox--open {
+    pointer-events: auto;
+    opacity: 1;
+  }
+  .lightbox__backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(10, 10, 10, 0.88);
+    backdrop-filter: blur(8px);
+  }
+  html[data-theme="light"] .lightbox__backdrop {
+    background: rgba(213, 207, 194, 0.92);
+  }
+  .lightbox__stage {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 40px;
+    pointer-events: none;
+  }
+  .lightbox__media {
+    max-width: min(1200px, 92vw);
+    max-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    pointer-events: auto;
+  }
+  .lightbox__media img,
+  .lightbox__media svg {
+    max-width: 100%;
+    max-height: 80vh;
+    object-fit: contain;
+    display: block;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  }
+  html[data-theme="light"] .lightbox__media img,
+  html[data-theme="light"] .lightbox__media svg {
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+  }
+  .lightbox__bg-dark { background: #0A0A0A; padding: 48px; }
+  .lightbox__bg-light { background: #F4F1EA; padding: 48px; border: 1px solid rgba(10,10,10,0.08); }
+  .lightbox__bg-oslo { background: #4A5A62; padding: 48px; }
+
+  .lightbox__caption {
+    position: absolute;
+    left: 0; right: 0;
+    bottom: 24px;
+    text-align: center;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--alvesolv);
+    padding: 0 24px;
+    pointer-events: none;
+  }
+  .lightbox__caption .slash { color: var(--oslo); }
+  .lightbox__caption b {
+    color: var(--antikkhvit);
+    font-weight: 500;
+    margin: 0 10px;
+  }
+  html[data-theme="light"] .lightbox__caption b { color: #0A0A0A; }
+
+  .lightbox__close {
+    position: absolute;
+    top: 24px; right: 24px;
+    background: transparent;
+    border: 1px solid rgba(244, 241, 234, 0.25);
+    color: var(--antikkhvit);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 10px 16px;
+    cursor: pointer;
+    transition: all 150ms ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    pointer-events: auto;
+    line-height: 1;
+  }
+  .lightbox__close:hover {
+    border-color: var(--antikkhvit);
+    background: rgba(244, 241, 234, 0.08);
+  }
+  html[data-theme="light"] .lightbox__close {
+    color: #0A0A0A;
+    border-color: rgba(10, 10, 10, 0.25);
+  }
+  html[data-theme="light"] .lightbox__close:hover {
+    border-color: #0A0A0A;
+    background: rgba(10, 10, 10, 0.05);
+  }
+
+  .lightbox__nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    border: 1px solid rgba(244, 241, 234, 0.25);
+    color: var(--antikkhvit);
+    width: 48px;
+    height: 48px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 22px;
+    font-weight: 300;
+    transition: all 150ms ease;
+    pointer-events: auto;
+  }
+  .lightbox__nav:hover {
+    border-color: var(--antikkhvit);
+    background: rgba(244, 241, 234, 0.08);
+  }
+  .lightbox__nav--prev { left: 24px; }
+  .lightbox__nav--next { right: 24px; }
+  html[data-theme="light"] .lightbox__nav {
+    color: #0A0A0A;
+    border-color: rgba(10, 10, 10, 0.25);
+  }
+  html[data-theme="light"] .lightbox__nav:hover {
+    border-color: #0A0A0A;
+    background: rgba(10, 10, 10, 0.05);
+  }
+
+  .lightbox__counter {
+    position: absolute;
+    top: 24px; left: 24px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--mist);
+    padding: 10px 16px;
+    border: 1px solid rgba(244, 241, 234, 0.15);
+    pointer-events: none;
+  }
+  html[data-theme="light"] .lightbox__counter {
+    color: #5A5A5A;
+    border-color: rgba(10, 10, 10, 0.15);
+  }
+
+  body.lb-open { overflow: hidden; }
+
+  @media (max-width: 640px) {
+    .lightbox__stage { padding: 60px 12px; }
+    .lightbox__nav { width: 40px; height: 40px; }
+    .lightbox__nav--prev { left: 8px; }
+    .lightbox__nav--next { right: 8px; }
+    .lightbox__close { top: 12px; right: 12px; padding: 8px 12px; font-size: 10px; }
+    .lightbox__counter { top: 12px; left: 12px; padding: 8px 12px; font-size: 10px; }
+    .lb-trigger::after { font-size: 9px; top: 8px; right: 8px; }
+  }
+</style>
+<script>
+  (function() {
+    try {
+      var saved = localStorage.getItem("solidlab-theme");
+      document.documentElement.setAttribute("data-theme",
+        (saved === "light" || saved === "dark") ? saved : "dark");
+    } catch(e) {
+      document.documentElement.setAttribute("data-theme", "dark");
+    }
+  })();
+</script>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="shell header__inner">
+    <a href="/" class="wm">
+      <span class="wm__solid">solid</span><span class="wm__lab">lab</span><span class="wm__ai">.ai</span>
+    </a>
+
+    <button class="menu-trigger" id="menuTrigger" aria-label="Open menu" aria-expanded="false">
+      <span class="menu-trigger__line"></span>
+      <span class="menu-trigger__line"></span>
+      <span class="menu-trigger__label">/ menu</span>
+    </button>
+  </div>
+</header>
+
+<!-- SIDE MENU -->
+<div class="sidemenu" id="sideMenu" aria-hidden="true">
+  <div class="sidemenu__backdrop" id="sidemenuBackdrop"></div>
+  <aside class="sidemenu__panel" role="dialog" aria-label="Main menu">
+    <div class="sidemenu__head">
+      <span class="sidemenu__eyebrow">/ menu</span>
+      <button class="sidemenu__close" id="sidemenuClose" aria-label="Close menu">
+        <span class="sidemenu__close-x">×</span>
+        <span class="sidemenu__close-label">close</span>
+      </button>
+    </div>
+
+    <nav class="sidemenu__nav">
+      <a href="#palette" class="sidemenu__link">/ palette</a>
+      <a href="#typography" class="sidemenu__link">/ typography</a>
+      <a href="#components" class="sidemenu__link">/ components</a>
+      <a href="#deck" class="sidemenu__link">/ deck</a>
+      <a href="#downloads" class="sidemenu__link">/ downloads</a>
+      <a href="#email-signatures" class="sidemenu__link">/ email signatures</a>
+      <a href="#favicon" class="sidemenu__link">/ favicon</a>
+      <a href="#stickers" class="sidemenu__link">/ stickers</a>
+      <a href="#hangtags" class="sidemenu__link">/ hang tags</a>
+      <a href="#businesscards" class="sidemenu__link">/ business cards</a>
+      <a href="#covers" class="sidemenu__link">/ social covers</a>
+      <a href="#content-studio" class="sidemenu__link">/ content studio</a>
+    </nav>
+
+    <div class="sidemenu__divider"></div>
+
+    <nav class="sidemenu__secondary">
+      <span class="sidemenu__label">/ elsewhere</span>
+      <a href="https://solidlab.ai" class="sidemenu__link-small">solidlab.ai ↗</a>
+      <a href="https://www.linkedin.com/company/115796478" target="_blank" rel="noopener noreferrer" class="sidemenu__link-small">/ linkedin ↗</a>
+      <a href="https://www.facebook.com/people/Solidlabai/61566190246544/" target="_blank" rel="noopener noreferrer" class="sidemenu__link-small">/ facebook ↗</a>
+    </nav>
+
+    <div class="sidemenu__footer">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <svg id="themeIcon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <span id="themeLabel">light</span>
+      </button>
+      <span class="sidemenu__footer-meta">v1.1 nordic / april 2026</span>
+    </div>
+  </aside>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="shell">
+    <div class="hero__eyebrow">/ solidlab — brand system / v1.1 nordic</div>
+    <h1 class="hero__title">The brand system.<br><em>Living reference.</em></h1>
+    <p class="hero__sub">
+      A living reference for how Solidlab looks, sounds, and behaves. Jotun-anchored
+      palette. Geist typography. The forward slash as signature. Built in Stavanger,
+      deployed to the world.
+    </p>
+    <div class="hero__meta">
+      <span>/ <b>20</b> preview cards</span>
+      <span>/ <b>12</b> email signatures</span>
+      <span>/ <b>22</b> favicon files</span>
+      <span>/ <b>6</b> sticker concepts</span>
+      <span>/ <b>3</b> hang tag concepts</span>
+      <span>/ <b>8</b> business cards</span>
+      <span>/ <b>27</b> social covers</span>
+      <span>/ <b>AI</b> content studio</span>
+      <span>/ <b>9</b> slide templates</span>
+      <span>/ <b>v1.1</b> nordic</span>
+      <span>/ april 2026</span>
+    </div>
+  </div>
+</section>
+
+<!-- PALETTE -->
+<section class="section" id="palette">
+  <div class="shell">
+    <div class="section__head">
+      <div>
+        <div class="section__eyebrow">/ 01 — palette</div>
+        <h2 class="section__title">Jotun-anchored Nordic.</h2>
+      </div>
+      <div class="section__count">7 swatches</div>
+    </div>
+
+    <div class="palette-strip">
+      <div class="swatch" style="background:#4A5A62;color:#F4F1EA">
+        <div class="swatch__name">Oslo</div>
+        <div class="swatch__hex">#4A5A62</div>
+      </div>
+      <div class="swatch" style="background:#0A0A0A;color:#F4F1EA">
+        <div class="swatch__name">Sort</div>
+        <div class="swatch__hex">#0A0A0A</div>
+      </div>
+      <div class="swatch" style="background:#F4F1EA;color:#0A0A0A">
+        <div class="swatch__name">Antikkhvit</div>
+        <div class="swatch__hex">#F4F1EA</div>
+      </div>
+      <div class="swatch" style="background:#6B8290;color:#F4F1EA">
+        <div class="swatch__name">Nordic Breeze</div>
+        <div class="swatch__hex">#6B8290</div>
+      </div>
+      <div class="swatch" style="background:#8B9BA0;color:#0A0A0A">
+        <div class="swatch__name">Alvesølv</div>
+        <div class="swatch__hex">#8B9BA0</div>
+      </div>
+      <div class="swatch" style="background:#C9D4D8;color:#0A0A0A">
+        <div class="swatch__name">Linblå</div>
+        <div class="swatch__hex">#C9D4D8</div>
+      </div>
+      <div class="swatch" style="background:#D5CFC2;color:#0A0A0A">
+        <div class="swatch__name">Antikkgrå</div>
+        <div class="swatch__hex">#D5CFC2</div>
+      </div>
+    </div>
+
+    <div class="big-grid" style="margin-top:48px">
+      <a href="/preview/color-palette-core.html" target="_blank" class="big-card">
+        <div class="big-card__label">/ 01 — core</div>
+        <div class="big-card__title">Core palette</div>
+        <div class="big-card__desc">Oslo, Sort, Antikkhvit. The three anchors that define everything. Oslo sparingly, like good paint.</div>
+        <div class="big-card__cta">/ view card →</div>
+      </a>
+      <a href="/preview/color-palette-blues.html" target="_blank" class="big-card">
+        <div class="big-card__label">/ 02 — blues</div>
+        <div class="big-card__title">The Oslo family</div>
+        <div class="big-card__desc">Nordic Breeze, Alvesølv, Linblå. The tonal family extending from Oslo for secondary elements.</div>
+        <div class="big-card__cta">/ view card →</div>
+      </a>
+      <a href="/preview/color-semantic.html" target="_blank" class="big-card">
+        <div class="big-card__label">/ 03 — semantic</div>
+        <div class="big-card__title">Semantic tokens</div>
+        <div class="big-card__desc">Background, foreground, accent, hover — token mappings for light and dark modes.</div>
+        <div class="big-card__cta">/ view card →</div>
+      </a>
+      <a href="/preview/color-utility.html" target="_blank" class="big-card">
+        <div class="big-card__label">/ 04 — utility</div>
+        <div class="big-card__title">Utility greys</div>
+        <div class="big-card__desc">Fog, Mist, Border Light, Border Dark — the supporting neutrals for UI detail work.</div>
+        <div class="big-card__cta">/ view card →</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- TYPOGRAPHY -->
+<section class="section" id="typography">
+  <div class="shell">
+    <div class="section__head">
+      <div>
+        <div class="section__eyebrow">/ 02 — typography</div>
+        <h2 class="section__title">Geist + Geist Mono.</h2>
+      </div>
+      <div class="section__count">4 cards</div>
+    </div>
+
+    <div class="grid">
+      <a href="/preview/type-specimen.html" target="_blank" class="card">
+        <div class="card__label">/ specimen</div>
+        <div class="card__title">Geist — primary typeface</div>
+        <div class="card__desc">Modern sans-serif designed for interfaces. 4 weights in use: 400, 500, 600, 700.</div>
+        <div class="card__cta">/ view →</div>
+      </a>
+      <a href="/preview/type-scale.html" target="_blank" class="card">
+        <div class="card__label">/ scale</div>
+        <div class="card__title">Type scale</div>
+        <div class="card__desc">Display 72 / H1 48 / H2 32 / H3 24 / H4 18 / Body 16 / Small 14 / Label 12.</div>
+        <div class="card__cta">/ view →</div>
+      </a>
+      <a href="/preview/type-mono.html" target="_blank" class="card">
+        <div class="card__label">/ mono</div>
+        <div class="card__title">Geist Mono</div>
+        <div class="card__desc">Labels, tags, metadata, code. Fixed-width for moments that need rigor.</div>
+        <div class="card__cta">/ view →</div>
+      </a>
+      <a href="/preview/voice.html" target="_blank" class="card">
+        <div class="card__label">/ voice</div>
+        <div class="card__title">Voice & tone</div>
+        <div class="card__desc">Precise, confident, direct, warm, grounded. Nordic-steady. Never buzzword-heavy.</div>
+        <div class="card__cta">/ view →</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- COMPONENTS -->
+<section class="section" id="components">
+  <div class="shell">
+    <div class="section__head">
+      <div>
+        <div class="section__eyebrow">/ 03 — components</div>
+        <h2 class="section__title">The building blocks.</h2>
+      </div>
+      <div class="section__count">12 cards</div>
+    </div>
+
+    <div class="grid">
+      <a href="/preview/logo-variants.html" target="_blank" class="card">
+        <div class="card__label">/ logo</div>
+        <div class="card__title">Logo variants</div>
+        <div class="card__desc">Sort-on-Antikkhvit (primary), reversed, and Antikkhvit-on-Oslo.</div>
+        <div class="card__cta">/ view →</div>
+      </a>
+      <a href="/preview/slash-system.html" target="_blank" class="card">
+        <div class="card__label">/ signature</div>
+        <div class="card__title">The slash system</div>
+        <div class="card__desc">Forward slash as visual marker — prefixes, numbering, metadata separators.</div>
+        <div class="card__cta">/ view →</div>
+      </a>
+      <a href="/preview/buttons.html" target="_blank" class="card">
+        <div class="card__label">/ buttons</div>
+        <div class="card__title">Buttons</div>
+        <div class="card__desc">Primary (Oslo), secondary (outline), ghost. Sharp corners, no shadows.</div>
+        <div class="card__cta">/ view →</div>
+      </a>
+      <a href="/preview/form-inputs.html" target="_blank" class="card">
+        <div class="card__label">/ inputs</div>
+        <div class="card__title">Form inputs</div>
+        <div class="card__desc">Text fields, textarea, focus states. Oslo border on focus, 2px.</div>
+        <div class="card__cta">/ view →</div>
+      </a>
+      <a href="/preview/cards.html" target="_blank" class="card">
+        <div class="card__label">/ cards</div>
+        <div class="card__title">Cards</div>
+        <div class="card__desc">Content containers. 0px radius, subtle borders, hover-state.</div>
+        <div class="card__cta">/ view →</div>
+      </a>
+      <a href="/preview/tags-labels.html" target="_blank" class="card">
+        <div class="card__label">/ tags</div>
+        <div class="card__title">Tags & labels</div>
+        <div class="card__desc">The only rounded element (4px). Mono, uppercase, wide letter-spacing.</div>
+        <div class="card__cta">/ view →</div>
+      </a>
+      <a href="/preview/iconography.html" target="_blank" class="card">
+        <div class="card__label">/ icons</div>
+        <div class="card__title">Iconography</div>
+        <div class="card__desc">Lucide outline icons, 1.5-2px stroke, monochrome, Oslo for active only.</div>
+        <div class="card__cta">/ view →</div>
+      </a>
+      <a href="/preview/spacing.html" target="_blank" class="card">
+        <div class="card__label">/ spacing</div>
+        <div class="card__title">Spacing scale</div>
+        <div class="card__desc">8-point grid: 4, 8, 16, 24, 32, 48, 80, 120px. No arbitrary values.</div>
+        <div class="card__cta">/ view →</div>
+      </a>
+      <a href="/preview/radii-dividers.html" target="_blank" class="card">
+        <div class="card__label">/ structure</div>
+        <div class="card__title">Radii & dividers</div>
+        <div class="card__desc">Sharp corners by default. Hairline, medium, and accent rules for hierarchy.</div>
+        <div class="card__cta">/ view →</div>
+      </a>
+      <a href="/preview/motion.html" target="_blank" class="card">
+        <div class="card__label">/ motion</div>
+        <div class="card__title">Motion</div>
+        <div class="card__desc">Functional only — fade-ins, hovers, transitions. 150-400ms. Respects prefers-reduced-motion.</div>
+        <div class="card__cta">/ view →</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- DECK -->
+<section class="section" id="deck">
+  <div class="shell">
+    <div class="section__head">
+      <div>
+        <div class="section__eyebrow">/ 04 — deck</div>
+        <h2 class="section__title">Slide templates.</h2>
+      </div>
+      <div class="section__count">9 slides</div>
+    </div>
+
+    <div class="big-grid">
+      <a href="/slides/" target="_blank" class="big-card" style="grid-column: 1 / -1">
+        <div class="big-card__label">/ full deck</div>
+        <div class="big-card__title">Open presentation deck</div>
+        <div class="big-card__desc">
+          Nine slide templates: title, section divider, content, three-column, quote,
+          comparison, big-metric, timeline, image-led. Use arrow keys to navigate.
+        </div>
+        <div class="big-card__cta">/ open deck →</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- DOWNLOADS -->
+<section class="section" id="downloads">
+  <div class="shell">
+    <div class="section__head">
+      <div>
+        <div class="section__eyebrow">/ 05 — downloads</div>
+        <h2 class="section__title">Logos, guidelines, resources.</h2>
+      </div>
+      <a href="/assets/solidlab-brand-assets.zip" class="dl-all-btn" download>
+        <span class="slash">/</span> download all (zip)
+      </a>
+    </div>
+
+    <div class="dl-subsection" style="margin-top:0;padding-top:0;border-top:none;">
+      <span class="dl-subsection__label">/ with background</span>
+      <span class="dl-subsection__title">Solid color lockups</span>
+      <span class="dl-subsection__note">Guaranteed legibility on any surface</span>
+    </div>
+
+    <!-- LOGO GRID -->
+    <div class="dl-grid">
+
+      <div class="dl-card">
+        <div class="dl-card__preview dl-preview--light">
+          <span class="dl-wm" style="color:#0A0A0A">
+            <span class="dl-wm__solid">solid</span><span class="dl-wm__lab">lab</span><span class="dl-wm__ai">.ai</span>
+          </span>
+        </div>
+        <div class="dl-card__meta">
+          <div class="dl-card__label">/ 01 — primary</div>
+          <div class="dl-card__title">solidlab<span style="color:#4A5A62;font-weight:400;">.ai</span></div>
+          <div class="dl-card__desc">The full lockup with .ai in Oslo blue — the canonical logo.</div>
+          <div class="dl-card__links">
+            <a href="/assets/solidlab-wordmark-oslo-ai-on-antikkhvit.svg" download class="dl-link">
+              <span class="slash">/</span> svg
+            </a>
+            <a href="/assets/solidlab-wordmark-oslo-ai-on-antikkhvit.png" download class="dl-link">
+              <span class="slash">/</span> png
+            </a>
+            <a href="/assets/solidlab-wordmark-oslo-ai-on-antikkhvit@2x.png" download class="dl-link">
+              <span class="slash">/</span> @2x
+            </a>
+            <a href="/assets/solidlab-wordmark-oslo-ai-on-antikkhvit@4x.png" download class="dl-link">
+              <span class="slash">/</span> @4x
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="dl-card">
+        <div class="dl-card__preview dl-preview--dark">
+          <span class="dl-wm" style="color:#F4F1EA">
+            <span class="dl-wm__solid">solid</span><span class="dl-wm__lab">lab</span><span class="dl-wm__ai" style="color:#6B8290">.ai</span>
+          </span>
+        </div>
+        <div class="dl-card__meta">
+          <div class="dl-card__label">/ 02 — primary · dark</div>
+          <div class="dl-card__title">solidlab.ai — reversed</div>
+          <div class="dl-card__desc">Dark mode — .ai shifts to Nordic Breeze for legibility.</div>
+          <div class="dl-card__links">
+            <a href="/assets/solidlab-wordmark-oslo-ai-on-sort.svg" download class="dl-link">
+              <span class="slash">/</span> svg
+            </a>
+            <a href="/assets/solidlab-wordmark-oslo-ai-on-sort.png" download class="dl-link">
+              <span class="slash">/</span> png
+            </a>
+            <a href="/assets/solidlab-wordmark-oslo-ai-on-sort@2x.png" download class="dl-link">
+              <span class="slash">/</span> @2x
+            </a>
+            <a href="/assets/solidlab-wordmark-oslo-ai-on-sort@4x.png" download class="dl-link">
+              <span class="slash">/</span> @4x
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="dl-card">
+        <div class="dl-card__preview dl-preview--light">
+          <span class="dl-wm" style="color:#0A0A0A">
+            <span class="dl-wm__solid">solid</span><span class="dl-wm__lab">lab</span>
+          </span>
+        </div>
+        <div class="dl-card__meta">
+          <div class="dl-card__label">/ 03 — wordmark</div>
+          <div class="dl-card__title">solidlab — light</div>
+          <div class="dl-card__desc">Wordmark only, no .ai — for merchandise, signage, subtle contexts.</div>
+          <div class="dl-card__links">
+            <a href="/assets/solidlab-wordmark-on-antikkhvit.svg" download class="dl-link">
+              <span class="slash">/</span> svg
+            </a>
+            <a href="/assets/solidlab-wordmark-on-antikkhvit.png" download class="dl-link">
+              <span class="slash">/</span> png
+            </a>
+            <a href="/assets/solidlab-wordmark-on-antikkhvit@2x.png" download class="dl-link">
+              <span class="slash">/</span> @2x
+            </a>
+            <a href="/assets/solidlab-wordmark-on-antikkhvit@4x.png" download class="dl-link">
+              <span class="slash">/</span> @4x
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="dl-card">
+        <div class="dl-card__preview dl-preview--dark">
+          <span class="dl-wm" style="color:#F4F1EA">
+            <span class="dl-wm__solid">solid</span><span class="dl-wm__lab">lab</span>
+          </span>
+        </div>
+        <div class="dl-card__meta">
+          <div class="dl-card__label">/ 04 — wordmark · dark</div>
+          <div class="dl-card__title">solidlab — dark</div>
+          <div class="dl-card__desc">Wordmark only on Sort background.</div>
+          <div class="dl-card__links">
+            <a href="/assets/solidlab-wordmark-on-sort.svg" download class="dl-link">
+              <span class="slash">/</span> svg
+            </a>
+            <a href="/assets/solidlab-wordmark-on-sort.png" download class="dl-link">
+              <span class="slash">/</span> png
+            </a>
+            <a href="/assets/solidlab-wordmark-on-sort@2x.png" download class="dl-link">
+              <span class="slash">/</span> @2x
+            </a>
+            <a href="/assets/solidlab-wordmark-on-sort@4x.png" download class="dl-link">
+              <span class="slash">/</span> @4x
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="dl-card">
+        <div class="dl-card__preview dl-preview--oslo">
+          <span class="dl-wm" style="color:#F4F1EA">
+            <span class="dl-wm__solid">solid</span><span class="dl-wm__lab">lab</span>
+          </span>
+        </div>
+        <div class="dl-card__meta">
+          <div class="dl-card__label">/ 05 — wordmark · oslo</div>
+          <div class="dl-card__title">solidlab on Oslo</div>
+          <div class="dl-card__desc">Brand background — campaigns, covers, hero sections.</div>
+          <div class="dl-card__links">
+            <a href="/assets/solidlab-wordmark-on-oslo.svg" download class="dl-link">
+              <span class="slash">/</span> svg
+            </a>
+            <a href="/assets/solidlab-wordmark-on-oslo.png" download class="dl-link">
+              <span class="slash">/</span> png
+            </a>
+            <a href="/assets/solidlab-wordmark-on-oslo@2x.png" download class="dl-link">
+              <span class="slash">/</span> @2x
+            </a>
+            <a href="/assets/solidlab-wordmark-on-oslo@4x.png" download class="dl-link">
+              <span class="slash">/</span> @4x
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="dl-card">
+        <div class="dl-card__preview dl-preview--dark dl-preview--square">
+          <span class="dl-wm" style="color:#F4F1EA;font-size:80px;font-weight:700;letter-spacing:-0.04em;">s</span>
+        </div>
+        <div class="dl-card__meta">
+          <div class="dl-card__label">/ 06 — favicon</div>
+          <div class="dl-card__title">"s" mark</div>
+          <div class="dl-card__desc">Heavy 's' glyph — favicons, app icons. The first letter IS the mark.</div>
+          <div class="dl-card__links">
+            <a href="/assets/solidlab-favicon-s-on-sort.svg" download class="dl-link">
+              <span class="slash">/</span> svg
+            </a>
+            <a href="/assets/solidlab-favicon-s-on-sort.png" download class="dl-link">
+              <span class="slash">/</span> png
+            </a>
+            <a href="/assets/solidlab-favicon-s-on-sort@2x.png" download class="dl-link">
+              <span class="slash">/</span> @2x
+            </a>
+            <a href="/assets/solidlab-favicon-s-on-sort@4x.png" download class="dl-link">
+              <span class="slash">/</span> @4x
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- TRANSPARENT VARIANTS -->
+    <div class="dl-subsection">
+      <span class="dl-subsection__label">/ transparent</span>
+      <span class="dl-subsection__title">For photos, surfaces & overlays</span>
+      <span class="dl-subsection__note">True alpha channel — place on any background</span>
+    </div>
+
+    <div class="dl-grid">
+
+      <div class="dl-card">
+        <div class="dl-card__preview dl-preview--transparent">
+          <span class="dl-wm" style="color:#0A0A0A">
+            <span class="dl-wm__solid">solid</span><span class="dl-wm__lab">lab</span><span class="dl-wm__ai">.ai</span>
+          </span>
+        </div>
+        <div class="dl-card__meta">
+          <div class="dl-card__label">/ 07 — transparent · dark ink</div>
+          <div class="dl-card__title">solidlab.ai — on light</div>
+          <div class="dl-card__desc">Transparent BG with dark text + Oslo .ai. For light photos and surfaces.</div>
+          <div class="dl-card__links">
+            <a href="/assets/solidlab-wordmark-oslo-ai-dark-transparent.svg" download class="dl-link">
+              <span class="slash">/</span> svg
+            </a>
+            <a href="/assets/solidlab-wordmark-oslo-ai-dark-transparent.png" download class="dl-link">
+              <span class="slash">/</span> png
+            </a>
+            <a href="/assets/solidlab-wordmark-oslo-ai-dark-transparent@2x.png" download class="dl-link">
+              <span class="slash">/</span> @2x
+            </a>
+            <a href="/assets/solidlab-wordmark-oslo-ai-dark-transparent@4x.png" download class="dl-link">
+              <span class="slash">/</span> @4x
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="dl-card">
+        <div class="dl-card__preview dl-preview--transparent">
+          <span class="dl-wm" style="color:#F4F1EA">
+            <span class="dl-wm__solid">solid</span><span class="dl-wm__lab">lab</span><span class="dl-wm__ai" style="color:#6B8290">.ai</span>
+          </span>
+        </div>
+        <div class="dl-card__meta">
+          <div class="dl-card__label">/ 08 — transparent · light ink</div>
+          <div class="dl-card__title">solidlab.ai — on dark</div>
+          <div class="dl-card__desc">Light text + Nordic Breeze .ai. For dark photos and surfaces.</div>
+          <div class="dl-card__links">
+            <a href="/assets/solidlab-wordmark-oslo-ai-light-transparent.svg" download class="dl-link">
+              <span class="slash">/</span> svg
+            </a>
+            <a href="/assets/solidlab-wordmark-oslo-ai-light-transparent.png" download class="dl-link">
+              <span class="slash">/</span> png
+            </a>
+            <a href="/assets/solidlab-wordmark-oslo-ai-light-transparent@2x.png" download class="dl-link">
+              <span class="slash">/</span> @2x
+            </a>
+            <a href="/assets/solidlab-wordmark-oslo-ai-light-transparent@4x.png" download class="dl-link">
+              <span class="slash">/</span> @4x
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="dl-card">
+        <div class="dl-card__preview dl-preview--transparent">
+          <span class="dl-wm" style="color:#000000">
+            <span class="dl-wm__solid">solid</span><span class="dl-wm__lab">lab</span>
+          </span>
+        </div>
+        <div class="dl-card__meta">
+          <div class="dl-card__label">/ 09 — transparent · mono</div>
+          <div class="dl-card__title">solidlab — pure black</div>
+          <div class="dl-card__desc">Monochrome black. For print, stamps, single-color embossing.</div>
+          <div class="dl-card__links">
+            <a href="/assets/solidlab-wordmark-mono-black-transparent.svg" download class="dl-link">
+              <span class="slash">/</span> svg
+            </a>
+            <a href="/assets/solidlab-wordmark-mono-black-transparent.png" download class="dl-link">
+              <span class="slash">/</span> png
+            </a>
+            <a href="/assets/solidlab-wordmark-mono-black-transparent@2x.png" download class="dl-link">
+              <span class="slash">/</span> @2x
+            </a>
+            <a href="/assets/solidlab-wordmark-mono-black-transparent@4x.png" download class="dl-link">
+              <span class="slash">/</span> @4x
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="dl-card">
+        <div class="dl-card__preview dl-preview--transparent">
+          <span class="dl-wm" style="color:#FFFFFF">
+            <span class="dl-wm__solid">solid</span><span class="dl-wm__lab">lab</span>
+          </span>
+        </div>
+        <div class="dl-card__meta">
+          <div class="dl-card__label">/ 10 — transparent · mono</div>
+          <div class="dl-card__title">solidlab — pure white</div>
+          <div class="dl-card__desc">Monochrome white. For dark photos, video overlays, single-color reversed.</div>
+          <div class="dl-card__links">
+            <a href="/assets/solidlab-wordmark-mono-white-transparent.svg" download class="dl-link">
+              <span class="slash">/</span> svg
+            </a>
+            <a href="/assets/solidlab-wordmark-mono-white-transparent.png" download class="dl-link">
+              <span class="slash">/</span> png
+            </a>
+            <a href="/assets/solidlab-wordmark-mono-white-transparent@2x.png" download class="dl-link">
+              <span class="slash">/</span> @2x
+            </a>
+            <a href="/assets/solidlab-wordmark-mono-white-transparent@4x.png" download class="dl-link">
+              <span class="slash">/</span> @4x
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="dl-card">
+        <div class="dl-card__preview dl-preview--transparent dl-preview--square">
+          <span class="dl-wm" style="color:#0A0A0A;font-size:80px;font-weight:700;letter-spacing:-0.04em;">s</span>
+        </div>
+        <div class="dl-card__meta">
+          <div class="dl-card__label">/ 11 — favicon · dark</div>
+          <div class="dl-card__title">"s" mark — dark ink</div>
+          <div class="dl-card__desc">Heavy 's' for favicons on light backgrounds.</div>
+          <div class="dl-card__links">
+            <a href="/assets/solidlab-favicon-s-dark-transparent.svg" download class="dl-link">
+              <span class="slash">/</span> svg
+            </a>
+            <a href="/assets/solidlab-favicon-s-dark-transparent.png" download class="dl-link">
+              <span class="slash">/</span> png
+            </a>
+            <a href="/assets/solidlab-favicon-s-dark-transparent@2x.png" download class="dl-link">
+              <span class="slash">/</span> @2x
+            </a>
+            <a href="/assets/solidlab-favicon-s-dark-transparent@4x.png" download class="dl-link">
+              <span class="slash">/</span> @4x
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="dl-card">
+        <div class="dl-card__preview dl-preview--transparent dl-preview--square">
+          <span class="dl-wm" style="color:#F4F1EA;font-size:80px;font-weight:700;letter-spacing:-0.04em;">s</span>
+        </div>
+        <div class="dl-card__meta">
+          <div class="dl-card__label">/ 12 — favicon · light</div>
+          <div class="dl-card__title">"s" mark — light ink</div>
+          <div class="dl-card__desc">Heavy 's' for favicons on dark backgrounds.</div>
+          <div class="dl-card__links">
+            <a href="/assets/solidlab-favicon-s-light-transparent.svg" download class="dl-link">
+              <span class="slash">/</span> svg
+            </a>
+            <a href="/assets/solidlab-favicon-s-light-transparent.png" download class="dl-link">
+              <span class="slash">/</span> png
+            </a>
+            <a href="/assets/solidlab-favicon-s-light-transparent@2x.png" download class="dl-link">
+              <span class="slash">/</span> @2x
+            </a>
+            <a href="/assets/solidlab-favicon-s-light-transparent@4x.png" download class="dl-link">
+              <span class="slash">/</span> @4x
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- GUIDELINES & LINKS -->
+    <div class="big-grid" style="margin-top:48px">
+      <a href="/assets/solidlab-brand-guidelines-v1.1-nordic.pdf" target="_blank" class="big-card">
+        <div class="big-card__label">/ pdf</div>
+        <div class="big-card__title">Brand guidelines v1.1</div>
+        <div class="big-card__desc">
+          The complete printable manual — 10 sections, all rules, the AI-prompt for consistent generation.
+        </div>
+        <div class="big-card__cta">/ download pdf →</div>
+      </a>
+      <a href="https://solidlab.ai" class="big-card">
+        <div class="big-card__label">/ live</div>
+        <div class="big-card__title">solidlab.ai</div>
+        <div class="big-card__desc">
+          The main marketing site — where the system lives in production.
+        </div>
+        <div class="big-card__cta">/ visit site →</div>
+      </a>
+    </div>
+
+    <!-- USAGE NOTE -->
+    <div class="dl-note">
+      <div class="dl-note__label"><span class="slash">/</span> usage</div>
+      <p>
+        The weight contrast between <b>solid</b> (Geist 700) and <b>lab</b> (Geist 400) IS the logo. No symbol beside the wordmark. All SVGs are outlined — no font dependency. <b>Solid-background variants</b> are for stamps and guaranteed legibility; <b>transparent variants</b> are for photos, overlays, and colored surfaces. For third-party use, contact <a href="mailto:hello@solidlab.ai">hello@solidlab.ai</a>. Do not modify weight ratio, tracking, or the .ai color.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================
+     06 — EMAIL SIGNATURES
+     ========================================== -->
+<section class="section" id="email-signatures">
+  <div class="shell">
+    <div class="section__head">
+      <div>
+        <div class="section__eyebrow">/ 06 — email signatures</div>
+        <h2 class="section__title">For every role, one voice.</h2>
+      </div>
+      <div class="section__count">12 signatures</div>
+    </div>
+
+    <p class="section__intro" style="max-width:640px;margin-bottom:48px;color:var(--fg-secondary);font-size:16px;line-height:1.6;">
+      Typographic email signatures for every Solidlab address — personal, functional, and system. All use the brand wordmark with weight-contrast, monospace slash-labels, and minimal typographic styling that works in Gmail, Apple Mail, and Outlook.
+    </p>
+
+    <!-- Preview grid -->
+    <div class="dl-subsection" style="margin-top:0;padding-top:0;border-top:none;">
+      <span class="dl-subsection__label">/ all signatures</span>
+      <span class="dl-subsection__title">12 addresses × one brand</span>
+      <span class="dl-subsection__note">Personal · Functional · System · Cultural</span>
+    </div>
+
+    <!-- Signature cards grid -->
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:24px;margin-bottom:48px;">
+
+      <!-- PERSONAL -->
+      <div class="dl-card">
+        <div class="dl-card__head"><span class="slash">/</span> ulrik@solidlab.ai</div>
+        <div class="dl-card__desc">Personal — builder &amp; backer. For Ulrik Gjellesvik Andresen.</div>
+        <a class="dl-card__btn" href="email-signatures/ulrik-signature.html" target="_blank">Preview →</a>
+      </div>
+
+      <div class="dl-card">
+        <div class="dl-card__head"><span class="slash">/</span> charlotte@solidlab.ai</div>
+        <div class="dl-card__desc">Personal — partner. For Charlotte Goa.</div>
+        <a class="dl-card__btn" href="email-signatures/charlotte-signature.html" target="_blank">Preview →</a>
+      </div>
+
+      <div class="dl-card">
+        <div class="dl-card__head"><span class="slash">/</span> jens@solidlab.ai</div>
+        <div class="dl-card__desc">AI assistant — transparently labeled. Responds on behalf of Solidlab.</div>
+        <a class="dl-card__btn" href="email-signatures/jens-signature.html" target="_blank">Preview →</a>
+      </div>
+
+      <div class="dl-card">
+        <div class="dl-card__head"><span class="slash">/</span> simba@solidlab.ai</div>
+        <div class="dl-card__desc">Chief Mouser. Est. 2023. Keyboard usage limited to Tuesdays.</div>
+        <a class="dl-card__btn" href="email-signatures/simba-signature.html" target="_blank">Preview →</a>
+      </div>
+
+      <!-- FUNCTIONAL -->
+      <div class="dl-card">
+        <div class="dl-card__head"><span class="slash">/</span> hello@solidlab.ai</div>
+        <div class="dl-card__desc">First contact. Leads, partners, press inquiries.</div>
+        <a class="dl-card__btn" href="email-signatures/hello-signature.html" target="_blank">Preview →</a>
+      </div>
+
+      <div class="dl-card">
+        <div class="dl-card__head"><span class="slash">/</span> team@solidlab.ai</div>
+        <div class="dl-card__desc">Collective voice. Small team, long time horizons.</div>
+        <a class="dl-card__btn" href="email-signatures/team-signature.html" target="_blank">Preview →</a>
+      </div>
+
+      <div class="dl-card">
+        <div class="dl-card__head"><span class="slash">/</span> marketing@solidlab.ai</div>
+        <div class="dl-card__desc">Press, partnerships, brand.</div>
+        <a class="dl-card__btn" href="email-signatures/marketing-signature.html" target="_blank">Preview →</a>
+      </div>
+
+      <div class="dl-card">
+        <div class="dl-card__head"><span class="slash">/</span> invest@solidlab.ai</div>
+        <div class="dl-card__desc">Investor relations. Per project, not per fund.</div>
+        <a class="dl-card__btn" href="email-signatures/invest-signature.html" target="_blank">Preview →</a>
+      </div>
+
+      <div class="dl-card">
+        <div class="dl-card__head"><span class="slash">/</span> support@solidlab.ai</div>
+        <div class="dl-card__desc">Help, questions, issues. Response within one business day.</div>
+        <a class="dl-card__btn" href="email-signatures/support-signature.html" target="_blank">Preview →</a>
+      </div>
+
+      <div class="dl-card">
+        <div class="dl-card__head"><span class="slash">/</span> billing@solidlab.ai</div>
+        <div class="dl-card__desc">Invoices, accounts, finance. Includes Stå på Pinne AS org.nr.</div>
+        <a class="dl-card__btn" href="email-signatures/billing-signature.html" target="_blank">Preview →</a>
+      </div>
+
+      <div class="dl-card">
+        <div class="dl-card__head"><span class="slash">/</span> legal@solidlab.ai</div>
+        <div class="dl-card__desc">GDPR, contracts, IP, policy. Includes confidentiality notice.</div>
+        <a class="dl-card__btn" href="email-signatures/legal-signature.html" target="_blank">Preview →</a>
+      </div>
+
+      <!-- SYSTEM -->
+      <div class="dl-card">
+        <div class="dl-card__head"><span class="slash">/</span> noreply@solidlab.ai</div>
+        <div class="dl-card__desc">Transactional footer. Redirects replies to hello@.</div>
+        <a class="dl-card__btn" href="email-signatures/noreply-signature.html" target="_blank">Preview →</a>
+      </div>
+
+    </div>
+
+    <!-- Download all -->
+    <div class="dl-subsection">
+      <span class="dl-subsection__label">/ download</span>
+      <span class="dl-subsection__title">Everything in one ZIP</span>
+      <span class="dl-subsection__note">All HTML files, plain-text fallbacks, and preview page</span>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:24px;margin-bottom:48px;">
+      <div class="dl-card">
+        <div class="dl-card__head"><span class="slash">/</span> solidlab-email-signatures.zip</div>
+        <div class="dl-card__desc">12 HTML signatures + plain-text fallbacks + preview page. Open HTML in Chrome, copy, paste into Gmail signature settings.</div>
+        <a class="dl-card__btn" href="email-signatures/solidlab-email-signatures.zip" download>Download ZIP →</a>
+      </div>
+
+      <div class="dl-card">
+        <div class="dl-card__head"><span class="slash">/</span> all-signatures-preview.html</div>
+        <div class="dl-card__desc">See all 12 signatures rendered side-by-side on one page.</div>
+        <a class="dl-card__btn" href="email-signatures/all-signatures-preview.html" target="_blank">Open preview →</a>
+      </div>
+
+      <div class="dl-card">
+        <div class="dl-card__head"><span class="slash">/</span> all-signatures-plaintext.txt</div>
+        <div class="dl-card__desc">Plain-text fallbacks for mobile Gmail app and clients without HTML support.</div>
+        <a class="dl-card__btn" href="email-signatures/all-signatures-plaintext.txt" target="_blank">View plain text →</a>
+      </div>
+    </div>
+
+    <!-- Usage note -->
+    <div class="dl-note">
+      <div class="dl-note__label"><span class="slash">/</span> installation</div>
+      <p>
+        Open any <code style="background:rgba(0,0,0,0.05);padding:1px 6px;border-radius:3px;font-family:var(--font-mono);font-size:0.88em;">*-signature.html</code> file in Chrome. Select everything inside the signature box (Cmd+A), copy (Cmd+C), then paste into <b>Gmail → Settings → Signature</b>. Assign one signature per "Send mail as" address. For mobile Gmail, use the plain-text fallbacks — the mobile app doesn't support HTML signatures. The <b>jens@</b> signature is transparently labeled as an AI assistant. The <b>noreply@</b> signature redirects replies to <code style="background:rgba(0,0,0,0.05);padding:1px 6px;border-radius:3px;font-family:var(--font-mono);font-size:0.88em;">hello@</code>. The <b>simba@</b> signature is a joke — and that's the point.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ==========================================
+     07 — FAVICON PACKAGE
+     ========================================== -->
+<section class="section" id="favicon">
+  <div class="shell">
+    <div class="section__head">
+      <div>
+        <div class="section__eyebrow">/ 07 — favicon package</div>
+        <h2 class="section__title">The /s mark, everywhere.</h2>
+      </div>
+      <a href="/preview/favicon.html" target="_blank" class="dl-all-btn">
+        <span class="slash">/</span> view all previews
+      </a>
+    </div>
+
+    <p class="section__intro" style="max-width:640px;margin-bottom:48px;color:var(--fg-secondary);font-size:16px;line-height:1.6;">
+      Complete favicon package for every browser, device, and platform. Forward slash in Nordic Breeze, heavy 's' in Antikkhvit, on Sort ground — the brand mark compressed into 16×16 pixels.
+    </p>
+
+    <!-- Preview card showing the mark -->
+    <div class="dl-grid" style="margin-bottom:48px;">
+
+      <div class="dl-card">
+        <div class="dl-card__preview dl-preview--dark" style="padding:48px;">
+          <img src="favicon/favicon-256x256.png" alt="Solidlab favicon" style="width:140px;height:140px;display:block;" />
+        </div>
+        <div class="dl-card__meta">
+          <div class="dl-card__label">/ mark</div>
+          <div class="dl-card__title">The /s favicon</div>
+          <div class="dl-card__desc">Forward slash (Nordic Breeze) + heavy s (Antikkhvit) on Sort. 1:1 aspect ratio.</div>
+        </div>
+      </div>
+
+      <div class="dl-card">
+        <div class="dl-card__preview dl-preview--light" style="padding:48px;display:flex;gap:24px;align-items:center;justify-content:center;">
+          <img src="favicon/favicon-16x16.png" alt="16px" style="width:16px;height:16px;image-rendering:pixelated;" />
+          <img src="favicon/favicon-32x32.png" alt="32px" style="width:32px;height:32px;" />
+          <img src="favicon/favicon-48x48.png" alt="48px" style="width:48px;height:48px;" />
+          <img src="favicon/favicon-64x64.png" alt="64px" style="width:64px;height:64px;" />
+        </div>
+        <div class="dl-card__meta">
+          <div class="dl-card__label">/ scale</div>
+          <div class="dl-card__title">From 16 to 512</div>
+          <div class="dl-card__desc">Optimized for browser tabs, bookmarks, Google search, iOS/Android home screens.</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Download section -->
+    <div class="dl-subsection" style="margin-top:0;padding-top:0;border-top:none;">
+      <span class="dl-subsection__label">/ download</span>
+      <span class="dl-subsection__title">Favicon package</span>
+      <span class="dl-subsection__note">All sizes + vector source + PWA manifest + print PDF</span>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:24px;margin-bottom:48px;">
+      <div class="dl-card">
+        <div class="dl-card__head"><span class="slash">/</span> solidlab-favicon.zip</div>
+        <div class="dl-card__desc">22 files — vector SVG, favicon.ico (multi-size), PNG sizes 16 to 4096, apple-touch-icon, Android/PWA icons, print PDF, site.webmanifest. Path-outlined SVG — font-independent.</div>
+        <a class="dl-card__btn" href="favicon/solidlab-favicon.zip" download>Download ZIP →</a>
+      </div>
+
+      <div class="dl-card">
+        <div class="dl-card__head"><span class="slash">/</span> favicon.svg</div>
+        <div class="dl-card__desc">Vector master — infinitely scalable, path-outlined (no font dependency). Best for web, print, and embedding.</div>
+        <a class="dl-card__btn" href="favicon/favicon.svg" download>Download SVG →</a>
+      </div>
+
+      <div class="dl-card">
+        <div class="dl-card__head"><span class="slash">/</span> favicon-print.pdf</div>
+        <div class="dl-card__desc">Vector PDF ready for Vistaprint, print vendors, and professional printing workflows. CMYK-ready.</div>
+        <a class="dl-card__btn" href="favicon/favicon-print.pdf" download>Download PDF →</a>
+      </div>
+
+      <div class="dl-card">
+        <div class="dl-card__head"><span class="slash">/</span> favicon-4096x4096.png</div>
+        <div class="dl-card__desc">Ultra HD 4096×4096 PNG for merch printing — t-shirts, coffee mugs, posters, embroidery.</div>
+        <a class="dl-card__btn" href="favicon/favicon-4096x4096.png" download>Download →</a>
+      </div>
+
+      <div class="dl-card">
+        <div class="dl-card__head"><span class="slash">/</span> favicon.ico</div>
+        <div class="dl-card__desc">Classic multi-size .ico file (16, 32, 48, 64, 128, 256). For browser tabs and legacy browsers.</div>
+        <a class="dl-card__btn" href="favicon/favicon.ico" download>Download →</a>
+      </div>
+
+      <div class="dl-card">
+        <div class="dl-card__head"><span class="slash">/</span> apple-touch-icon.png</div>
+        <div class="dl-card__desc">180×180 PNG for iOS home screen icons. Square, no rounding (iOS rounds automatically).</div>
+        <a class="dl-card__btn" href="favicon/apple-touch-icon.png" download>Download →</a>
+      </div>
+    </div>
+
+    <!-- Install instructions -->
+    <div class="dl-note">
+      <div class="dl-note__label"><span class="slash">/</span> installation</div>
+      <p>
+        Extract the ZIP into a <code style="background:rgba(0,0,0,0.05);padding:1px 6px;border-radius:3px;font-family:var(--font-mono);font-size:0.88em;">/favicon/</code> directory at the root of your website. Then add these tags inside <code style="background:rgba(0,0,0,0.05);padding:1px 6px;border-radius:3px;font-family:var(--font-mono);font-size:0.88em;">&lt;head&gt;</code>:<br><br>
+        <code style="display:block;background:rgba(0,0,0,0.05);padding:12px 16px;border-radius:3px;font-family:var(--font-mono);font-size:0.85em;line-height:1.6;white-space:pre-wrap;">&lt;link rel="icon" href="/favicon/favicon.ico" sizes="any"&gt;
+&lt;link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png"&gt;
+&lt;link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png"&gt;
+&lt;link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png"&gt;
+&lt;link rel="manifest" href="/favicon/site.webmanifest"&gt;
+&lt;meta name="theme-color" content="#0A0A0A"&gt;</code>
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ==========================================
+     08 — STICKERS
+     ========================================== -->
+<section class="section" id="stickers">
+  <div class="shell">
+    <div class="section__head">
+      <div>
+        <div class="section__eyebrow">/ 08 — stickers</div>
+        <h2 class="section__title">Round stickers, six ways.</h2>
+      </div>
+      <a href="/preview/stickers.html" target="_blank" class="dl-all-btn">
+        <span class="slash">/</span> view all previews
+      </a>
+    </div>
+
+    <p class="section__intro" style="max-width:640px;margin-bottom:48px;color:var(--fg-secondary);font-size:16px;line-height:1.6;">
+      Six sticker concepts for different moods and contexts — from the classic "venture lab" stamp to the distinctive /s mark. 5.4cm round format, Vistaprint-ready.
+    </p>
+
+    <div class="dl-grid">
+      <div class="dl-card">
+        <div class="dl-card__preview dl-preview--dark" style="padding:24px;">
+          <img loading="lazy" decoding="async" src="merch/stickers/concept-1-stamp-thumb.png" alt="Classic Stamp" style="width:100%;max-width:280px;display:block;margin:0 auto;" />
+        </div>
+        <div class="dl-card__meta">
+          <div class="dl-card__label">/ 01 classic stamp</div>
+          <div class="dl-card__title">Circular text top + bottom</div>
+          <div class="dl-card__desc">"A Nordic Venture Lab" on top arc, "Est · 2026 · Stavanger" on bottom. Timeless, serious, professional.</div>
+          <a class="dl-card__btn" href="merch/stickers/sticker-1-stamp-print.pdf" download>Download PDF →</a>
+        </div>
+      </div>
+
+      <div class="dl-card">
+        <div class="dl-card__preview dl-preview--dark" style="padding:24px;">
+          <img loading="lazy" decoding="async" src="merch/stickers/concept-2-tagline-thumb.png" alt="Tagline Forward" style="width:100%;max-width:280px;display:block;margin:0 auto;" />
+        </div>
+        <div class="dl-card__meta">
+          <div class="dl-card__label">/ 02 tagline forward</div>
+          <div class="dl-card__title">Products, ventures, sometimes chaos</div>
+          <div class="dl-card__desc">Wordmark center + tagline top + slash divider. More playful — perfect for founder miljøer.</div>
+          <a class="dl-card__btn" href="merch/stickers/sticker-2-tagline-print.pdf" download>Download PDF →</a>
+        </div>
+      </div>
+
+      <div class="dl-card">
+        <div class="dl-card__preview dl-preview--dark" style="padding:24px;">
+          <img loading="lazy" decoding="async" src="merch/stickers/concept-3-bigmark-thumb.png" alt="Big Mark" style="width:100%;max-width:280px;display:block;margin:0 auto;" />
+        </div>
+        <div class="dl-card__meta">
+          <div class="dl-card__label">/ 03 big mark ★</div>
+          <div class="dl-card__title">/s dominant, wordmark below</div>
+          <div class="dl-card__desc">Most distinctive variant. Perfect for small stickers (40mm) where details disappear. Recommended.</div>
+          <a class="dl-card__btn" href="merch/stickers/sticker-3-bigmark-print.pdf" download>Download PDF →</a>
+        </div>
+      </div>
+
+      <div class="dl-card">
+        <div class="dl-card__preview dl-preview--light" style="padding:24px;">
+          <img loading="lazy" decoding="async" src="merch/stickers/concept-4-reversed-thumb.png" alt="Reversed" style="width:100%;max-width:280px;display:block;margin:0 auto;" />
+        </div>
+        <div class="dl-card__meta">
+          <div class="dl-card__label">/ 04 reversed</div>
+          <div class="dl-card__title">Antikkhvit background, black ink</div>
+          <div class="dl-card__desc">Unique on laptop arrays. Matches Nordic craft aesthetic. A must-have in the mix.</div>
+          <a class="dl-card__btn" href="merch/stickers/sticker-4-reversed-print.pdf" download>Download PDF →</a>
+        </div>
+      </div>
+
+      <div class="dl-card">
+        <div class="dl-card__preview dl-preview--dark" style="padding:24px;">
+          <img loading="lazy" decoding="async" src="merch/stickers/concept-5-mission-thumb.png" alt="Mission" style="width:100%;max-width:280px;display:block;margin:0 auto;" />
+        </div>
+        <div class="dl-card__meta">
+          <div class="dl-card__label">/ 05 mission ★</div>
+          <div class="dl-card__title">We build. We back. We ship.</div>
+          <div class="dl-card__desc">Strongest brand-voice variant. Great for giveaways at events. Reads like a manifesto.</div>
+          <a class="dl-card__btn" href="merch/stickers/sticker-5-mission-print.pdf" download>Download PDF →</a>
+        </div>
+      </div>
+
+      <div class="dl-card">
+        <div class="dl-card__preview" style="padding:24px;background:#4A5A62;">
+          <img loading="lazy" decoding="async" src="merch/stickers/concept-6-oslo-thumb.png" alt="Oslo Blue" style="width:100%;max-width:280px;display:block;margin:0 auto;" />
+        </div>
+        <div class="dl-card__meta">
+          <div class="dl-card__label">/ 06 oslo blue</div>
+          <div class="dl-card__title">Alternate color variant</div>
+          <div class="dl-card__desc">Oslo-blue background version. Good variety option but risks blending with brand color when printed.</div>
+          <a class="dl-card__btn" href="merch/stickers/sticker-6-oslo-print.pdf" download>Download PDF →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="dl-note">
+      <div class="dl-note__label"><span class="slash">/</span> print specs</div>
+      <p>
+        Format: <b>5.4cm round</b>. Material: <b>Belagt papir</b> or <b>Soft Touch-plast</b> (NOT holographic). Upload <code style="background:rgba(0,0,0,0.05);padding:1px 6px;border-radius:3px;font-family:var(--font-mono);font-size:0.88em;">sticker-*-print.pdf</code> files directly to Vistaprint. All concepts are path-outlined vector SVG — infinite scalability, no font dependencies. Recommended quantity: 100 per design to start.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ==========================================
+     09 — HANG TAGS
+     ========================================== -->
+<section class="section" id="hangtags">
+  <div class="shell">
+    <div class="section__head">
+      <div>
+        <div class="section__eyebrow">/ 09 — hang tags</div>
+        <h2 class="section__title">Circle + stem + hole.</h2>
+      </div>
+      <a href="/preview/hangtags.html" target="_blank" class="dl-all-btn">
+        <span class="slash">/</span> view all previews
+      </a>
+    </div>
+
+    <p class="section__intro" style="max-width:640px;margin-bottom:48px;color:var(--fg-secondary);font-size:16px;line-height:1.6;">
+      Utility hang tags — 5.4cm × 11.9cm with hole at bottom of stem. Keychain format. Perfect for key tags, luggage tags, product tags, gift-pack tags.
+    </p>
+
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-bottom:48px;">
+      <div class="dl-card">
+        <div class="dl-card__preview dl-preview--dark" style="padding:32px;">
+          <img loading="lazy" decoding="async" src="merch/hangtag/hangtag-A-mark-vertical-thumb.png" alt="Concept A" style="width:100%;max-width:220px;display:block;margin:0 auto;" />
+        </div>
+        <div class="dl-card__meta">
+          <div class="dl-card__label">/ A — full content ★</div>
+          <div class="dl-card__title">Sort · /s + wordmark + vertical tagline</div>
+          <div class="dl-card__desc">Complete brand identity on circle top, tagline vertical on stem. Best all-rounder.</div>
+          <a class="dl-card__btn" href="merch/hangtag/hangtag-A-mark-vertical.svg" download>Download SVG →</a>
+        </div>
+      </div>
+
+      <div class="dl-card">
+        <div class="dl-card__preview dl-preview--dark" style="padding:32px;">
+          <img loading="lazy" decoding="async" src="merch/hangtag/hangtag-B-wordmark-vertical-thumb.png" alt="Concept B" style="width:100%;max-width:220px;display:block;margin:0 auto;" />
+        </div>
+        <div class="dl-card__meta">
+          <div class="dl-card__label">/ B — stem wordmark</div>
+          <div class="dl-card__title">Sort · /s in circle + wordmark vertical</div>
+          <div class="dl-card__desc">More focused. Only /s on top, full solidlab.ai vertical on stem. Bold brand statement.</div>
+          <a class="dl-card__btn" href="merch/hangtag/hangtag-B-wordmark-vertical.svg" download>Download SVG →</a>
+        </div>
+      </div>
+
+      <div class="dl-card">
+        <div class="dl-card__preview dl-preview--light" style="padding:32px;">
+          <img loading="lazy" decoding="async" src="merch/hangtag/hangtag-C-mark-antikkhvit-thumb.png" alt="Concept C" style="width:100%;max-width:220px;display:block;margin:0 auto;" />
+        </div>
+        <div class="dl-card__meta">
+          <div class="dl-card__label">/ C — cream variant</div>
+          <div class="dl-card__title">Antikkhvit · Same as A, luxury feel</div>
+          <div class="dl-card__desc">Hotel-boutique aesthetic. Perfect for investor packs, gift bags, luxury contexts.</div>
+          <a class="dl-card__btn" href="merch/hangtag/hangtag-C-mark-antikkhvit.svg" download>Download SVG →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="dl-note">
+      <div class="dl-note__label"><span class="slash">/</span> print specs</div>
+      <p>
+        Format: <b>5.4cm × 11.9cm</b> with circular top + rounded stem + hole for hanging. On Vistaprint, listed as <b>"Etiketter som forsegler"</b>. Vector SVG files — upload directly or convert to PDF first. Recommended quantity: 100-200 for first run. Bruk case: nøkkelanheng, bagasjemerker, produkt-tags, gavepose-anheng.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ==========================================
+     10 — BUSINESS CARDS
+     ========================================== -->
+<section class="section" id="businesscards">
+  <div class="shell">
+    <div class="section__head">
+      <div>
+        <div class="section__eyebrow">/ 10 — business cards</div>
+        <h2 class="section__title">Two designs, two colors, QR inside.</h2>
+      </div>
+      <a href="/preview/businesscards.html" target="_blank" class="dl-all-btn">
+        <span class="slash">/</span> view all previews
+      </a>
+    </div>
+
+    <p class="section__intro" style="max-width:680px;margin-bottom:48px;color:var(--fg-secondary);font-size:16px;line-height:1.6;">
+      Two card designs (Ulrik personal + Solidlab generic) × two color variants (sort + antikkhvit) × front/back = 8 SVG files. QR codes route through editable <code style="background:rgba(107,130,144,0.15);padding:2px 8px;border-radius:3px;font-family:var(--font-mono);font-size:0.88em;">/qr/*</code> proxy endpoints — destinations can be updated anytime without reprinting.
+    </p>
+
+    <!-- Ulrik Personal section -->
+    <div class="dl-subsection">
+      <span class="dl-subsection__label">/ variant 1</span>
+      <span class="dl-subsection__title">Ulrik personal — builder & partner</span>
+      <span class="dl-subsection__note">Named card for ongoing relationships</span>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:32px;margin-bottom:48px;">
+      <div class="dl-card">
+        <div class="dl-card__preview dl-preview--dark" style="padding:32px;">
+          <img loading="lazy" decoding="async" src="merch/businesscards/ulrik-front-thumb.png" alt="Ulrik front sort" style="width:100%;display:block;" />
+        </div>
+        <div class="dl-card__meta">
+          <div class="dl-card__label">/ sort · front</div>
+          <div class="dl-card__title">Ulrik front — sort</div>
+          <a class="dl-card__btn" href="merch/businesscards/ulrik-front.svg" download>Download SVG →</a>
+        </div>
+      </div>
+
+      <div class="dl-card">
+        <div class="dl-card__preview dl-preview--dark" style="padding:32px;">
+          <img loading="lazy" decoding="async" src="merch/businesscards/ulrik-back-thumb.png" alt="Ulrik back sort" style="width:100%;display:block;" />
+        </div>
+        <div class="dl-card__meta">
+          <div class="dl-card__label">/ sort · back</div>
+          <div class="dl-card__title">Ulrik back — sort · with QR</div>
+          <a class="dl-card__btn" href="merch/businesscards/ulrik-back.svg" download>Download SVG →</a>
+        </div>
+      </div>
+
+      <div class="dl-card">
+        <div class="dl-card__preview dl-preview--light" style="padding:32px;">
+          <img loading="lazy" decoding="async" src="merch/businesscards/ulrik-front-light-thumb.png" alt="Ulrik front lys" style="width:100%;display:block;" />
+        </div>
+        <div class="dl-card__meta">
+          <div class="dl-card__label">/ antikkhvit · front</div>
+          <div class="dl-card__title">Ulrik front — antikkhvit</div>
+          <a class="dl-card__btn" href="merch/businesscards/ulrik-front-light.svg" download>Download SVG →</a>
+        </div>
+      </div>
+
+      <div class="dl-card">
+        <div class="dl-card__preview dl-preview--light" style="padding:32px;">
+          <img loading="lazy" decoding="async" src="merch/businesscards/ulrik-back-light-thumb.png" alt="Ulrik back lys" style="width:100%;display:block;" />
+        </div>
+        <div class="dl-card__meta">
+          <div class="dl-card__label">/ antikkhvit · back</div>
+          <div class="dl-card__title">Ulrik back — antikkhvit · with QR</div>
+          <a class="dl-card__btn" href="merch/businesscards/ulrik-back-light.svg" download>Download SVG →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Solidlab Generic section -->
+    <div class="dl-subsection">
+      <span class="dl-subsection__label">/ variant 2</span>
+      <span class="dl-subsection__title">Solidlab generic — hello@solidlab.ai</span>
+      <span class="dl-subsection__note">Brand-first card for context where person doesn't matter</span>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:32px;margin-bottom:48px;">
+      <div class="dl-card">
+        <div class="dl-card__preview dl-preview--dark" style="padding:32px;">
+          <img loading="lazy" decoding="async" src="merch/businesscards/solidlab-front-thumb.png" alt="Solidlab front sort" style="width:100%;display:block;" />
+        </div>
+        <div class="dl-card__meta">
+          <div class="dl-card__label">/ sort · front</div>
+          <div class="dl-card__title">Solidlab front — sort</div>
+          <a class="dl-card__btn" href="merch/businesscards/solidlab-front.svg" download>Download SVG →</a>
+        </div>
+      </div>
+
+      <div class="dl-card">
+        <div class="dl-card__preview dl-preview--dark" style="padding:32px;">
+          <img loading="lazy" decoding="async" src="merch/businesscards/solidlab-back-thumb.png" alt="Solidlab back sort" style="width:100%;display:block;" />
+        </div>
+        <div class="dl-card__meta">
+          <div class="dl-card__label">/ sort · back</div>
+          <div class="dl-card__title">Solidlab back — sort · with QR</div>
+          <a class="dl-card__btn" href="merch/businesscards/solidlab-back.svg" download>Download SVG →</a>
+        </div>
+      </div>
+
+      <div class="dl-card">
+        <div class="dl-card__preview dl-preview--light" style="padding:32px;">
+          <img loading="lazy" decoding="async" src="merch/businesscards/solidlab-front-light-thumb.png" alt="Solidlab front lys" style="width:100%;display:block;" />
+        </div>
+        <div class="dl-card__meta">
+          <div class="dl-card__label">/ antikkhvit · front</div>
+          <div class="dl-card__title">Solidlab front — antikkhvit</div>
+          <a class="dl-card__btn" href="merch/businesscards/solidlab-front-light.svg" download>Download SVG →</a>
+        </div>
+      </div>
+
+      <div class="dl-card">
+        <div class="dl-card__preview dl-preview--light" style="padding:32px;">
+          <img loading="lazy" decoding="async" src="merch/businesscards/solidlab-back-light-thumb.png" alt="Solidlab back lys" style="width:100%;display:block;" />
+        </div>
+        <div class="dl-card__meta">
+          <div class="dl-card__label">/ antikkhvit · back</div>
+          <div class="dl-card__title">Solidlab back — antikkhvit · with QR</div>
+          <a class="dl-card__btn" href="merch/businesscards/solidlab-back-light.svg" download>Download SVG →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="dl-note">
+      <div class="dl-note__label"><span class="slash">/</span> qr proxy system</div>
+      <p>
+        All QR codes route through <code style="background:rgba(107,130,144,0.15);padding:2px 8px;border-radius:3px;font-family:var(--font-mono);font-size:0.88em;">solidlab.ai/qr/*</code> redirect endpoints. This means the QR destinations are <b>editable anytime</b> without reprinting — just update <code style="background:rgba(107,130,144,0.15);padding:2px 8px;border-radius:3px;font-family:var(--font-mono);font-size:0.88em;">vercel.json</code> in the solidlab-deploy repo. Routes: <code style="background:rgba(107,130,144,0.15);padding:2px 8px;border-radius:3px;font-family:var(--font-mono);font-size:0.88em;">/qr/card-ulrik</code>, <code style="background:rgba(107,130,144,0.15);padding:2px 8px;border-radius:3px;font-family:var(--font-mono);font-size:0.88em;">/qr/card-solidlab</code>, <code style="background:rgba(107,130,144,0.15);padding:2px 8px;border-radius:3px;font-family:var(--font-mono);font-size:0.88em;">/qr/card-charlotte</code>.
+      </p>
+    </div>
+
+    <div class="dl-note">
+      <div class="dl-note__label"><span class="slash">/</span> print specs</div>
+      <p>
+        Format: <b>85×55mm</b> (standard business card) with 3mm bleed. Material: <b>Soft Touch + 400g premium matte</b>. 8 SVG files — path-outlined vectors, font-independent. Vistaprint workflow: upload front + back as separate sides. Recommended first order: 100 Ulrik sort + 50 Ulrik antikkhvit + 50 Solidlab sort = 200 total.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ==========================================
+     11 — SOCIAL COVERS
+     ========================================== -->
+<section class="section" id="covers">
+  <div class="shell">
+    <div class="section__head">
+      <div>
+        <div class="section__eyebrow">/ 11 — social covers</div>
+        <h2 class="section__title">Ready for every platform.</h2>
+      </div>
+      <a href="/preview/covers.html" target="_blank" class="dl-all-btn">
+        <span class="slash">/</span> view all previews
+      </a>
+    </div>
+
+    <p class="section__intro" style="max-width:680px;margin-bottom:48px;color:var(--fg-secondary);font-size:16px;line-height:1.6;">
+      Pre-rendered cover images for LinkedIn, Facebook, Instagram, and Google Business Profile. Three color variants (sort, antikkhvit, oslo) × 9 platform formats × @1x and @2x retina resolutions. Pixel-perfect Geist typography baked in, ready to upload.
+    </p>
+
+    <div class="dl-subsection" style="margin-top:0;padding-top:0;border-top:none;">
+      <span class="dl-subsection__label">/ linkedin</span>
+      <span class="dl-subsection__title">Personal, company, and post backgrounds</span>
+      <span class="dl-subsection__note">Start here — highest ROI per update</span>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:32px;">
+      <div class="dl-card">
+        <div class="dl-card__preview dl-preview--dark" style="aspect-ratio:1584/396;padding:0;">
+          <img src="merch/covers/linkedin-personal-dark.png" alt="LinkedIn personal sort" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block;" />
+        </div>
+        <div class="dl-card__meta">
+          <div class="dl-card__label">/ linkedin personal · 1584×396</div>
+          <div class="dl-card__title">Sort variant</div>
+          <a class="dl-card__btn" href="merch/covers/linkedin-personal-dark@2x.png" download>Download @2x →</a>
+        </div>
+      </div>
+      <div class="dl-card">
+        <div class="dl-card__preview dl-preview--light" style="aspect-ratio:1584/396;padding:0;">
+          <img src="merch/covers/linkedin-personal-light.png" alt="LinkedIn personal cream" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block;" />
+        </div>
+        <div class="dl-card__meta">
+          <div class="dl-card__label">/ linkedin personal · antikkhvit</div>
+          <div class="dl-card__title">Antikkhvit variant</div>
+          <a class="dl-card__btn" href="merch/covers/linkedin-personal-light@2x.png" download>Download @2x →</a>
+        </div>
+      </div>
+      <div class="dl-card">
+        <div class="dl-card__preview" style="background:#4A5A62;aspect-ratio:1584/396;padding:0;">
+          <img src="merch/covers/linkedin-personal-oslo.png" alt="LinkedIn personal oslo" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block;" />
+        </div>
+        <div class="dl-card__meta">
+          <div class="dl-card__label">/ linkedin personal · oslo</div>
+          <div class="dl-card__title">Oslo brand variant</div>
+          <a class="dl-card__btn" href="merch/covers/linkedin-personal-oslo@2x.png" download>Download @2x →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="dl-subsection">
+      <span class="dl-subsection__label">/ facebook</span>
+      <span class="dl-subsection__title">Profile cover backgrounds</span>
+      <span class="dl-subsection__note">820×312 — also works for Meta Business</span>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:32px;">
+      <div class="dl-card">
+        <div class="dl-card__preview dl-preview--dark" style="aspect-ratio:820/312;padding:0;">
+          <img src="merch/covers/facebook-cover-dark.png" alt="Facebook cover sort" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block;" />
+        </div>
+        <div class="dl-card__meta">
+          <div class="dl-card__label">/ facebook cover · 820×312</div>
+          <div class="dl-card__title">Sort variant</div>
+          <a class="dl-card__btn" href="merch/covers/facebook-cover-dark@2x.png" download>Download @2x →</a>
+        </div>
+      </div>
+      <div class="dl-card">
+        <div class="dl-card__preview dl-preview--light" style="aspect-ratio:820/312;padding:0;">
+          <img src="merch/covers/facebook-cover-light.png" alt="Facebook cover cream" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block;" />
+        </div>
+        <div class="dl-card__meta">
+          <div class="dl-card__label">/ facebook cover · antikkhvit</div>
+          <div class="dl-card__title">Antikkhvit variant</div>
+          <a class="dl-card__btn" href="merch/covers/facebook-cover-light@2x.png" download>Download @2x →</a>
+        </div>
+      </div>
+      <div class="dl-card">
+        <div class="dl-card__preview" style="background:#4A5A62;aspect-ratio:820/312;padding:0;">
+          <img src="merch/covers/facebook-cover-oslo.png" alt="Facebook cover oslo" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block;" />
+        </div>
+        <div class="dl-card__meta">
+          <div class="dl-card__label">/ facebook cover · oslo</div>
+          <div class="dl-card__title">Oslo brand variant</div>
+          <a class="dl-card__btn" href="merch/covers/facebook-cover-oslo@2x.png" download>Download @2x →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="dl-subsection">
+      <span class="dl-subsection__label">/ instagram</span>
+      <span class="dl-subsection__title">Posts (1080×1080) and stories (1080×1920)</span>
+      <span class="dl-subsection__note">Square posts first, tall stories second</span>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:32px;">
+      <div class="dl-card">
+        <div class="dl-card__preview dl-preview--dark" style="aspect-ratio:1/1;padding:0;max-width:340px;margin:0 auto;">
+          <img src="merch/covers/instagram-post-dark.png" alt="Instagram post sort" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block;" />
+        </div>
+        <div class="dl-card__meta">
+          <div class="dl-card__label">/ instagram post · sort</div>
+          <div class="dl-card__title">Square 1:1 format</div>
+          <a class="dl-card__btn" href="merch/covers/instagram-post-dark@2x.png" download>Download @2x →</a>
+        </div>
+      </div>
+      <div class="dl-card">
+        <div class="dl-card__preview dl-preview--light" style="aspect-ratio:1/1;padding:0;max-width:340px;margin:0 auto;">
+          <img src="merch/covers/instagram-post-light.png" alt="Instagram post cream" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block;" />
+        </div>
+        <div class="dl-card__meta">
+          <div class="dl-card__label">/ instagram post · antikkhvit</div>
+          <div class="dl-card__title">Square 1:1 format</div>
+          <a class="dl-card__btn" href="merch/covers/instagram-post-light@2x.png" download>Download @2x →</a>
+        </div>
+      </div>
+      <div class="dl-card">
+        <div class="dl-card__preview" style="background:#4A5A62;aspect-ratio:1/1;padding:0;max-width:340px;margin:0 auto;">
+          <img src="merch/covers/instagram-post-oslo.png" alt="Instagram post oslo" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block;" />
+        </div>
+        <div class="dl-card__meta">
+          <div class="dl-card__label">/ instagram post · oslo</div>
+          <div class="dl-card__title">Square 1:1 format</div>
+          <a class="dl-card__btn" href="merch/covers/instagram-post-oslo@2x.png" download>Download @2x →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="dl-note">
+      <div class="dl-note__label"><span class="slash">/</span> all formats</div>
+      <p>
+        Above shows <b>one example per platform</b> — the full library has <b>27 unique formats × 3 color variants × @1x and @2x</b>. LinkedIn company (1128×191), LinkedIn post (1200×627), Facebook event (1920×1005), Instagram story (1080×1920), Google Business cover (1080×608), and Google Business logo (720×720) are all available on the preview page. Click <b>"view all previews"</b> above to see everything side-by-side.
+      </p>
+    </div>
+
+    <div class="dl-note">
+      <div class="dl-note__label"><span class="slash">/</span> update order</div>
+      <p>
+        Recommended priority when refreshing your social presence: <b>1) LinkedIn personal</b> (most visible professional touchpoint), <b>2) LinkedIn company</b> (Solidlab's primary channel), <b>3) Facebook cover</b> (brand consistency), <b>4) Google Business Profile</b> (local discovery), <b>5) Instagram</b> (content channel). Match color variant to context — <b>sort</b> for tech/founder content, <b>antikkhvit</b> for craft/premium contexts, <b>oslo</b> for brand campaigns and special launches.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ==========================================
+     12 — CONTENT STUDIO
+     ========================================== -->
+<section class="section" id="content-studio">
+  <div class="shell">
+    <div class="section__head">
+      <div>
+        <div class="section__eyebrow">/ 12 — content studio</div>
+        <h2 class="section__title">Your AI content creator. Trained on Solidlab.</h2>
+      </div>
+      <a href="/preview/content-studio.html" target="_blank" class="dl-all-btn">
+        <span class="slash">/</span> setup guide
+      </a>
+    </div>
+
+    <p class="section__intro" style="max-width:680px;margin-bottom:48px;color:var(--fg-secondary);font-size:16px;line-height:1.6;">
+      Et Claude Project som vet alt om Solidlab — brand voice, produkter, farger, kunder, tone. Lag LinkedIn-poster, Instagram-captions, blog-artikler, e-poster, SMS og bildeprompter uten å forklare kontekst hver gang. Setup på 10 minutter, gratis med Claude Pro.
+    </p>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:24px;margin-bottom:48px;">
+      <div class="dl-card">
+        <div class="dl-card__head"><span class="slash">/</span> 01-project-instructions.md</div>
+        <div class="dl-card__desc">Claude's personality, brand voice rules, content-regler. Går i prosjektets "Custom instructions"-felt.</div>
+        <a class="dl-card__btn" href="project-setup/01-project-instructions.md" download>Download →</a>
+      </div>
+      <div class="dl-card">
+        <div class="dl-card__head"><span class="slash">/</span> 02-content-templates.md</div>
+        <div class="dl-card__desc">20 ferdige templates for LinkedIn-poster, Instagram-captions, blog-introer, e-poster, SMS og bildeprompter.</div>
+        <a class="dl-card__btn" href="project-setup/02-content-templates.md" download>Download →</a>
+      </div>
+      <div class="dl-card">
+        <div class="dl-card__head"><span class="slash">/</span> 03-product-context.md</div>
+        <div class="dl-card__desc">Detaljert info om Bølgevarsel, Lara AI, KYST, Jens, Solidlab. Målgrupper, features, tone per produkt.</div>
+        <a class="dl-card__btn" href="project-setup/03-product-context.md" download>Download →</a>
+      </div>
+      <div class="dl-card">
+        <div class="dl-card__head"><span class="slash">/</span> 04-setup-guide.md</div>
+        <div class="dl-card__desc">Full steg-for-steg guide med troubleshooting og test-prompter. Begynn her hvis du er usikker.</div>
+        <a class="dl-card__btn" href="project-setup/04-setup-guide.md" download>Download →</a>
+      </div>
+    </div>
+
+    <div class="dl-note">
+      <div class="dl-note__label"><span class="slash">/</span> quick setup</div>
+      <p>
+        <b>1.</b> Gå til <a href="https://claude.ai" target="_blank" style="color:#4A5A62;text-decoration:underline;">claude.ai</a> → Projects → New project. <b>2.</b> Last ned <code style="background:rgba(107,130,144,0.15);padding:2px 8px;border-radius:3px;font-family:var(--font-mono);font-size:0.88em;">01-project-instructions.md</code>, kopier innholdet, og lim inn i prosjektets "Custom instructions"-felt. <b>3.</b> Last opp <code style="background:rgba(107,130,144,0.15);padding:2px 8px;border-radius:3px;font-family:var(--font-mono);font-size:0.88em;">02-content-templates.md</code> og <code style="background:rgba(107,130,144,0.15);padding:2px 8px;border-radius:3px;font-family:var(--font-mono);font-size:0.88em;">03-product-context.md</code> som kunnskapsfiler. <b>4.</b> Start ny chat og prøv: <i>"LinkedIn-post om Bølgevarsel-lansering"</i>.
+      </p>
+    </div>
+
+    <div class="dl-note">
+      <div class="dl-note__label"><span class="slash">/</span> why claude project, not webapp</div>
+      <p>
+        Fordi det virker umiddelbart uten kode, hosting eller vedlikehold. Når vi har 2 ukers bruksdata kan vi bygge <code style="background:rgba(107,130,144,0.15);padding:2px 8px;border-radius:3px;font-family:var(--font-mono);font-size:0.88em;">studio.solidlab.ai</code> som webapp med eksakte features du faktisk trenger. Start enkelt, iterer basert på bruk. Projects oppdateres automatisk — når vi forbedrer instruksjonene får du bedre output uten å bygge noe nytt.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="shell footer__inner">
+    <div>/ solidlab brand system</div>
+    <div>stavanger / norway</div>
+    <div>v1.1 nordic / april 2026</div>
+  </div>
+</footer>
+
+<script>
+  (function() {
+    var btn = document.getElementById("themeToggle");
+    var icon = document.getElementById("themeIcon");
+    var label = document.getElementById("themeLabel");
+
+    var sunSvg = '<circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="2" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="22" y2="12"/><line x1="4.9" y1="4.9" x2="7" y2="7"/><line x1="17" y1="17" x2="19.1" y2="19.1"/><line x1="4.9" y1="19.1" x2="7" y2="17"/><line x1="17" y1="7" x2="19.1" y2="4.9"/>';
+    var moonSvg = '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>';
+
+    function render() {
+      var t = document.documentElement.getAttribute("data-theme") || "dark";
+      icon.innerHTML = t === "dark" ? sunSvg : moonSvg;
+      label.textContent = t === "dark" ? "light" : "dark";
+    }
+    render();
+
+    btn.addEventListener("click", function() {
+      var cur = document.documentElement.getAttribute("data-theme") || "dark";
+      var next = cur === "dark" ? "light" : "dark";
+      document.documentElement.setAttribute("data-theme", next);
+      try { localStorage.setItem("solidlab-theme", next); } catch(e) {}
+      render();
+    });
+  })();
+
+  // ========== SIDE MENU ==========
+  (function() {
+    var trigger = document.getElementById("menuTrigger");
+    var menu = document.getElementById("sideMenu");
+    var backdrop = document.getElementById("sidemenuBackdrop");
+    var closeBtn = document.getElementById("sidemenuClose");
+    if (!trigger || !menu) return;
+
+    function openMenu() {
+      menu.classList.add("sidemenu--open");
+      menu.setAttribute("aria-hidden", "false");
+      trigger.setAttribute("aria-expanded", "true");
+      document.body.style.overflow = "hidden";
+    }
+    function closeMenu() {
+      menu.classList.remove("sidemenu--open");
+      menu.setAttribute("aria-hidden", "true");
+      trigger.setAttribute("aria-expanded", "false");
+      document.body.style.overflow = "";
+    }
+
+    trigger.addEventListener("click", openMenu);
+    backdrop.addEventListener("click", closeMenu);
+    closeBtn.addEventListener("click", closeMenu);
+
+    // Close on link click (in-page anchors)
+    var links = menu.querySelectorAll(".sidemenu__link, .sidemenu__link-small");
+    links.forEach(function(link) {
+      link.addEventListener("click", function(e) {
+        // Only close for internal anchor links; external links open in new tab anyway
+        if (link.getAttribute("href").indexOf("#") === 0) {
+          closeMenu();
+        }
+      });
+    });
+
+    // Close on ESC
+    document.addEventListener("keydown", function(e) {
+      if (e.key === "Escape" && menu.classList.contains("sidemenu--open")) {
+        closeMenu();
+      }
+    });
+  })();
+
+  // ========== LIGHTBOX — Nordic-minimal zoom ==========
+  (function() {
+    var sections = [
+      { id: "stickers",      label: "stickers" },
+      { id: "hangtags",      label: "hang tags" },
+      { id: "businesscards", label: "business cards" },
+      { id: "favicon",       label: "favicon" },
+      { id: "covers",        label: "social covers" }
+    ];
+
+    // Build lightbox DOM (once)
+    var lb = document.createElement("div");
+    lb.className = "lightbox";
+    lb.setAttribute("aria-hidden", "true");
+    lb.innerHTML =
+      '<div class="lightbox__backdrop" data-lb-close></div>' +
+      '<div class="lightbox__stage">' +
+        '<button class="lightbox__nav lightbox__nav--prev" data-lb-prev aria-label="Previous">‹</button>' +
+        '<div class="lightbox__media" id="lbMedia"></div>' +
+        '<button class="lightbox__nav lightbox__nav--next" data-lb-next aria-label="Next">›</button>' +
+      '</div>' +
+      '<div class="lightbox__counter" id="lbCounter">1 / 1</div>' +
+      '<button class="lightbox__close" data-lb-close aria-label="Close">× close</button>' +
+      '<div class="lightbox__caption" id="lbCaption"></div>';
+    document.body.appendChild(lb);
+
+    var lbMedia   = lb.querySelector("#lbMedia");
+    var lbCaption = lb.querySelector("#lbCaption");
+    var lbCounter = lb.querySelector("#lbCounter");
+
+    // Collect all cards with images inside merch/favicon sections
+    var groups = {};
+    sections.forEach(function(s) {
+      var sec = document.getElementById(s.id);
+      if (!sec) return;
+      var cards = sec.querySelectorAll(".dl-card");
+      var items = [];
+      cards.forEach(function(card) {
+        var img = card.querySelector(".dl-card__preview img");
+        if (!img) return;
+        var preview = card.querySelector(".dl-card__preview");
+        var label = card.querySelector(".dl-card__label");
+        var title = card.querySelector(".dl-card__title");
+        var isLight = preview.classList.contains("dl-preview--light");
+        var isOslo = preview.style.background && preview.style.background.indexOf("4A5A62") !== -1;
+        // Prefer data-full for hi-res source; fallback to src for thumbnails
+        var fullSrc = img.getAttribute("data-full") || img.getAttribute("src");
+        // Auto-detect: if src is a -thumb.png, derive SVG path
+        if (fullSrc.indexOf("-thumb.png") !== -1) {
+          fullSrc = fullSrc.replace("-thumb.png", ".svg");
+        }
+        items.push({
+          src: fullSrc,
+          alt: img.getAttribute("alt") || "",
+          label: label ? label.textContent.trim() : "",
+          title: title ? title.textContent.trim() : "",
+          bg: isLight ? "light" : (isOslo ? "oslo" : "dark"),
+          sectionLabel: s.label
+        });
+        // Make card preview clickable
+        preview.classList.add("lb-trigger");
+        if (isLight) preview.classList.add("lb-trigger--light");
+        preview.setAttribute("data-lb-group", s.id);
+        preview.setAttribute("data-lb-index", items.length - 1);
+      });
+      if (items.length) groups[s.id] = items;
+    });
+
+    var current = { group: null, index: 0 };
+
+    function render() {
+      var items = groups[current.group];
+      if (!items) return;
+      var it = items[current.index];
+      lbMedia.className = "lightbox__media lightbox__bg-" + it.bg;
+      lbMedia.innerHTML = '<img src="' + it.src + '" alt="' + it.alt + '">';
+      lbCaption.innerHTML = '<span class="slash">/</span> ' + it.sectionLabel +
+        '<b>' + it.label + '</b>' + it.title;
+      lbCounter.textContent = (current.index + 1) + " / " + items.length;
+    }
+
+    function open(group, index) {
+      current.group = group;
+      current.index = index;
+      render();
+      lb.classList.add("lightbox--open");
+      lb.setAttribute("aria-hidden", "false");
+      document.body.classList.add("lb-open");
+    }
+
+    function close() {
+      lb.classList.remove("lightbox--open");
+      lb.setAttribute("aria-hidden", "true");
+      document.body.classList.remove("lb-open");
+    }
+
+    function navigate(delta) {
+      var items = groups[current.group];
+      if (!items) return;
+      current.index = (current.index + delta + items.length) % items.length;
+      render();
+    }
+
+    // Attach click listeners on card previews
+    document.querySelectorAll("[data-lb-group]").forEach(function(el) {
+      el.addEventListener("click", function(e) {
+        e.preventDefault();
+        open(el.getAttribute("data-lb-group"), parseInt(el.getAttribute("data-lb-index"), 10));
+      });
+    });
+
+    // Close/nav handlers
+    lb.querySelectorAll("[data-lb-close]").forEach(function(b) {
+      b.addEventListener("click", close);
+    });
+    lb.querySelector("[data-lb-prev]").addEventListener("click", function() { navigate(-1); });
+    lb.querySelector("[data-lb-next]").addEventListener("click", function() { navigate(+1); });
+
+    // Keyboard navigation
+    document.addEventListener("keydown", function(e) {
+      if (!lb.classList.contains("lightbox--open")) return;
+      if (e.key === "Escape") close();
+      else if (e.key === "ArrowLeft") navigate(-1);
+      else if (e.key === "ArrowRight") navigate(+1);
+    });
+  })();
+</script>
+</body>
+</html>

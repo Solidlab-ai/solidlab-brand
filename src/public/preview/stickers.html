@@ -1,0 +1,93 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Stickers — Solidlab</title>
+<link rel="stylesheet" href="_base.css">
+<style>
+  .card { padding: 24px; gap: 12px; }
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+  @media (max-width: 960px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 600px) { .grid { grid-template-columns: 1fr; } }
+  .s-preview {
+    aspect-ratio: 1 / 1;
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+    overflow: hidden;
+    padding: 20px;
+  }
+  .s-preview.dark  { background: #0A0A0A; }
+  .s-preview.light { background: #F4F1EA; border: 1px solid #E8E4DB; }
+  .s-preview.oslo  { background: #4A5A62; }
+  .s-preview img { width: 100%; height: 100%; object-fit: contain; display: block; }
+  .s-preview svg { width: 100%; height: 100%; display: block; }
+  .cap { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: #5A5A5A; margin-top: 10px; text-align: center; }
+  .star { color: #4A5A62; }
+  .dl { display: flex; gap: 4px; justify-content: center; margin-top: 6px; flex-wrap: wrap; }
+  .dl a {
+    font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.08em;
+    text-transform: uppercase; color: #5A5A5A;
+    padding: 4px 8px; border: 1px solid rgba(10,10,10,0.12);
+    text-decoration: none; transition: all 150ms ease;
+    display: inline-flex; align-items: center; gap: 3px;
+  }
+  .dl a:hover { color: #0A0A0A; border-color: #4A5A62; }
+  .dl a .s { color: #4A5A62; }
+</style></head><body>
+<div class="card">
+  <div class="slash">/ stickers — 6 concepts · 5.4cm round · Vistaprint-ready · ★ = recommended</div>
+  <div class="grid">
+    <div>
+      <div class="s-preview dark"><img loading="lazy" decoding="async" src="../merch/stickers/concept-1-stamp-thumb.png" alt="Classic Stamp"></div>
+      <div class="cap">01 — Classic Stamp</div>
+      <div class="dl">
+        <a href="../merch/stickers/concept-1-stamp.svg" download><span class="s">/</span>svg</a>
+        <a href="../merch/stickers/sticker-1-stamp-4096px.png" download><span class="s">/</span>png</a>
+        <a href="../merch/stickers/sticker-1-stamp-print.pdf" download><span class="s">/</span>pdf</a>
+      </div>
+    </div>
+    <div>
+      <div class="s-preview dark"><img loading="lazy" decoding="async" src="../merch/stickers/concept-2-tagline-thumb.png" alt="Tagline Forward"></div>
+      <div class="cap">02 — Tagline Forward</div>
+      <div class="dl">
+        <a href="../merch/stickers/concept-2-tagline.svg" download><span class="s">/</span>svg</a>
+        <a href="../merch/stickers/sticker-2-tagline-4096px.png" download><span class="s">/</span>png</a>
+        <a href="../merch/stickers/sticker-2-tagline-print.pdf" download><span class="s">/</span>pdf</a>
+      </div>
+    </div>
+    <div>
+      <div class="s-preview dark"><img loading="lazy" decoding="async" src="../merch/stickers/concept-3-bigmark-thumb.png" alt="Big Mark"></div>
+      <div class="cap">03 — Big Mark <span class="star">★</span></div>
+      <div class="dl">
+        <a href="../merch/stickers/concept-3-bigmark.svg" download><span class="s">/</span>svg</a>
+        <a href="../merch/stickers/sticker-3-bigmark-4096px.png" download><span class="s">/</span>png</a>
+        <a href="../merch/stickers/sticker-3-bigmark-print.pdf" download><span class="s">/</span>pdf</a>
+      </div>
+    </div>
+    <div>
+      <div class="s-preview light"><img loading="lazy" decoding="async" src="../merch/stickers/concept-4-reversed-thumb.png" alt="Reversed"></div>
+      <div class="cap">04 — Reversed (cream)</div>
+      <div class="dl">
+        <a href="../merch/stickers/concept-4-reversed.svg" download><span class="s">/</span>svg</a>
+        <a href="../merch/stickers/sticker-4-reversed-4096px.png" download><span class="s">/</span>png</a>
+        <a href="../merch/stickers/sticker-4-reversed-print.pdf" download><span class="s">/</span>pdf</a>
+      </div>
+    </div>
+    <div>
+      <div class="s-preview dark"><img loading="lazy" decoding="async" src="../merch/stickers/concept-5-mission-thumb.png" alt="Mission"></div>
+      <div class="cap">05 — Mission <span class="star">★</span></div>
+      <div class="dl">
+        <a href="../merch/stickers/concept-5-mission.svg" download><span class="s">/</span>svg</a>
+        <a href="../merch/stickers/sticker-5-mission-4096px.png" download><span class="s">/</span>png</a>
+        <a href="../merch/stickers/sticker-5-mission-print.pdf" download><span class="s">/</span>pdf</a>
+      </div>
+    </div>
+    <div>
+      <div class="s-preview oslo"><img loading="lazy" decoding="async" src="../merch/stickers/concept-6-oslo-thumb.png" alt="Oslo Blue"></div>
+      <div class="cap">06 — Oslo Blue</div>
+      <div class="dl">
+        <a href="../merch/stickers/concept-6-oslo.svg" download><span class="s">/</span>svg</a>
+        <a href="../merch/stickers/sticker-6-oslo-4096px.png" download><span class="s">/</span>png</a>
+        <a href="../merch/stickers/sticker-6-oslo-print.pdf" download><span class="s">/</span>pdf</a>
+      </div>
+    </div>
+  </div>
+</div>
+</body></html>

@@ -1,0 +1,110 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Social media covers — Solidlab</title>
+<link rel="stylesheet" href="_base.css">
+<style>
+  .card { padding: 24px; gap: 12px; }
+  .section-title {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #4A5A62;
+    margin: 32px 0 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(10,10,10,0.08);
+  }
+  .section-title:first-of-type { margin-top: 0; }
+  .section-title .dim { color: #8A8A8A; font-weight: normal; margin-left: 8px; font-size: 10px; }
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  @media (max-width: 700px) { .grid-3 { grid-template-columns: 1fr; } }
+  .cover-preview {
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+    background: #0A0A0A;
+    position: relative;
+  }
+  .cover-preview img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  /* Aspect ratios per platform */
+  .cover-preview.facebook-cover  { aspect-ratio: 820 / 312; }
+  .cover-preview.facebook-event  { aspect-ratio: 1920 / 1005; }
+  .cover-preview.linkedin-personal { aspect-ratio: 1584 / 396; }
+  .cover-preview.linkedin-company  { aspect-ratio: 1128 / 191; }
+  .cover-preview.linkedin-post     { aspect-ratio: 1200 / 627; }
+  .cover-preview.instagram-post    { aspect-ratio: 1 / 1; }
+  .cover-preview.instagram-story   { aspect-ratio: 1080 / 1920; max-height: 380px; }
+  .cover-preview.google-cover      { aspect-ratio: 1080 / 608; }
+  .cover-preview.google-logo       { aspect-ratio: 1 / 1; }
+  .cap { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: #5A5A5A; margin-top: 8px; text-align: center; }
+  .dl { display: flex; gap: 4px; justify-content: center; margin-top: 6px; flex-wrap: wrap; }
+  .dl a {
+    font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.08em;
+    text-transform: uppercase; color: #5A5A5A;
+    padding: 4px 8px; border: 1px solid rgba(10,10,10,0.12);
+    text-decoration: none; transition: all 150ms ease;
+    display: inline-flex; align-items: center; gap: 3px;
+  }
+  .dl a:hover { color: #0A0A0A; border-color: #4A5A62; }
+  .dl a .s { color: #4A5A62; }
+  .meta-note {
+    margin-top: 28px;
+    padding: 16px 20px;
+    background: rgba(74, 90, 98, 0.06);
+    border: 1px solid rgba(10, 10, 10, 0.12);
+    font-family: var(--font-sans);
+    font-size: 13px;
+    line-height: 1.6;
+    color: #5A5A5A;
+  }
+  .meta-note b { color: #0A0A0A; }
+</style></head><body>
+<div class="card">
+  <div class="slash">/ social media covers — 9 formats × 3 color variants · @1x + @2x · Playwright-rendered</div>
+
+  <div class="section-title">facebook <span class="dim">/ cover (820×312) + event (1920×1005)</span></div>
+  <div class="grid-3">
+    <div><div class="cover-preview facebook-cover"><img src="../merch/covers/facebook-cover-dark.png" alt="FB cover sort" loading="lazy" decoding="async"></div><div class="cap">sort</div><div class="dl"><a href="../merch/covers/facebook-cover-dark.png" download><span class="s">/</span>1x</a><a href="../merch/covers/facebook-cover-dark@2x.png" download><span class="s">/</span>2x</a></div></div>
+    <div><div class="cover-preview facebook-cover"><img src="../merch/covers/facebook-cover-light.png" alt="FB cover cream" loading="lazy" decoding="async"></div><div class="cap">antikkhvit</div><div class="dl"><a href="../merch/covers/facebook-cover-light.png" download><span class="s">/</span>1x</a><a href="../merch/covers/facebook-cover-light@2x.png" download><span class="s">/</span>2x</a></div></div>
+    <div><div class="cover-preview facebook-cover"><img src="../merch/covers/facebook-cover-oslo.png" alt="FB cover oslo" loading="lazy" decoding="async"></div><div class="cap">oslo</div><div class="dl"><a href="../merch/covers/facebook-cover-oslo.png" download><span class="s">/</span>1x</a><a href="../merch/covers/facebook-cover-oslo@2x.png" download><span class="s">/</span>2x</a></div></div>
+    <div><div class="cover-preview facebook-event"><img src="../merch/covers/facebook-event-dark.png" alt="FB event sort" loading="lazy" decoding="async"></div><div class="cap">event — sort</div><div class="dl"><a href="../merch/covers/facebook-event-dark.png" download><span class="s">/</span>1x</a><a href="../merch/covers/facebook-event-dark@2x.png" download><span class="s">/</span>2x</a></div></div>
+    <div><div class="cover-preview facebook-event"><img src="../merch/covers/facebook-event-light.png" alt="FB event cream" loading="lazy" decoding="async"></div><div class="cap">event — antikkhvit</div><div class="dl"><a href="../merch/covers/facebook-event-light.png" download><span class="s">/</span>1x</a><a href="../merch/covers/facebook-event-light@2x.png" download><span class="s">/</span>2x</a></div></div>
+    <div><div class="cover-preview facebook-event"><img src="../merch/covers/facebook-event-oslo.png" alt="FB event oslo" loading="lazy" decoding="async"></div><div class="cap">event — oslo</div><div class="dl"><a href="../merch/covers/facebook-event-oslo.png" download><span class="s">/</span>1x</a><a href="../merch/covers/facebook-event-oslo@2x.png" download><span class="s">/</span>2x</a></div></div>
+  </div>
+
+  <div class="section-title">linkedin <span class="dim">/ personal (1584×396) + company (1128×191) + post (1200×627)</span></div>
+  <div class="grid-3">
+    <div><div class="cover-preview linkedin-personal"><img src="../merch/covers/linkedin-personal-dark.png" alt="LI personal sort" loading="lazy" decoding="async"></div><div class="cap">personal — sort</div><div class="dl"><a href="../merch/covers/linkedin-personal-dark.png" download><span class="s">/</span>1x</a><a href="../merch/covers/linkedin-personal-dark@2x.png" download><span class="s">/</span>2x</a></div></div>
+    <div><div class="cover-preview linkedin-personal"><img src="../merch/covers/linkedin-personal-light.png" alt="LI personal cream" loading="lazy" decoding="async"></div><div class="cap">personal — antikkhvit</div><div class="dl"><a href="../merch/covers/linkedin-personal-light.png" download><span class="s">/</span>1x</a><a href="../merch/covers/linkedin-personal-light@2x.png" download><span class="s">/</span>2x</a></div></div>
+    <div><div class="cover-preview linkedin-personal"><img src="../merch/covers/linkedin-personal-oslo.png" alt="LI personal oslo" loading="lazy" decoding="async"></div><div class="cap">personal — oslo</div><div class="dl"><a href="../merch/covers/linkedin-personal-oslo.png" download><span class="s">/</span>1x</a><a href="../merch/covers/linkedin-personal-oslo@2x.png" download><span class="s">/</span>2x</a></div></div>
+    <div><div class="cover-preview linkedin-company"><img src="../merch/covers/linkedin-company-dark.png" alt="LI company sort" loading="lazy" decoding="async"></div><div class="cap">company — sort</div><div class="dl"><a href="../merch/covers/linkedin-company-dark.png" download><span class="s">/</span>1x</a><a href="../merch/covers/linkedin-company-dark@2x.png" download><span class="s">/</span>2x</a></div></div>
+    <div><div class="cover-preview linkedin-company"><img src="../merch/covers/linkedin-company-light.png" alt="LI company cream" loading="lazy" decoding="async"></div><div class="cap">company — antikkhvit</div><div class="dl"><a href="../merch/covers/linkedin-company-light.png" download><span class="s">/</span>1x</a><a href="../merch/covers/linkedin-company-light@2x.png" download><span class="s">/</span>2x</a></div></div>
+    <div><div class="cover-preview linkedin-company"><img src="../merch/covers/linkedin-company-oslo.png" alt="LI company oslo" loading="lazy" decoding="async"></div><div class="cap">company — oslo</div><div class="dl"><a href="../merch/covers/linkedin-company-oslo.png" download><span class="s">/</span>1x</a><a href="../merch/covers/linkedin-company-oslo@2x.png" download><span class="s">/</span>2x</a></div></div>
+    <div><div class="cover-preview linkedin-post"><img src="../merch/covers/linkedin-post-dark.png" alt="LI post sort" loading="lazy" decoding="async"></div><div class="cap">post — sort</div><div class="dl"><a href="../merch/covers/linkedin-post-dark.png" download><span class="s">/</span>1x</a><a href="../merch/covers/linkedin-post-dark@2x.png" download><span class="s">/</span>2x</a></div></div>
+    <div><div class="cover-preview linkedin-post"><img src="../merch/covers/linkedin-post-light.png" alt="LI post cream" loading="lazy" decoding="async"></div><div class="cap">post — antikkhvit</div><div class="dl"><a href="../merch/covers/linkedin-post-light.png" download><span class="s">/</span>1x</a><a href="../merch/covers/linkedin-post-light@2x.png" download><span class="s">/</span>2x</a></div></div>
+    <div><div class="cover-preview linkedin-post"><img src="../merch/covers/linkedin-post-oslo.png" alt="LI post oslo" loading="lazy" decoding="async"></div><div class="cap">post — oslo</div><div class="dl"><a href="../merch/covers/linkedin-post-oslo.png" download><span class="s">/</span>1x</a><a href="../merch/covers/linkedin-post-oslo@2x.png" download><span class="s">/</span>2x</a></div></div>
+  </div>
+
+  <div class="section-title">instagram <span class="dim">/ post (1080×1080) + story (1080×1920)</span></div>
+  <div class="grid-3">
+    <div><div class="cover-preview instagram-post"><img src="../merch/covers/instagram-post-dark.png" alt="IG post sort" loading="lazy" decoding="async"></div><div class="cap">post — sort</div><div class="dl"><a href="../merch/covers/instagram-post-dark.png" download><span class="s">/</span>1x</a><a href="../merch/covers/instagram-post-dark@2x.png" download><span class="s">/</span>2x</a></div></div>
+    <div><div class="cover-preview instagram-post"><img src="../merch/covers/instagram-post-light.png" alt="IG post cream" loading="lazy" decoding="async"></div><div class="cap">post — antikkhvit</div><div class="dl"><a href="../merch/covers/instagram-post-light.png" download><span class="s">/</span>1x</a><a href="../merch/covers/instagram-post-light@2x.png" download><span class="s">/</span>2x</a></div></div>
+    <div><div class="cover-preview instagram-post"><img src="../merch/covers/instagram-post-oslo.png" alt="IG post oslo" loading="lazy" decoding="async"></div><div class="cap">post — oslo</div><div class="dl"><a href="../merch/covers/instagram-post-oslo.png" download><span class="s">/</span>1x</a><a href="../merch/covers/instagram-post-oslo@2x.png" download><span class="s">/</span>2x</a></div></div>
+    <div><div class="cover-preview instagram-story"><img src="../merch/covers/instagram-story-dark.png" alt="IG story sort" loading="lazy" decoding="async"></div><div class="cap">story — sort</div><div class="dl"><a href="../merch/covers/instagram-story-dark.png" download><span class="s">/</span>1x</a><a href="../merch/covers/instagram-story-dark@2x.png" download><span class="s">/</span>2x</a></div></div>
+    <div><div class="cover-preview instagram-story"><img src="../merch/covers/instagram-story-light.png" alt="IG story cream" loading="lazy" decoding="async"></div><div class="cap">story — antikkhvit</div><div class="dl"><a href="../merch/covers/instagram-story-light.png" download><span class="s">/</span>1x</a><a href="../merch/covers/instagram-story-light@2x.png" download><span class="s">/</span>2x</a></div></div>
+    <div><div class="cover-preview instagram-story"><img src="../merch/covers/instagram-story-oslo.png" alt="IG story oslo" loading="lazy" decoding="async"></div><div class="cap">story — oslo</div><div class="dl"><a href="../merch/covers/instagram-story-oslo.png" download><span class="s">/</span>1x</a><a href="../merch/covers/instagram-story-oslo@2x.png" download><span class="s">/</span>2x</a></div></div>
+  </div>
+
+  <div class="section-title">google business profile <span class="dim">/ cover (1080×608) + logo (720×720)</span></div>
+  <div class="grid-3">
+    <div><div class="cover-preview google-cover"><img src="../merch/covers/google-business-cover-dark.png" alt="Google cover sort" loading="lazy" decoding="async"></div><div class="cap">cover — sort</div><div class="dl"><a href="../merch/covers/google-business-cover-dark.png" download><span class="s">/</span>1x</a><a href="../merch/covers/google-business-cover-dark@2x.png" download><span class="s">/</span>2x</a></div></div>
+    <div><div class="cover-preview google-cover"><img src="../merch/covers/google-business-cover-light.png" alt="Google cover cream" loading="lazy" decoding="async"></div><div class="cap">cover — antikkhvit</div><div class="dl"><a href="../merch/covers/google-business-cover-light.png" download><span class="s">/</span>1x</a><a href="../merch/covers/google-business-cover-light@2x.png" download><span class="s">/</span>2x</a></div></div>
+    <div><div class="cover-preview google-cover"><img src="../merch/covers/google-business-cover-oslo.png" alt="Google cover oslo" loading="lazy" decoding="async"></div><div class="cap">cover — oslo</div><div class="dl"><a href="../merch/covers/google-business-cover-oslo.png" download><span class="s">/</span>1x</a><a href="../merch/covers/google-business-cover-oslo@2x.png" download><span class="s">/</span>2x</a></div></div>
+    <div><div class="cover-preview google-logo"><img src="../merch/covers/google-business-logo-dark.png" alt="Google logo sort" loading="lazy" decoding="async"></div><div class="cap">logo — sort</div><div class="dl"><a href="../merch/covers/google-business-logo-dark.png" download><span class="s">/</span>1x</a><a href="../merch/covers/google-business-logo-dark@2x.png" download><span class="s">/</span>2x</a></div></div>
+    <div><div class="cover-preview google-logo"><img src="../merch/covers/google-business-logo-light.png" alt="Google logo cream" loading="lazy" decoding="async"></div><div class="cap">logo — antikkhvit</div><div class="dl"><a href="../merch/covers/google-business-logo-light.png" download><span class="s">/</span>1x</a><a href="../merch/covers/google-business-logo-light@2x.png" download><span class="s">/</span>2x</a></div></div>
+    <div><div class="cover-preview google-logo"><img src="../merch/covers/google-business-logo-oslo.png" alt="Google logo oslo" loading="lazy" decoding="async"></div><div class="cap">logo — oslo</div><div class="dl"><a href="../merch/covers/google-business-logo-oslo.png" download><span class="s">/</span>1x</a><a href="../merch/covers/google-business-logo-oslo@2x.png" download><span class="s">/</span>2x</a></div></div>
+  </div>
+
+  <div class="meta-note">
+    <b>27 unike formater · 3 fargevarianter · @1x + @2x oppløsninger.</b> Alle covere er rendret pixel-perfekt med Playwright og Geist-typografi. <b>Bruk:</b> Last ned @2x for retina-skjermer og high-DPI sosiale medier, @1x for standard bruk. <b>Oppdater i rekkefølge:</b> LinkedIn personal → LinkedIn company → Facebook cover → Google Business → Instagram. Match farge-variant til "season" — sort for vinter/høst, antikkhvit for vår, oslo for brand-kampanjer.
+  </div>
+</div>
+</body></html>

@@ -1,0 +1,108 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Logo variants</title>
+<link rel="stylesheet" href="_base.css">
+<style>
+  .card { padding: 24px; gap: 12px; }
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+  @media (max-width: 960px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 600px) { .grid { grid-template-columns: 1fr; } }
+  .l { height: 130px; display: flex; align-items: center; justify-content: center; position: relative; }
+  .l .wm { font-family: 'Geist', 'Inter Tight', sans-serif; font-size: 40px; line-height: 1; display: inline-flex; align-items: baseline; }
+  .l .wm .solid { font-weight: 700; letter-spacing: -0.02em; }
+  .l .wm .lab { font-weight: 400; }
+  .l .wm .ai { font-weight: 400; color: #4A5A62; }
+  .l .wm.dark-ai .ai { color: #6B8290; }
+  .l .fav { font-family: 'Geist', 'Inter Tight', sans-serif; font-weight: 700; font-size: 64px; letter-spacing: -0.04em; line-height: 1; }
+  .l.light { background: #F4F1EA; border: 1px solid #E8E4DB; }
+  .l.dark  { background: #0A0A0A; }
+  .l.oslo  { background: #4A5A62; }
+  .cap { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: #5A5A5A; margin-top: 6px; text-align: center; }
+  .dl { display: flex; gap: 4px; justify-content: center; margin-top: 8px; flex-wrap: wrap; }
+  .dl a {
+    font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.08em;
+    text-transform: uppercase; color: #5A5A5A;
+    padding: 4px 8px; border: 1px solid rgba(10,10,10,0.12);
+    text-decoration: none; transition: all 150ms ease;
+    display: inline-flex; align-items: center; gap: 3px;
+  }
+  .dl a:hover { color: #0A0A0A; border-color: #4A5A62; }
+  .dl a .s { color: #4A5A62; }
+</style></head><body>
+<div class="card">
+  <div class="slash">/ logo variants — weight contrast between solid (700) and lab (400)</div>
+  <div class="grid">
+    <div>
+      <div class="l light">
+        <span class="wm" style="color:#0A0A0A"><span class="solid">solid</span><span class="lab">lab</span><span class="ai">.ai</span></span>
+      </div>
+      <div class="cap">solidlab.ai — primary, light</div>
+      <div class="dl">
+        <a href="/assets/solidlab-wordmark-oslo-ai-on-antikkhvit.svg" download><span class="s">/</span>svg</a>
+        <a href="/assets/solidlab-wordmark-oslo-ai-on-antikkhvit.png" download><span class="s">/</span>png</a>
+        <a href="/assets/solidlab-wordmark-oslo-ai-on-antikkhvit@2x.png" download><span class="s">/</span>@2x</a>
+        <a href="/assets/solidlab-wordmark-oslo-ai-on-antikkhvit@4x.png" download><span class="s">/</span>@4x</a>
+      </div>
+    </div>
+    <div>
+      <div class="l dark">
+        <span class="wm dark-ai" style="color:#F4F1EA"><span class="solid">solid</span><span class="lab">lab</span><span class="ai">.ai</span></span>
+      </div>
+      <div class="cap">solidlab.ai — primary, dark</div>
+      <div class="dl">
+        <a href="/assets/solidlab-wordmark-oslo-ai-on-sort.svg" download><span class="s">/</span>svg</a>
+        <a href="/assets/solidlab-wordmark-oslo-ai-on-sort.png" download><span class="s">/</span>png</a>
+        <a href="/assets/solidlab-wordmark-oslo-ai-on-sort@2x.png" download><span class="s">/</span>@2x</a>
+        <a href="/assets/solidlab-wordmark-oslo-ai-on-sort@4x.png" download><span class="s">/</span>@4x</a>
+      </div>
+    </div>
+    <div>
+      <div class="l light">
+        <span class="wm" style="color:#0A0A0A"><span class="solid">solid</span><span class="lab">lab</span></span>
+      </div>
+      <div class="cap">solidlab — wordmark, light</div>
+      <div class="dl">
+        <a href="/assets/solidlab-wordmark-on-antikkhvit.svg" download><span class="s">/</span>svg</a>
+        <a href="/assets/solidlab-wordmark-on-antikkhvit.png" download><span class="s">/</span>png</a>
+        <a href="/assets/solidlab-wordmark-on-antikkhvit@2x.png" download><span class="s">/</span>@2x</a>
+        <a href="/assets/solidlab-wordmark-on-antikkhvit@4x.png" download><span class="s">/</span>@4x</a>
+      </div>
+    </div>
+    <div>
+      <div class="l dark">
+        <span class="wm" style="color:#F4F1EA"><span class="solid">solid</span><span class="lab">lab</span></span>
+      </div>
+      <div class="cap">solidlab — wordmark, dark</div>
+      <div class="dl">
+        <a href="/assets/solidlab-wordmark-on-sort.svg" download><span class="s">/</span>svg</a>
+        <a href="/assets/solidlab-wordmark-on-sort.png" download><span class="s">/</span>png</a>
+        <a href="/assets/solidlab-wordmark-on-sort@2x.png" download><span class="s">/</span>@2x</a>
+        <a href="/assets/solidlab-wordmark-on-sort@4x.png" download><span class="s">/</span>@4x</a>
+      </div>
+    </div>
+    <div>
+      <div class="l oslo">
+        <span class="wm" style="color:#F4F1EA"><span class="solid">solid</span><span class="lab">lab</span></span>
+      </div>
+      <div class="cap">solidlab — on oslo blue</div>
+      <div class="dl">
+        <a href="/assets/solidlab-wordmark-on-oslo.svg" download><span class="s">/</span>svg</a>
+        <a href="/assets/solidlab-wordmark-on-oslo.png" download><span class="s">/</span>png</a>
+        <a href="/assets/solidlab-wordmark-on-oslo@2x.png" download><span class="s">/</span>@2x</a>
+        <a href="/assets/solidlab-wordmark-on-oslo@4x.png" download><span class="s">/</span>@4x</a>
+      </div>
+    </div>
+    <div>
+      <div class="l dark">
+        <span class="fav" style="color:#F4F1EA">s</span>
+      </div>
+      <div class="cap">s — favicon</div>
+      <div class="dl">
+        <a href="/assets/solidlab-favicon-s-on-sort.svg" download><span class="s">/</span>svg</a>
+        <a href="/assets/solidlab-favicon-s-on-sort.png" download><span class="s">/</span>png</a>
+        <a href="/assets/solidlab-favicon-s-on-sort@2x.png" download><span class="s">/</span>@2x</a>
+        <a href="/assets/solidlab-favicon-s-on-sort@4x.png" download><span class="s">/</span>@4x</a>
+      </div>
+    </div>
+  </div>
+</div>
+</body></html>

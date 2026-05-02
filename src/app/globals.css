@@ -1,0 +1,19 @@
+/* Login-side bruker brand-tokens — last fra public/ */
+@import url('/colors_and_type.css');
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  background: var(--sort);
+  color: var(--antikkhvit);
+  font-family: var(--font-sans, 'Geist', sans-serif);
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+}
+
+html[data-theme="light"] body {
+  background: var(--antikkhvit);
+  color: var(--sort);
+}
+
+a { color: inherit; text-decoration: none; }

@@ -1,0 +1,43 @@
+/* Preview card base — 700×<variable>px cards for the Design System tab */
+@import url('../colors_and_type.css');
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  width: 700px;
+  min-height: 100%;
+  background: var(--antikkhvit);
+  color: var(--sort);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.card {
+  width: 700px;
+  padding: 24px;
+  background: var(--antikkhvit);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.card.dark {
+  background: var(--sort);
+  color: var(--antikkhvit);
+}
+
+.slash {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--fog);
+  font-weight: 500;
+}
+.card.dark .slash { color: var(--mist); }
+
+.row { display: flex; gap: 12px; align-items: stretch; }
+.col { display: flex; flex-direction: column; gap: 8px; }
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }

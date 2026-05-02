@@ -1,0 +1,46 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Cards</title>
+<link rel="stylesheet" href="_base.css">
+<style>
+  .card { padding: 24px; gap: 14px; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .ux { padding: 20px; border: 1px solid #E8E4DB; background: #F4F1EA; display: flex; flex-direction: column; gap: 10px; min-height: 170px; }
+  .ux.warm { background: #D5CFC2; border-color: transparent; }
+  .ux.dark { background: #0A0A0A; border: 1px solid #1F1F1F; color: #F4F1EA; }
+  .meta { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: #5A5A5A; }
+  .ux.dark .meta { color: #8A8A8A; }
+  .title { font-family: var(--font-sans); font-weight: 600; font-size: 20px; letter-spacing: -0.01em; }
+  .body-t { font-family: var(--font-sans); font-size: 14px; line-height: 1.5; color: #5A5A5A; }
+  .ux.dark .body-t { color: #8B9BA0; }
+  .link { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #4A5A62; margin-top: auto; }
+</style></head><body>
+<div class="card">
+  <div class="slash">/ cards — sharp corners · 1px hairline · no shadow</div>
+  <div class="grid">
+    <div class="ux">
+      <div class="meta">/ 01 — shipped 2026</div>
+      <div class="title">Bølgevarsel</div>
+      <div class="body-t">Real-time marine forecasting for Norwegian boaters.</div>
+      <div class="link">/ case study →</div>
+    </div>
+    <div class="ux warm">
+      <div class="meta">/ warm counterweight</div>
+      <div class="title">Call-out card</div>
+      <div class="body-t">Antikkgrå brings humanity to dense interfaces — used sparingly.</div>
+      <div class="link">/ learn more →</div>
+    </div>
+    <div class="ux dark">
+      <div class="meta">/ dark · default hero</div>
+      <div class="title">Build with us</div>
+      <div class="body-t">Sort base, Antikkhvit text, Oslo accents.</div>
+      <div class="link">/ start →</div>
+    </div>
+    <div class="ux" style="border-left: 3px solid #4A5A62">
+      <div class="meta">/ accent rule card</div>
+      <div class="title">3px Oslo</div>
+      <div class="body-t">Reserved for key section breaks or brand moments.</div>
+      <div class="link">/ brand</div>
+    </div>
+  </div>
+</div>
+</body></html>

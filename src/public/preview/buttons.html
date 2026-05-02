@@ -1,0 +1,42 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Buttons</title>
+<link rel="stylesheet" href="_base.css">
+<style>
+  .card { padding: 24px; gap: 18px; background: var(--antikkhvit); }
+  .group { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+  .btn { font-family: var(--font-sans); font-size: 14px; font-weight: 500; padding: 12px 18px; border-radius: 0; border: 1px solid transparent; cursor: pointer; line-height: 1; transition: all 150ms ease; }
+  .pri { background: #4A5A62; color: #F4F1EA; }
+  .pri.hover { background: #6B8290; }
+  .sec { background: transparent; color: #0A0A0A; border-color: #0A0A0A; }
+  .sec.hover { background: #0A0A0A; color: #F4F1EA; }
+  .ghost { background: transparent; color: #0A0A0A; border-color: #E8E4DB; }
+  .ghost.hover { border-color: #0A0A0A; }
+  .disabled { background: #E8E4DB; color: #8A8A8A; cursor: not-allowed; }
+  .sub { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--fog); margin-bottom: 4px; }
+</style></head><body>
+<div class="card">
+  <div class="slash">/ buttons — sharp, typographic, 150ms hover</div>
+  <div>
+    <div class="sub">/ primary</div>
+    <div class="group">
+      <button class="btn pri">Start a project →</button>
+      <button class="btn pri hover">Hover state</button>
+      <button class="btn disabled">Disabled</button>
+    </div>
+  </div>
+  <div>
+    <div class="sub">/ secondary</div>
+    <div class="group">
+      <button class="btn sec">Read the guide</button>
+      <button class="btn sec hover">Hover state</button>
+    </div>
+  </div>
+  <div>
+    <div class="sub">/ ghost</div>
+    <div class="group">
+      <button class="btn ghost">/ view work</button>
+      <button class="btn ghost hover">/ hover</button>
+    </div>
+  </div>
+</div>
+</body></html>

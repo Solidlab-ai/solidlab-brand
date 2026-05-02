@@ -1,0 +1,29 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Core palette</title>
+<link rel="stylesheet" href="_base.css">
+<style>
+  .card { padding: 24px; gap: 14px; }
+  .pair { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+  .sw { height: 130px; padding: 14px; display: flex; flex-direction: column; justify-content: space-between; position: relative; border: 1px solid transparent; }
+  .name { font-family: var(--font-sans); font-weight: 600; font-size: 14px; }
+  .hex { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.04em; }
+  .tag { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.7; }
+</style></head><body>
+<div class="card">
+  <div class="slash">/ core palette — nordic base pair + hero accent</div>
+  <div class="pair">
+    <div class="sw" style="background:#4A5A62;color:#F4F1EA;border-color:transparent">
+      <div><div class="tag">/ primary accent</div><div class="name" style="margin-top:6px">Oslo</div></div>
+      <div><div class="hex">#4A5A62</div><div class="tag" style="margin-top:2px">Jotun 5180</div></div>
+    </div>
+    <div class="sw" style="background:#0A0A0A;color:#F4F1EA">
+      <div><div class="tag">/ dark base</div><div class="name" style="margin-top:6px">Sort</div></div>
+      <div><div class="hex">#0A0A0A</div><div class="tag" style="margin-top:2px">Norwegian night</div></div>
+    </div>
+    <div class="sw" style="background:#F4F1EA;color:#0A0A0A;border-color:#E8E4DB">
+      <div><div class="tag">/ light base</div><div class="name" style="margin-top:6px">Antikkhvit</div></div>
+      <div><div class="hex">#F4F1EA</div><div class="tag" style="margin-top:2px">Jotun 1873</div></div>
+    </div>
+  </div>
+</div>
+</body></html>
