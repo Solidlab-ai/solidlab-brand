@@ -39,4 +39,44 @@
     </div>
   </div>
 </div>
+<!-- Sign out — auth gate (added by SMS-OTP migration) -->
+<style>
+  .solidlab-signout {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 9999;
+    background: rgba(10, 10, 10, 0.85);
+    backdrop-filter: blur(8px);
+    color: #8B9BA0;
+    border: 1px solid #1F1F1F;
+    padding: 10px 14px;
+    font-family: 'Geist Mono', ui-monospace, monospace;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 150ms ease;
+    line-height: 1;
+    border-radius: 0;
+  }
+  .solidlab-signout:hover {
+    color: #F4F1EA;
+    border-color: #4A5A62;
+    background: rgba(74, 90, 98, 0.15);
+  }
+  html[data-theme="light"] .solidlab-signout {
+    background: rgba(244, 241, 234, 0.85);
+    color: #5A5A5A;
+    border-color: #E8E4DB;
+  }
+  html[data-theme="light"] .solidlab-signout:hover {
+    color: #0A0A0A;
+    border-color: #4A5A62;
+  }
+</style>
+<button class="solidlab-signout" onclick="(async()=>{await fetch('/api/logout',{method:'POST'});window.location.href='/login';})()" aria-label="Sign out">
+  / sign out
+</button>
+
 </body></html>
