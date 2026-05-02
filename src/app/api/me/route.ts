@@ -17,6 +17,7 @@ export async function GET(req: NextRequest) {
   try {
     const { payload } = await jwtVerify(token, SESSION_SECRET);
     return NextResponse.json({
+      userId: payload.userId,
       name: payload.name,
       email: payload.email,
       access: payload.access || [],
