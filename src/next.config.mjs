@@ -1,16 +1,12 @@
 const config = {
   async rewrites() {
-    return {
-      beforeFiles: [
-        // Root → public/index.html
-        { source: '/', destination: '/index.html' },
-        // /preview/foo → /preview/foo.html (cleanUrls)
-        { source: '/preview/:slug', destination: '/preview/:slug.html' },
-        // /slides → /slides/index.html
-        { source: '/slides', destination: '/slides/index.html' },
-        { source: '/slides/', destination: '/slides/index.html' },
-      ],
-    };
+    return [
+      // /preview/foo → /preview/foo.html (cleanUrls for preview-pages)
+      { source: '/preview/:slug', destination: '/preview/:slug.html' },
+      // /slides → /slides/index.html
+      { source: '/slides', destination: '/slides/index.html' },
+      { source: '/slides/', destination: '/slides/index.html' },
+    ];
   },
   async headers() {
     return [
