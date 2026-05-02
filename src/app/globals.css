@@ -1,13 +1,28 @@
-/* Login-side bruker brand-tokens — last fra public/ */
-@import url('/colors_and_type.css');
+/* ---------- Brand tokens (subset for login) ---------- */
+:root {
+  --oslo:           #4A5A62;
+  --sort:           #0A0A0A;
+  --antikkhvit:     #F4F1EA;
+  --nordic-breeze:  #6B8290;
+  --alvesolv:       #8B9BA0;
+  --linbla:         #C9D4D8;
+  --antikkgra:      #D5CFC2;
+  --fog:            #5A5A5A;
+  --mist:           #8A8A8A;
+  --border-light:   #E8E4DB;
+  --border-dark:    #1F1F1F;
+  --font-sans: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'Geist Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+}
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 html, body {
   background: var(--sort);
   color: var(--antikkhvit);
-  font-family: var(--font-sans, 'Geist', sans-serif);
+  font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   min-height: 100vh;
 }
 
