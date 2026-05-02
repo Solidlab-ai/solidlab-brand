@@ -29,13 +29,17 @@
     <span><b>no</b> emoji · no unicode · no filled</span>
   </div>
 </div>
-<!-- Sign out — auth gate (added by SMS-OTP migration) -->
+<!-- Solidlab nav + sign out — auth gate (added by SMS-OTP migration v2) -->
 <style>
-  .solidlab-signout {
+  .solidlab-floating {
     position: fixed;
     bottom: 24px;
     right: 24px;
     z-index: 9999;
+    display: flex;
+    gap: 8px;
+  }
+  .solidlab-floating button {
     background: rgba(10, 10, 10, 0.85);
     backdrop-filter: blur(8px);
     color: #8B9BA0;
@@ -48,25 +52,130 @@
     cursor: pointer;
     transition: all 150ms ease;
     line-height: 1;
-    border-radius: 0;
   }
-  .solidlab-signout:hover {
+  .solidlab-floating button:hover {
     color: #F4F1EA;
     border-color: #4A5A62;
     background: rgba(74, 90, 98, 0.15);
   }
-  html[data-theme="light"] .solidlab-signout {
+  html[data-theme="light"] .solidlab-floating button {
     background: rgba(244, 241, 234, 0.85);
     color: #5A5A5A;
     border-color: #E8E4DB;
   }
-  html[data-theme="light"] .solidlab-signout:hover {
+  html[data-theme="light"] .solidlab-floating button:hover {
     color: #0A0A0A;
     border-color: #4A5A62;
   }
+  /* Popup */
+  .solidlab-popup-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(10, 10, 10, 0.6);
+    z-index: 9998;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 200ms ease;
+  }
+  .solidlab-popup-overlay.open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .solidlab-popup {
+    position: fixed;
+    bottom: 80px;
+    right: 24px;
+    z-index: 9999;
+    background: #0A0A0A;
+    border: 1px solid #1F1F1F;
+    padding: 16px;
+    min-width: 280px;
+    transform: translateY(8px);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 200ms ease;
+  }
+  .solidlab-popup.open {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+  html[data-theme="light"] .solidlab-popup {
+    background: #F4F1EA;
+    border-color: #E8E4DB;
+  }
+  .solidlab-popup-label {
+    font-family: 'Geist Mono', ui-monospace, monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #8A8A8A;
+    margin-bottom: 8px;
+  }
+  .solidlab-popup a {
+    display: block;
+    padding: 8px 0;
+    font-family: 'Geist Mono', ui-monospace, monospace;
+    font-size: 13px;
+    color: #C9D4D8;
+    text-decoration: none;
+    transition: color 150ms ease;
+  }
+  .solidlab-popup a:hover { color: #F4F1EA; }
+  html[data-theme="light"] .solidlab-popup a { color: #5A5A5A; }
+  html[data-theme="light"] .solidlab-popup a:hover { color: #0A0A0A; }
+  .solidlab-popup .current {
+    color: #4A5A62;
+    pointer-events: none;
+  }
+  .solidlab-popup .current::after {
+    content: " · current";
+    font-size: 9px;
+    opacity: 0.6;
+  }
 </style>
-<button class="solidlab-signout" onclick="(async()=>{await fetch('/api/logout',{method:'POST'});window.location.href='/login';})()" aria-label="Sign out">
-  / sign out
-</button>
+
+<div class="solidlab-popup-overlay" id="solidlab-popup-overlay" onclick="solidlabClosePopup()"></div>
+
+<div class="solidlab-popup" id="solidlab-popup">
+  <div class="solidlab-popup-label">/ solidlab sites</div>
+  <a href="https://solidlab.ai" target="_blank" rel="noopener">solidlab.ai ↗</a>
+  <span class="current" id="solidlab-link-brand">brand.solidlab.ai</span>
+  <a href="https://domains.solidlab.ai" target="_blank" rel="noopener" id="solidlab-link-domains" style="display:none">domains.solidlab.ai ↗</a>
+  <a href="https://readme.solidlab.ai" target="_blank" rel="noopener" id="solidlab-link-readme" style="display:none">readme.solidlab.ai ↗</a>
+  <a href="https://studio.solidlab.ai" target="_blank" rel="noopener">studio.solidlab.ai ↗</a>
+</div>
+
+<div class="solidlab-floating">
+  <button onclick="solidlabTogglePopup()" aria-label="Solidlab sites menu">/ menu</button>
+  <button onclick="solidlabSignOut()" aria-label="Sign out">/ sign out</button>
+</div>
+
+<script>
+  (function() {
+    function $(id) { return document.getElementById(id); }
+    window.solidlabTogglePopup = function() {
+      var p = $('solidlab-popup'), o = $('solidlab-popup-overlay');
+      var open = p.classList.contains('open');
+      if (open) { p.classList.remove('open'); o.classList.remove('open'); }
+      else { p.classList.add('open'); o.classList.add('open'); }
+    };
+    window.solidlabClosePopup = function() {
+      $('solidlab-popup').classList.remove('open');
+      $('solidlab-popup-overlay').classList.remove('open');
+    };
+    window.solidlabSignOut = async function() {
+      await fetch('/api/logout', { method: 'POST' });
+      window.location.href = '/login';
+    };
+    // Hent brukerens access og vis kun de tilatte linkene
+    fetch('/api/me').then(function(r) { return r.ok ? r.json() : null; }).then(function(data) {
+      if (!data) return;
+      var access = data.access || [];
+      if (access.indexOf('domains') !== -1) $('solidlab-link-domains').style.display = 'block';
+      if (access.indexOf('readme') !== -1) $('solidlab-link-readme').style.display = 'block';
+    }).catch(function(){});
+  })();
+</script>
 
 </body></html>
