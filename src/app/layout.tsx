@@ -32,7 +32,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="icon" href="/favicon/favicon.ico" sizes="any" />
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
       </head>
-      <body>{children}</body>
+      <body>
+        {children}
+        {/* Solidlab Bot widget — Jens */}
+        <script src="https://bot.solidlab.ai/widget.js" async defer />
+      </body>
     </html>
   );
 }
