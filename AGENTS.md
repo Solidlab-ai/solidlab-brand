@@ -42,3 +42,5 @@ Supabase-prosjekt: `zqodoekmswibvjzhtixf`
 - Rediger lokalt → `git add . && git commit` → `git push` → autodeploy.
 
 <!-- autodeploy-test 13:19:25 -->
+
+<!-- autodeploy-retest 13:22:36 -->
